@@ -1,4 +1,7 @@
 .idea
 test.html
-local_config.php
+*.local.php
 test.php
+
+/vendor/
+composer.phar
