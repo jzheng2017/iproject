@@ -1,6 +1,10 @@
-<?php use EenmaalAndermaal\View\ViewComponent; ?>
+<?php
+
+use EenmaalAndermaal\View\Component\TestComponent;
+
+?>
 <div class="row">
-    <?php for ($count = 0; $count < 10; $count++) { ?>
-        <?= $this->renderComponent(new ViewComponent("test")) ?>
+    <?php foreach ($this->collection as $item) { ?>
+        <?= $this->renderComponent(new TestComponent($item)) ?>
     <?php } ?>
 </div>

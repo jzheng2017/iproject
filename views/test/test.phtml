@@ -1,5 +1,5 @@
-<?php use EenmaalAndermaal\View\ViewComponent; ?>
+<?php use EenmaalAndermaal\View\Component\TestCollectionComponent; ?>
 <div class="container">
     <h1>Aanbiedingen</h1>
-    <?= $this->renderComponent(new ViewComponent("test_collection")) ?>
+    <?= $this->renderComponent(new TestCollectionComponent($this->collection)) ?>
 </div>
