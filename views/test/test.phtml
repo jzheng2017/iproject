@@ -1,5 +1,41 @@
-<?php use EenmaalAndermaal\View\Component\TestCollectionComponent; ?>
+<?php use EenmaalAndermaal\View\Component\RubriekSideComponent;
+
+?>
 <div class="container">
     <h1>Aanbiedingen</h1>
-    <?= $this->renderComponent(new TestCollectionComponent($this->collection)) ?>
+    <?= $this->renderComponent(new RubriekSideComponent(
+        [
+            "name" => "Elektronica",
+            "rubrieken" => [
+                [
+                    "name" => "Elektronica",
+                    "icon" => "desktop_windows",
+                    "rubrieken" => [
+                        [
+                            "name" => "laptop pc",
+                            "id" => 10,
+                        ],
+                        [
+                            "name" => "laptop mac",
+                            "id" => 13,
+                        ]
+                    ]
+                ],
+                [
+                    "name" => "Printers",
+                    "icon" => "local_printshop",
+                    "rubrieken" => [
+                        [
+                            "name" => "3D printer",
+                            "id" => 12,
+                        ],
+                        [
+                            "name" => "Inktjet",
+                            "id" => 14,
+                        ]
+                    ]
+                ]
+            ]
+        ], 13)) ?>
 </div>
+

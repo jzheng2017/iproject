@@ -6,6 +6,7 @@ use EenmaalAndermaal\App;
 use EenmaalAndermaal\View\View;
 
 $baseUrl = App::getApp()->getConfig()->get("website.url");
+$body = $view->renderBody();
 ?>
 
 <!doctype html>
@@ -18,6 +19,9 @@ $baseUrl = App::getApp()->getConfig()->get("website.url");
     <link rel="stylesheet" href="<?= $baseUrl ?>materialize/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="<?= $baseUrl ?>style/style.css">
+    <?php foreach ($view->styles as $style) { ?>
+        <link rel="stylesheet" href="<?= $baseUrl ?><?= $style ?>.css">
+    <?php } ?>
     <title>Eenmaal Andermaal</title>
 </head>
 <body>
@@ -80,7 +84,7 @@ $baseUrl = App::getApp()->getConfig()->get("website.url");
     </div>
 </header>
 <main class="light-green lighten-5">
-    <?= $view->renderBody() ?>
+    <?= $body ?>
 </main>
 <footer class="page-footer light-green">
     <div class="container">
@@ -96,6 +100,13 @@ $baseUrl = App::getApp()->getConfig()->get("website.url");
         </div>
     </div>
 </footer>
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
 <script src="<?= $baseUrl ?>materialize/js/materialize.min.js"></script>
+<?php foreach ($view->scripts as $script) { ?>
+    <script src="<?= $baseUrl ?><?= $script ?>.js"></script>
+<?php } ?>
 </body>
 </html>
