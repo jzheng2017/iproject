@@ -1,0 +1,16 @@
+.breadcrumb {
+    color: black;
+}
+
+.breadcrumb:last-child {
+    font-weight: 500;
+    color: black;
+}
+
+ .breadcrumb:before {
+    color: black;
+}
+
+.breadcrumb:hover {
+    color: blue;
+}
