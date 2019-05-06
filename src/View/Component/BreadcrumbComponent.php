@@ -7,8 +7,12 @@ use EenmaalAndermaal\View\ViewComponent;
 
 class BreadcrumbComponent extends ViewComponent
 {
-    public function __construct()
+
+    public $crumbs;
+
+    public function __construct(array $crumbs)
     {
+        $this->crumbs = $crumbs;
         parent::__construct('global/breadcrumbs');
     }
 }

@@ -1,5 +1,9 @@
 .breadcrumb {
     color: black;
+    line-height: 64px;
+}
+.breadcrumbs > i {
+    line-height: 64px;
 }
 
 .breadcrumb:last-child {
@@ -13,4 +17,21 @@
 
 .breadcrumb:hover {
     color: blue;
+}
+
+.material-icons {
+    color: black;
+    margin-right: 2px;
+    position: relative;
+    top: 4px
+}
+
+.material-icons:hover {
+    color: blue;
+}
+
+@media only screen and (max-width : 992px) {
+    .breadcrumb-nav {
+        display: none;
+    }
 }
