@@ -1,0 +1,25 @@
+.collapsible-body {
+    line-height: 1.5;
+    padding: 1rem;
+    background-color: white;
+    border-bottom: none;
+    color: black;
+}
+
+.collapsible-body.active {
+    background-color: #cfd8dc;
+}
+
+.collapsible-body:hover {
+    background-color: #eeeeee;
+}
+
+.collapsible-header {
+    background-color: #e8f5e9;
+    border-bottom: none;
+}
+
+.collapsible-header:hover {
+    background-color: #8bc34a;
+    color: white;
+}

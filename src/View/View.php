@@ -11,6 +11,9 @@ class View
 
     private $layout;
 
+    public $styles = [];
+    public $scripts = [];
+
     public function __construct($path)
     {
         $this->path = BASEPATH . "views/" . $path . ".phtml";
@@ -29,6 +32,12 @@ class View
 
     public function renderComponent(ViewComponent $component)
     {
+        foreach ($component->styles as $style ) {
+            $this->addStyle($style);
+        }
+        foreach ($component->scripts as $script) {
+            $this->addScript($script);
+        }
         return $component->render();
     }
 
@@ -59,5 +68,19 @@ class View
             $this->loadContents();
         }
         return $this->body;
+    }
+
+    public function addStyle($style)
+    {
+        if (!in_array($style, $this->styles)) {
+            $this->styles[] = $style;
+        }
+    }
+
+    public function addScript($script)
+    {
+        if (!in_array($script, $this->scripts)) {
+            $this->scripts[] = $script;
+        }
     }
 }
