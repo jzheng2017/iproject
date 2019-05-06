@@ -7,6 +7,8 @@ use EenmaalAndermaal\View\View;
 
 $baseUrl = App::getApp()->getConfig()->get("website.url");
 $body = $view->renderBody();
+
+$sessionActive = false;
 ?>
 
 <!doctype html>
@@ -35,8 +37,18 @@ $body = $view->renderBody();
                     <li><a href="" class="top-link">Verkopen</a></li>
                     <li><a href="" class="top-link">Voorwaarden</a></li>
                     <li><a href="" class="top-link">Help & Info</a></li>
+                    <?php
+                    if ($sessionActive == true) {
+                        echo '               
+                    <li><a href="" class="btn">uitloggen</a></li>
+                    ';
+                    } else {
+                        echo '               
                     <li><a href="" class="top-link">Registreren</a></li>
-                    <li><a href="" class="btn">Inloggen</a></li>
+                    <li><a href="" class="btn">inloggen</a></li>
+                    ';
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
