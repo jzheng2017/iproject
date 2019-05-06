@@ -26,6 +26,10 @@ class IndexController implements Controller {
         $model2 = new TestModel();
         $model2->name = "Second component";
         $model2->description = "As you can se the components can be bound with objects to have optimal reusable code";
-        return [$model1, $model2];
+
+        $m = new TestModel();
+        $m->name = "Hello darkness my old friend!";
+        $m->description = "lol";
+        return [$model1, $model2, $m];
     }
 }
