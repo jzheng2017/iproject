@@ -1,0 +1,12 @@
+<?php
+
+use EenmaalAndermaal\View\Component\TestComponent;
+
+?>
+<div class="row">
+    <?php foreach ($this->collection as $item) { ?>
+        <div class="col l4 m6 s12">
+            <?= $this->renderComponent(new TestComponent($item)) ?>
+        </div>
+    <?php } ?>
+</div>

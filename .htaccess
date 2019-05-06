@@ -1,0 +1,6 @@
+
+# rewrite the url ot look better
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^((?!api)(?!beheer).*)$ index.php?link=$1&$2 [L,QSA]

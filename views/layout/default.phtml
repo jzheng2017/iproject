@@ -1,0 +1,101 @@
+<?php
+/** @var View $view */
+$view =& $this;
+
+use EenmaalAndermaal\App;
+use EenmaalAndermaal\View\View;
+
+$baseUrl = App::getApp()->getConfig()->get("website.url");
+?>
+
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="<?= $baseUrl ?>materialize/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="<?= $baseUrl ?>style/style.css">
+    <title>Eenmaal Andermaal</title>
+</head>
+<body>
+<header>
+    <nav class="nav-extended light-green">
+        <div class="nav-wrapper">
+            <div class="container">
+                <a href="#" class="brand-logo">EenmaalAndermaal</a>
+                <a href="#" data-target="mobile-sidenav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="" class="top-link">Verkopen</a></li>
+                    <li><a href="" class="top-link">Voorwaarden</a></li>
+                    <li><a href="" class="top-link">Help & Info</a></li>
+                    <li><a href="" class="top-link">Registreren</a></li>
+                    <li><a href="" class="btn">Inloggen</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="nav-content" id="nav-category">
+            <div class="container">
+                <ul class="tabs tabs-transparent">
+                    <li class="tab"><a href="" class="category-link">Electronica</a></li>
+                    <li class="tab"><a href="">Boeken, Muziek & Film</a></li>
+                    <li class="tab"><a href="">Speelgoed</a></li>
+                    <li class="tab"><a href="">Huis & Tuin</a></li>
+                    <li class="tab"><a href="">Voertuigen</a></li>
+                    <li class="tab"><a href="">Kleding</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="green accent-1">
+        <div class="container">
+            <div class="input-field no-margin">
+                <i class="material-icons prefix">search</i>
+                <input type="text" id="zoeken" placeholder="Zoeken">
+                <label for="zoeken"></label>
+            </div>
+        </div>
+    </div>
+    <div class="banner light-green accent-1">
+        <div class="hero">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <h3 class="blue-grey-text text-lighten-5 center-align">Verduurzaam! Verdien! Verkocht!</h3>
+                    </div>
+                    <div class="col s12">
+                        <div class="row">
+                            <div class="col input-field s12 m8 l8 offset-l2 blue-grey lighten-5 z-depth-2">
+                                <i class="material-icons prefix">search</i>
+                                <input type="text" id="zoeken" placeholder="Zoeken">
+                                <label for="zoeken"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="light-green lighten-5">
+    <?= $view->renderBody() ?>
+</main>
+<footer class="page-footer light-green">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
+                    content.</p>
+            </div>
+            <div class="col">
+                <h5 class="white-text">Links</h5>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="<?= $baseUrl ?>materialize/js/materialize.min.js"></script>
+</body>
+</html>
