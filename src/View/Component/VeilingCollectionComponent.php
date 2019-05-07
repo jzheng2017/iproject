@@ -17,6 +17,6 @@ class VeilingCollectionComponent extends ViewComponent
     public function __construct(array $collection)
     {
         $this->collection = $collection;
-        parent::__construct("veiling_collection");
+        parent::__construct("veiling/veiling_collection");
     }
 }

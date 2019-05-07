@@ -4,7 +4,6 @@ namespace EenmaalAndermaal;
 
 use EenmaalAndermaal\Configuration\Config;
 use EenmaalAndermaal\Controller\ControllerManager;
-use EenmaalAndermaal\Database\Database;
 use EenmaalAndermaal\Request\Request;
 use EenmaalAndermaal\Route\Router;
 
@@ -24,11 +23,6 @@ class App
     private $router;
 
     private $controllerManager;
-
-    /**
-     * @var Database $database
-     */
-    private $database;
 
     /**
      * @var bool $production
@@ -64,18 +58,6 @@ class App
     public static function getApp(): App
     {
         return self::$app;
-    }
-
-    public function getDatabase()
-    {
-        if (empty($this->database)) {
-            $this->database = new Database(
-                $this->config->get("database.host"),
-                $this->config->get("database.database"),
-                $this->config->get("database.username"),
-                $this->config->get("database.password"));
-        }
-        return $this->database;
     }
 
     public function isProduction(): bool

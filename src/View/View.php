@@ -32,13 +32,14 @@ class View
 
     public function renderComponent(ViewComponent $component)
     {
+        $componentBody = $component->render();
         foreach ($component->styles as $style ) {
             $this->addStyle($style);
         }
         foreach ($component->scripts as $script) {
             $this->addScript($script);
         }
-        return $component->render();
+        return $componentBody;
     }
 
     protected function loadContents()

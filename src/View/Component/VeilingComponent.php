@@ -11,8 +11,7 @@ class VeilingComponent extends ViewComponent {
     public function __construct(VeilingModel $item)
     {
         $this->item = $item;
-        parent::__construct("veiling");
+        parent::__construct("veiling/veiling");
     }
 
 }
-?>

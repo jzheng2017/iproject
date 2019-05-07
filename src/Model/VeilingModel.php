@@ -8,4 +8,3 @@ class VeilingModel extends Model {
     public $price;
     public $image;
 }
-?>
