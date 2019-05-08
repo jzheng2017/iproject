@@ -35,11 +35,9 @@ class ApiRequest {
             $header[] = 'Content-Type:application/json';
             curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
         }
-
         curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
 
         $result = curl_exec($curl);
-
         if (curl_getinfo($curl, CURLINFO_HTTP_CODE) == 200) {
             $this->result = json_decode($result, true)['body'];
             return true;
