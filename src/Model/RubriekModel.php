@@ -10,18 +10,30 @@ class RubriekModel extends Model
     public $rubriek;
     public $volgnummer;
 
+    /**
+     * @var RubriekModelCollection $children
+     */
     public $children;
 
-    public function __construct()
+    public function includeChildren($recursive = false)
     {
-        $this->children = new ModelCollection($this);
+        $this->getChildren();
+        if (!empty($this->getIdentifier())) {
+            if ($recursive) {
+                $this->children->getAllByParent($this);
+                //$this->children->getAllByParentInefficient($this); DO NOT USE THIS!
+            } else {
+                $this->children->getByParent($this);
+            }
+        }
     }
 
     public function getChildren()
     {
-        if (!empty($this->getIdentifier())) {
-            $this->children->getAll();
+        if (empty($this->children)) {
+            $this->children = new RubriekModelCollection();
         }
+        return $this->children;
     }
 
     /**

@@ -1,0 +1,12 @@
+<?php
+
+use EenmaalAndermaal\View\Component\RubriekSideComponent;
+
+?>
+<div class="container">
+    <div class="row">
+        <div class="col l6">
+            <?= $this->renderComponent(new RubriekSideComponent($this->rubriek, $this->activeId)); ?>
+        </div>
+    </div>
+</div>
