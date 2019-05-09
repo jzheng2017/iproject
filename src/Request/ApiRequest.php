@@ -15,13 +15,14 @@ class ApiRequest {
 
     public function __construct(string $path, RequestMethod $requestMethod)
     {
-        $this->path = $path;
+        $this->path = strtr(urlencode($path), ['%2F' => "/"] );
         $this->requestMethod = $requestMethod;
     }
 
     public function connect(array $data = []): bool
     {
-        $curl = curl_init(App::getApp()->getConfig()->get("API.url") . $this->path);
+        $link = App::getApp()->getConfig()->get("API.url") . $this->path;
+        $curl = curl_init($link);
 
         $header = [];
 

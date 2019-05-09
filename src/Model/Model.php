@@ -41,7 +41,7 @@ abstract class Model
 
     public function getOne(string $identifier): bool
     {
-        $request = new ApiRequest($this->getPath() . "/ {$identifier}", RequestMethod::GET());
+        $request = new ApiRequest($this->getPath() . "/{$identifier}", RequestMethod::GET());
         if ($request->connect()) {
             $this->map($request->getResult()[0]);
             return true;
