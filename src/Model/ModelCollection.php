@@ -14,7 +14,7 @@ class ModelCollection implements Iterator
     /**
      * @var Collection
      */
-    private $models;
+    protected $models;
 
     /**
      * @var Model $model
@@ -33,16 +33,22 @@ class ModelCollection implements Iterator
     {
         $request = new ApiRequest($this->model->getPath(), RequestMethod::GET());
         if ($request->connect()) {
-            foreach ($request->getResult() as $result) {
-                $m = clone $this->model;
-                $m->map($result);
-                $this->models->add($m);
-            }
+            $this->fromResultSet($request->getResult());
             return true;
         } else {
             Debug::dump($request->getError());
             die();
         }
+    }
+
+    public function fromResultSet(array $resultSet)
+    {
+        foreach ($resultSet as $result) {
+            $m = clone $this->model;
+            $m->map($result);
+            $this->models->add($m);
+        }
+        return $this;
     }
 
     /**
