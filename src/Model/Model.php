@@ -2,20 +2,81 @@
 
 namespace EenmaalAndermaal\Model;
 
-class Model
+use EenmaalAndermaal\Request\ApiRequest;
+use EenmaalAndermaal\Request\RequestMethod;
+use EenmaalAndermaal\Util\Debug;
+
+abstract class Model
 {
-    public function save()
-    {
 
+    /**
+     * @return string the field used as primary key for the entity
+     */
+    public abstract function getIdentifier();
+
+    /**
+     *
+     * @return string the start of the API path, for example rubrieken
+     */
+    protected abstract function getBaseApiPath(): string;
+
+    public function save(): bool
+    {
+        /** @var $request ApiRequest */
+        $request = null;
+
+        if (empty($identifier)) {
+            $request = new ApiRequest($this->getPath(), RequestMethod::POST());
+        } else {
+            $request = new ApiRequest($this->getPath() . "/" . $this->getIdentifier(), RequestMethod::PUT());
+        }
+
+        if ($request->connect(get_object_vars($this))) {
+            return true;
+        } else {
+            Debug::dump($request->getError());
+            die();
+        }
     }
 
-    public function get()
+    public function getOne(string $identifier): bool
     {
-
+        $request = new ApiRequest($this->getPath() . "/{$identifier}", RequestMethod::GET());
+        if ($request->connect()) {
+            if (count($request->getResult()) > 0) {
+                $this->map($request->getResult()[0]);
+                return true;
+            }
+            return false;
+        } else {
+            Debug::dump($request->getError());
+            die();
+        }
     }
 
-    public function delete()
+    public function delete(): bool
     {
+        $request = new ApiRequest($this->getPath(), RequestMethod::DELETE());
+        if ($request->connect()) {
+            return true;
+        } else {
+            Debug::dump($request->getError());
+            die();
+        }
+    }
 
+    public function getPath()
+    {
+        $path = $this->getBaseApiPath();
+        return $path;
+    }
+
+    public function map(array $assocArray)
+    {
+        foreach ($assocArray as $property => $value) {
+            if (property_exists(get_called_class(), $property)) {
+                $this->$property = $value;
+            }
+        }
     }
 }

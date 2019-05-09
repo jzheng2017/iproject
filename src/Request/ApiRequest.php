@@ -15,13 +15,14 @@ class ApiRequest {
 
     public function __construct(string $path, RequestMethod $requestMethod)
     {
-        $this->path = $path;
+        $this->path = strtr(urlencode($path), ['%2F' => "/"] );
         $this->requestMethod = $requestMethod;
     }
 
     public function connect(array $data = []): bool
     {
-        $curl = curl_init(App::getApp()->getConfig()->get("API.url") . $this->path);
+        $link = App::getApp()->getConfig()->get("API.url") . $this->path;
+        $curl = curl_init($link);
 
         $header = [];
 
@@ -35,11 +36,9 @@ class ApiRequest {
             $header[] = 'Content-Type:application/json';
             curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
         }
-
         curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
 
         $result = curl_exec($curl);
-
         if (curl_getinfo($curl, CURLINFO_HTTP_CODE) == 200) {
             $this->result = json_decode($result, true)['body'];
             return true;
