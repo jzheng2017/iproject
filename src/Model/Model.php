@@ -43,8 +43,11 @@ abstract class Model
     {
         $request = new ApiRequest($this->getPath() . "/{$identifier}", RequestMethod::GET());
         if ($request->connect()) {
-            $this->map($request->getResult()[0]);
-            return true;
+            if (count($request->getResult()) > 0) {
+                $this->map($request->getResult()[0]);
+                return true;
+            }
+            return false;
         } else {
             Debug::dump($request->getError());
             die();
@@ -70,7 +73,7 @@ abstract class Model
 
     public function map(array $assocArray)
     {
-        foreach($assocArray as $property => $value) {
+        foreach ($assocArray as $property => $value) {
             if (property_exists(get_called_class(), $property)) {
                 $this->$property = $value;
             }

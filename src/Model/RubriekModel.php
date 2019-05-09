@@ -9,6 +9,21 @@ class RubriekModel extends Model
     public $naam;
     public $rubriek;
     public $volgnummer;
+
+    public $children;
+
+    public function __construct()
+    {
+        $this->children = new ModelCollection($this);
+    }
+
+    public function getChildren()
+    {
+        if (!empty($this->getIdentifier())) {
+            $this->children->getAll();
+        }
+    }
+
     /**
      * @return string the field used as primary key for the entity
      */
