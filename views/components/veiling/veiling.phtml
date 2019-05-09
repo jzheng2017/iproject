@@ -3,10 +3,11 @@
 
 use EenmaalAndermaal\View\Component\VeilingComponent;
 
+$url = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url");
 ?>
     <div class="veiling card">
         <div class="card-image">
-            <img src="<?= $this->item->image?>">
+            <img src="<?= $url . $this->item->image?>">
         </div>
         <div class="card-content description">
             <span class="card-title black-text"><?= $this->item->name?></span>
