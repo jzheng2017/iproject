@@ -77,4 +77,16 @@ class RubriekModelCollection extends ModelCollection
             die();
         }
     }
+
+    public function getTop()
+    {
+        $request = new ApiRequest($this->model->getPath() . "/gettop", RequestMethod::GET());
+        if ($request->connect()) {
+            $this->fromResultSet($request->getResult());
+            return true;
+        } else {
+            Debug::dump($request->getError());
+            die();
+        }
+    }
 }
