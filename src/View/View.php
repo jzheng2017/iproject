@@ -11,11 +11,14 @@ class View
 
     private $layout;
 
+    public $homepage;
+
     public $styles = [];
     public $scripts = [];
 
     public function __construct($path)
     {
+        $this->homepage = false;
         $this->path = BASEPATH . "views/" . $path . ".phtml";
         $this->setLayout("default");
     }
@@ -83,5 +86,9 @@ class View
         if (!in_array($script, $this->scripts)) {
             $this->scripts[] = $script;
         }
+    }
+
+    public function isHomepage() {
+        return $this->homepage;
     }
 }
