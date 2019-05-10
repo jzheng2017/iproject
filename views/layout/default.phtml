@@ -4,10 +4,12 @@ $view =& $this;
 
 use EenmaalAndermaal\App;
 use EenmaalAndermaal\View\Component\RubriekNavbarComponent;
+use EenmaalAndermaal\View\Component\SearchbarComponent;
 use EenmaalAndermaal\View\View;
 
 $baseUrl = App::getApp()->getConfig()->get("website.url");
 $rNav = $view->renderComponent(new RubriekNavbarComponent());
+$searchbar = $view->renderComponent(new SearchbarComponent());
 $body = $view->renderBody();
 ?>
 
@@ -32,7 +34,7 @@ $body = $view->renderBody();
     <nav class="light-green">
         <div class="nav-wrapper">
             <div class="container">
-                <a href="#" class="brand-logo"><img src="<?= $baseUrl ?>style/img/Logo.png" class="responsive-img" alt="Logo">EenmaalAndermaal</a>
+                <a href="<?= $baseUrl ?>" class="brand-logo"><img src="<?= $baseUrl ?>style/img/Logo.png" class="responsive-img" alt="Logo">EenmaalAndermaal</a>
                 <a href="#" data-target="mobile-sidenav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="" class="top-link">Verkopen</a></li>
@@ -123,15 +125,13 @@ $body = $view->renderBody();
                 ]
             ]
         ])) ?>
+    <?php if (!$view->isHomepage()) { ?>
     <div class="green accent-1">
         <div class="container">
-            <div class="input-field no-margin">
-                <i class="material-icons prefix">search</i>
-                <input type="text" id="zoeken" placeholder="Zoeken">
-                <label for="zoeken"></label>
-            </div>
+            <?= $searchbar ?>
         </div>
     </div>
+    <?php } else { ?>
     <div class="banner light-green accent-1">
         <div class="hero">
             <div class="container">
@@ -141,10 +141,8 @@ $body = $view->renderBody();
                     </div>
                     <div class="col s12">
                         <div class="row">
-                            <div class="col input-field s12 m8 l8 offset-l2 blue-grey lighten-5 z-depth-2">
-                                <i class="material-icons prefix">search</i>
-                                <input type="text" id="zoeken" placeholder="Zoeken">
-                                <label for="zoeken"></label>
+                            <div class="col s12 m8 l8 offset-l2 offset-m2 white z-depth-2">
+                                <?= $searchbar ?>
                             </div>
                         </div>
                     </div>
@@ -152,6 +150,7 @@ $body = $view->renderBody();
             </div>
         </div>
     </div>
+    <?php } ?>
 </header>
 <main class="light-green lighten-5">
     <?= $body ?>
