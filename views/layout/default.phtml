@@ -3,9 +3,11 @@
 $view =& $this;
 
 use EenmaalAndermaal\App;
+use EenmaalAndermaal\View\Component\RubriekNavbarComponent;
 use EenmaalAndermaal\View\View;
 
 $baseUrl = App::getApp()->getConfig()->get("website.url");
+$rNav = $view->renderComponent(new RubriekNavbarComponent());
 $body = $view->renderBody();
 ?>
 
@@ -27,7 +29,7 @@ $body = $view->renderBody();
 </head>
 <body>
 <header>
-    <nav class="nav-extended light-green">
+    <nav class="light-green">
         <div class="nav-wrapper">
             <div class="container">
                 <a href="#" class="brand-logo"><img src="<?= $baseUrl ?>style/img/Logo.png" class="responsive-img" alt="Logo">EenmaalAndermaal</a>
@@ -41,19 +43,86 @@ $body = $view->renderBody();
                 </ul>
             </div>
         </div>
-        <div class="nav-content" id="nav-category">
-            <div class="container">
-                <ul class="tabs tabs-transparent">
-                    <li class="tab"><a href="" class="category-link">Electronica</a></li>
-                    <li class="tab"><a href="">Boeken, Muziek & Film</a></li>
-                    <li class="tab"><a href="">Speelgoed</a></li>
-                    <li class="tab"><a href="">Huis & Tuin</a></li>
-                    <li class="tab"><a href="">Voertuigen</a></li>
-                    <li class="tab"><a href="">Kleding</a></li>
-                </ul>
-            </div>
-        </div>
     </nav>
+<!--        <div class="nav-content" id="nav-category">-->
+<!--            <div class="container">-->
+<!--                <ul class="tabs tabs-transparent">-->
+<!--                    <li class="tab"><a href="" class="category-link">Electronica</a></li>-->
+<!--                    <li class="tab"><a href="">Boeken, Muziek & Film</a></li>-->
+<!--                    <li class="tab"><a href="">Speelgoed</a></li>-->
+<!--                    <li class="tab"><a href="">Huis & Tuin</a></li>-->
+<!--                    <li class="tab"><a href="">Voertuigen</a></li>-->
+<!--                    <li class="tab"><a href="">Kleding</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+        <?= $this->renderComponent(new \EenmaalAndermaal\View\Component\RubriekNavbarComponent(
+        [
+            "name" => "Elektronica",
+            "rubrieken" => [
+                [
+                    "name" => "Elektronica",
+                    "icon" => "desktop_windows",
+                    "rubrieken" => [
+                        [
+                            "name" => "laptop pc",
+                            "id" => 10,
+                        ],
+                        [
+                            "name" => "laptop mac",
+                            "id" => 13,
+                        ]
+                    ]
+                ],
+                [
+                    "name" => "Printers",
+                    "icon" => "local_printshop",
+                    "rubrieken" => [
+                        [
+                            "name" => "3D printer",
+                            "id" => 12,
+                        ],
+                        [
+                            "name" => "Inktjet",
+                            "id" => 14,
+                        ]
+                    ]
+                ],
+                [
+                    "name" => "Boeken, Muziek, Film",
+                    "rubrieken" =>[
+                            [
+                            "name" => "q39081adad",
+                            "id" => 15,
+                            ]
+                    ]
+                ],
+                [
+                    "name" => "Speelgoed",
+                    "rubrieken" =>[
+
+                    ]
+                ],
+                [
+                    "name" => "Huis & Tuin",
+                    "rubrieken" =>[
+
+                    ]
+                ],
+                [
+                    "name" => "Voertuigen",
+                    "rubrieken" =>[
+
+                    ]
+                ],
+                [
+                    "name" => "Kleding",
+                    "rubrieken" =>[
+
+                    ]
+                ]
+            ]
+        ])) ?>
     <div class="green accent-1">
         <div class="container">
             <div class="input-field no-margin">
@@ -109,5 +178,6 @@ $body = $view->renderBody();
 <?php foreach ($view->scripts as $script) { ?>
     <script src="<?= $baseUrl ?><?= $script ?>.js"></script>
 <?php } ?>
+
 </body>
 </html>
