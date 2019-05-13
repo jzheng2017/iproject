@@ -3,8 +3,7 @@
     height: 100%;
 }
 .veiling-detail-container .carousel-item img {
-    border-radius: 10px;
-    height: 100%;
+    border-radius: 2px;
 }
 
 /* label color */
@@ -35,3 +34,15 @@
 .veiling-detail-container .valign-wrapper {
     height: 75px;
 }
+
+.biedingen tbody tr:first-child {
+    background-color: lightgray;
+    font-weight: bold;
+}
+.biedingen {
+    -webkit-box-shadow: inset  0 0 6px rgba(0,0,0,0.4);
+    padding: 10px !important;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
