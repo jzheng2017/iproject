@@ -23,7 +23,7 @@ main {
 
 .banner {
     width: 100%;
-    height: 40vh;
+    min-height: 40vh;
     background: url("img/nick-coleman-1462553-unsplash.jpg") center center;
     background-size: cover;
 }
@@ -57,14 +57,31 @@ main {
     margin: 0 !important;
 }
 
+
 .brand-logo {
     line-height: 10px;
     font-size: 2.0em !important;
 }
 
+
+div, div *{
+    overflow-wrap: break-word;
+}
 @media only screen and (max-width: 768px) {
     .brand-logo {
         font-size: 16px !important;
+        left: 40% !important;
+        top: 0 !important;
+    }
+    .brand-logo img {
+        top: 2px !important;
+    }
+    .brand-logo {
+        position: relative;
+    }
+    .brand-logo .site-name {
+        position: absolute;
+        top: 22px;
     }
 }
 

@@ -7,11 +7,14 @@ class SidenavComponent extends ViewComponent
 {
     public $collection;
 
-    public function __construct()
+    public $homepage;
+
+    public function __construct($homepage = false)
     {
+        parent::__construct("rubrieken/sidenav");
         $this->collection = new RubriekModelCollection();
         $this->collection->getTop();
-        parent::__construct("rubrieken/sidenav");
+        $this->homepage = $homepage;
     }
 
 

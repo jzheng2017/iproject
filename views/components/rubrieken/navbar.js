@@ -1,13 +1,12 @@
-(function($){
-    $(function(){
-        $('.dropdown-trigger').dropdown({
-        belowOrigin: true,
-        coverTrigger: false
+(function($) {
+    var show_search = true;
+    $('.searchbar-trigger').on('click', function (event){
+        var target = $("#" + $(this).data("target"));
+        if (show_search) {
+            target.attr("style", "display: block !important");
+        } else {
+            target.attr("style", "display: none !important");
+        }
+        show_search = !show_search;
     });
-    });
-})(jQuery);
-
-
-// $(document).ready(function () {
-//     $(".dropdown-trigger").dropdown({belowOrigin: true});
-// });
+})($);
