@@ -14,6 +14,7 @@ class VeilingController implements Controller {
     {
         $router->addRoute(new Route("veiling/{id}", RequestMethod::GET(), function (Request $request) {
             $v = new VeilingModel();
+            $v->getOne($request->getVar("id"));
             return (new VeilingDetailView($v))->render();
         }));
     }

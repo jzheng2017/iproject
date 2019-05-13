@@ -26,7 +26,7 @@ class VeilingModel extends Model {
      */
     public function getIdentifier()
     {
-        return ""; //TODO: return correct field
+        return $this->nummer;
     }
 
     /**

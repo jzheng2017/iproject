@@ -1,12 +1,13 @@
 <?php
 $baseurl = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url")
+/** @var $this \EenmaalAndermaal\View\VeilingDetailView */
 ?>
 
 <div class="container veiling-detail-container">
     <div class="row"></div>
     <div class="row">
         <div class="col s12 white center">
-            <h3 class="header left-align">Verse ingredienten soep</h3>
+            <h3 class="header left-align"><?= $this->veiling->titel ?></h3>
         </div>
         <div class="col m8 s12">
             <div class="carousel carousel-slider center">
@@ -17,12 +18,7 @@ $baseurl = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url")
             </div>
             <div class="row">
                 <div class="col s12 product-beschrijving">
-                    <p class="left-align flow-text">Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw,
-                        toen een
-                        onbekende drukker een zethaak met letters nam en ze do
-                        Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een
-                        onbekende drukker een zethaak met letters nam en ze do
-                    </p>
+                    <p class="left-align flow-text"><?= $this->veiling->beschrijving ?></p>
                 </div>
                 <div class="row"></div>
                 <div class="row">
