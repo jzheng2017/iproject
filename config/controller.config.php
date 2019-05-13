@@ -2,12 +2,14 @@
 
 use EenmaalAndermaal\Controller\IndexController;
 use EenmaalAndermaal\Controller\RubriekenController;
+use EenmaalAndermaal\Controller\VeilingController;
 
 return [
     "dev" => [
         "controllers" => [
             IndexController::class,
-            RubriekenController::class
+            RubriekenController::class,
+            VeilingController::class
         ]
     ],
     "production" => [

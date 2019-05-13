@@ -2,11 +2,24 @@
 namespace EenmaalAndermaal\Model;
 
 class VeilingModel extends Model {
-    public $name;
-    public $description;
-    public $timer;
-    public $price;
-    public $image;
+    public $nummer;
+    public $titel;
+    public $beschrijving;
+    public $startPrijs;
+    public $betalingswijze;
+    public $betalingsInstructie;
+    public $plaats;
+    public $land;
+    public $verzendKosten;
+    public $verzendInstructie;
+    public $verkoper;
+    public $koper;
+    public $beginDag;
+    public $beginTijd;
+    public $eindDag;
+    public $eindTijd;
+    public $gesloten;
+    public $prijs;
 
     /**
      * @return string the field used as primary key for the entity
