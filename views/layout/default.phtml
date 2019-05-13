@@ -6,11 +6,12 @@ use EenmaalAndermaal\App;
 use EenmaalAndermaal\View\Component\RubriekNavbarComponent;
 use EenmaalAndermaal\View\Component\SearchbarComponent;
 use EenmaalAndermaal\View\View;
-
+use EenmaalAndermaal\View\Component\SidenavComponent;
 $baseUrl = App::getApp()->getConfig()->get("website.url");
 $rNav = $view->renderComponent(new RubriekNavbarComponent());
 $searchbar = $view->renderComponent(new SearchbarComponent());
 $body = $view->renderBody();
+$sideNav = $this->renderComponent(new SidenavComponent());
 ?>
 
 <!doctype html>
@@ -31,11 +32,13 @@ $body = $view->renderBody();
 </head>
 <body>
 <header>
+
     <nav class="light-green">
+
         <div class="nav-wrapper">
+            <?= $sideNav ?>
             <div class="container">
                 <a href="<?= $baseUrl ?>" class="brand-logo"><img src="<?= $baseUrl ?>style/img/Logo.png" class="responsive-img" alt="Logo">EenmaalAndermaal</a>
-                <a href="#" data-target="mobile-sidenav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="" class="top-link">Verkopen</a></li>
                     <li><a href="" class="top-link">Voorwaarden</a></li>
