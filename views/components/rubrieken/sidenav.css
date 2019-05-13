@@ -1,0 +1,12 @@
+ul>li>i{
+    color:black;
+}
+
+.subheader{
+    color:black !important;
+    font-weight: bold !important;
+}
+
+.mobile-menu-logo {
+    padding-top: 10px !important;
+}

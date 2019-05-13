@@ -13,8 +13,7 @@ body {
 .brand-logo,
 nav > li,
 h1, h2, h3, h4, h5, h6,
-.btn
-{
+.btn {
     font-family: 'Mitr', sans-serif;
 }
 
@@ -25,7 +24,7 @@ main {
 .banner {
     width: 100%;
     height: 40vh;
-    background: url("nick-coleman-1462553-unsplash.jpg") center center;
+    background: url("img/nick-coleman-1462553-unsplash.jpg") center center;
     background-size: cover;
 }
 
@@ -47,8 +46,9 @@ main {
 }
 
 .veiling-card {
-    
+
 }
+
 .veiling-card .card-title {
     height: 200px;
 }
@@ -56,3 +56,52 @@ main {
 .no-margin {
     margin: 0 !important;
 }
+
+.brand-logo {
+    line-height: 10px;
+    font-size: 2.0em !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .brand-logo {
+        font-size: 16px !important;
+    }
+}
+
+@media only screen and (min-width: 993px) {
+    .container {
+        width: 80% !important;
+    }
+}
+
+.brand-logo img {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    top: 12px;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ccff90;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #64dd17;
+    border-left: 2px solid rgba(0,0,0,0);
+    border-right: 2px solid rgba(0,0,0,0);
+    border-bottom: 15px solid rgba(0,0,0,0);
+    border-top: 15px solid rgba(0,0,0,0);
+    border-radius: 2px;
+    background-clip: padding-box;
+}
+*::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
+

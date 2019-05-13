@@ -1,0 +1,17 @@
+.dropdown-content li a{
+ color: red !important;
+}
+
+.under-navbar nav {
+    box-shadow: none;
+    height: auto !important;
+    min-height: 40px;
+    text-transform: uppercase;
+}
+
+.under-navbar ul a {
+    font-size: 0.8em;
+    padding: 0 7px;
+    height: 40px;
+    line-height: 40px;
+}

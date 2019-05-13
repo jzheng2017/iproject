@@ -1,0 +1,6 @@
+#searchbar input::placeholder {
+    color: #37474f !important;
+}
+.search_submit {
+    padding-top: 7px !important;
+}

@@ -1,0 +1,28 @@
+<?php
+use EenmaalAndermaal\View\Component\VeilingCollectionComponent;
+?>
+
+<div class="container">
+    <div class="section">
+        <div class="row">
+            <div class="col s12 white center">
+                <h3 class="header">EenmaalAndermaal</h3>
+                <p class="caption">
+                    Omschrijving van homepagina EenmaalAndermaal
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h3>Trending</h3>
+            <?= $this->renderComponent(new VeilingCollectionComponent($this->collection)) ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <h3>Recommended</h3>
+            <?= $this->renderComponent(new VeilingCollectionComponent($this->collection)) ?>
+        </div>
+    </div>
+ </div>

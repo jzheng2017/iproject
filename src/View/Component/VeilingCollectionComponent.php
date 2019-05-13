@@ -2,21 +2,21 @@
 
 namespace EenmaalAndermaal\View\Component;
 
-use EenmaalAndermaal\Model\TestModel;
+use EenmaalAndermaal\Model\VeilingModel;
 use EenmaalAndermaal\View\ViewComponent;
 
-class TestCollectionComponent extends ViewComponent
+class VeilingCollectionComponent extends ViewComponent
 {
 
     public $collection;
 
     /**
      * TestCollectionComponent constructor.
-     * @param TestModel[] $collection
+     * @param VeilingModel[] $collection
      */
     public function __construct(array $collection)
     {
         $this->collection = $collection;
-        parent::__construct("test_collection");
+        parent::__construct("veiling/veiling_collection");
     }
 }

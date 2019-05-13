@@ -1,11 +1,15 @@
 <?php
 
 use EenmaalAndermaal\Controller\IndexController;
+use EenmaalAndermaal\Controller\RubriekenController;
+use EenmaalAndermaal\Controller\VeilingController;
 
 return [
     "dev" => [
         "controllers" => [
-            IndexController::class
+            IndexController::class,
+            RubriekenController::class,
+            VeilingController::class
         ]
     ],
     "production" => [
