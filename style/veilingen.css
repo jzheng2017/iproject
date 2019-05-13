@@ -46,3 +46,10 @@
     overflow-y: auto;
 }
 
+.veiling-detail-container .indicator {
+    background-color: #689f38;
+}
+
+.veiling-detail-container .tabs .tab a:focus.active {
+    background-color: rgba(0,180,0,0.1);
+}
