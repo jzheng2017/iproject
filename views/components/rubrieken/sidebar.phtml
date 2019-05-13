@@ -4,8 +4,8 @@ use EenmaalAndermaal\View\Component\RubriekSideComponent;
 /** @var RubriekSideComponent $this */
 $baseUrl = App::getApp()->getConfig()->get('website.url');
 ?>
-<ul class="collapsible with-header light-green darken-2 hide-on-med-and-down">
-    <h5 class="brown-text text-lighten-5"><?= $this->rubriek->naam ?></h5>
+<ul class="collapsible with-header light-green darken-2">
+    <h5 class="brown-text text-lighten-5 rubriek-side-header"><?= $this->rubriek->naam ?></h5>
     <?php foreach ($this->rubriek->getChildren() as $rubriek) {?>
     <li>
         <div class="collapsible-header"><i class="material-icons "><?= "highlight_off" ?></i><?= $rubriek->naam ?></div>
