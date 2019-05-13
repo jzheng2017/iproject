@@ -81,3 +81,17 @@ main {
     top: 12px;
 }
 
+*::-webkit-scrollbar {
+    width: 14px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ccff90;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #64dd17;
+    border-radius: 7px;
+    border: 1px solid black;
+}
+
