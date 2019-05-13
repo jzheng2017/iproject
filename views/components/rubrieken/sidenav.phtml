@@ -1,0 +1,36 @@
+<?php
+
+use EenmaalAndermaal\App;
+use EenmaalAndermaal\View\Component\SidenavComponent;
+
+/** @var SidenavComponent $this */
+$baseUrl = App::getApp()->getConfig()->get('website.url');
+?>
+<ul id="slide-out" class="sidenav">
+    <li>
+        <div class="mobile-menu-logo light-green center-align">
+            <img src="<?= $baseUrl ?>style/img/Logo.png"
+                 alt="" width="30%" height="30%">
+        </div>
+    </li>
+    <li><a class="subheader">Rubrieken</a></li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <?php foreach ($this->collection as $item) { ?>
+        <li><a href="<?= $baseUrl ?>rubrieken/<?= $item->getIdentifier() ?>"><i class="material-icons">keyboard_arrow_right</i><?= $item->naam ?>
+            </a></li>
+    <?php } ?>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a href="#"><i class="material-icons">attach_money</i>Verkopen</a></li>
+    <li><a href="#"><i class="material-icons">help</i>Help & Info</a></li>
+    <li><a href="#"><i class="material-icons">info</i>Voorwaarden</a></li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a href="#"><i class="material-icons">person</i>Login</a></li>
+    <li><a href="#"><i class="material-icons">person</i>Registreren</a></li>
+</ul>
+<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>

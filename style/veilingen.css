@@ -1,0 +1,48 @@
+.veiling-detail-container .carousel-item img {
+    border-radius: 10px;
+    height: 100%;
+}
+.veiling-detail-container .carousel-item img {
+    border-radius: 2px;
+}
+
+/* label color */
+.veiling-detail-container .input-field label {
+    color: grey;
+}
+
+/* label underline focus color */
+.veiling-detail-container .input-field input[type=text]:focus {
+    border-bottom: 1px solid #4caf50!important;
+    box-shadow: 0 1px 0 0 #4caf50!important;
+}
+/* valid color */
+.veiling-detail-container .input-field input[type=text].valid {
+    border-bottom: 1px solid #4caf50!important;
+    box-shadow: 0 1px 0 0 #4caf50!important;
+}
+/* invalid color */
+.veiling-detail-container .input-field input[type=text].invalid {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+/* icon prefix focus color */
+.veiling-detail-container .input-field .prefix.active {
+    color: #4caf50;
+}
+
+.veiling-detail-container .valign-wrapper {
+    height: 75px;
+}
+
+.biedingen tbody tr:first-child {
+    background-color: lightgray;
+    font-weight: bold;
+}
+.biedingen {
+    -webkit-box-shadow: inset  0 0 6px rgba(0,0,0,0.4);
+    padding: 10px !important;
+    max-height: 300px;
+    overflow-y: auto;
+}
+

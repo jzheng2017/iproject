@@ -1,0 +1,52 @@
+<?php
+
+use EenmaalAndermaal\Model\RubriekModel;
+use EenmaalAndermaal\View\Component\SearchbarComponent;
+
+/** @var $this SearchbarComponent */
+?>
+<form action="" method="get" id="searchbar" class="row no-margin">
+    <div class="input-field no-margin col l3 m6 s12">
+        <i class="material-icons prefix">search</i>
+        <input type="text" id="zoeken" placeholder="Zoeken">
+        <label for="zoeken"></label>
+    </div>
+    <div class="input-field no-margin col l3 m6 s12">
+        <select name="" id="search_cat_select">
+            <option value="-1" selected>Alle rubrieken</option>
+            <?php foreach ($this->collection as $rubriek) {
+                /** @var RubriekModel $rubriek */
+                ?>
+                <optgroup label="<?= $rubriek->naam ?>">
+                    <?php foreach ($rubriek->getChildren() as $sub) { ?>
+                        <option value="<?= $sub->getIdentifier() ?>"><?= $sub->naam ?></option>
+                    <?php } ?>
+                </optgroup>
+            <?php } ?>
+        </select>
+        <label for="search_cat_select"></label>
+    </div>
+    <div class="col l6 m12 s12 no-margin">
+        <div class="row no-margin">
+            <div class="input-field col l4 m4 s12 no-margin">
+                <input type="text" maxlength="4" id="search_zipcode" placeholder="Postcode">
+                <label for="search_zipcode"></label>
+            </div>
+            <div class="input-field col l5 m5 s12 no-margin">
+                <select name="" id="">
+                    <option value="-1" selected>Elke afstand</option>
+                    <option value="5">5km</option>
+                    <option value="10">10km</option>
+                    <option value="25">25km</option>
+                    <option value="35">35km</option>
+                    <option value="50">50km</option>
+                    <option value="75">75km</option>
+                    <option value="100">100km</option>
+                </select>
+            </div>
+            <div class="col input-field l3 m5 s12 no-margin search_submit">
+                <input value="Zoeken" type="submit" class="btn light-green">
+            </div>
+        </div>
+    </div>
+</form>

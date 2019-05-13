@@ -1,0 +1,43 @@
+<?php
+
+use EenmaalAndermaal\App;
+use EenmaalAndermaal\View\Component\RubriekNavbarComponent;
+
+/** @var RubriekNavbarComponent $this */
+$baseUrl = App::getApp()->getConfig()->get('website.url');
+?>
+
+    <div class="under-navbar hide-on-med-and-down">
+        <nav class="light-green lighten-1">
+            <div class="nav-wrapper">
+                <div class="container">
+                <ul class="left">
+                    <?php foreach ($this->collection as $item) { ?>
+                        <li><a href="<?= $baseUrl ?>rubrieken/<?= $item->getIdentifier() ?>"><?= $item->naam ?></a></li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+<?php /*
+ <div class="nav-content" id="nav-category">
+        <div class="container">
+            <ul class="tabs tabs-transparent">
+                <?php foreach ($this->navbar['rubrieken'] as $rubriek) { ?>
+                <li class="tab"><a href="#<?=$rubriek['name']?>" class="dropdown-trigger category-link"><?=$rubriek['name']?></a></li>
+                    <?php if (sizeof($rubriek['rubrieken']) > 0){ ?>
+                    <ul id="<?=$rubriek['name']?>" class="dropdown-content">
+                    <?php foreach ($rubriek['rubrieken'] as $subRubriek){?>
+                        <li><a href="#!"><?=$subRubriek['name']?></a></li>
+                        <?php } ?>
+                    </ul>
+                    <?php } ?>
+                <?php } ?>
+            </ul>
+        </div>
+    </div>
+
+
+
+ */ ?>

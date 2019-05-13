@@ -1,0 +1,8 @@
+.veiling.card{
+    display: flex;
+    flex-direction: column;
+}
+
+.veiling.card .card-content.description {
+    flex: 1 0 auto;
+}

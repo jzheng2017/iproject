@@ -1,0 +1,10 @@
+<?php
+/** @var \EenmaalAndermaal\View\Component\BreadcrumbComponent $this */
+$baseUrl = \EenmaalAndermaal\App::getApp()->getConfig()->get('website.url');
+?>
+<div class="breadcrumbs">
+    <a href="<?= $baseUrl ?>"><i class="material-icons">home</i></a>
+    <?php foreach ($this->crumbs as $crumb) { ?>
+    <a href="<?= $baseUrl . $crumb['url'] ?>" class="breadcrumb"><?= $crumb["text"] ?></a>
+    <?php } ?>
+</div>

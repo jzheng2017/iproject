@@ -1,0 +1,16 @@
+.veiling-collection > .row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.veiling-collection .col {
+    float: none !important;
+    padding-bottom: 10px;
+    flex: 0 0 auto;
+    margin-left: 0 !important;
+}
+
+.veiling-collection .card {
+    height: 100%;
+}

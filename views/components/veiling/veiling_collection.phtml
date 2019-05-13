@@ -1,0 +1,15 @@
+<?php
+
+use EenmaalAndermaal\View\Component\VeilingComponent;
+
+?>
+<div class="veiling-collection">
+    <div class="row">
+        <?php foreach ($this->collection as $item) { ?>
+            <div class="col l4 m6 s12">
+                <?= $this->renderComponent(new VeilingComponent($item)) ?>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+

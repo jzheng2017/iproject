@@ -1,0 +1,119 @@
+<?php
+/** @var View $view */
+$view =& $this;
+
+use EenmaalAndermaal\App;
+use EenmaalAndermaal\View\Component\RubriekNavbarComponent;
+use EenmaalAndermaal\View\Component\SearchbarComponent;
+use EenmaalAndermaal\View\View;
+use EenmaalAndermaal\View\Component\SidenavComponent;
+$baseUrl = App::getApp()->getConfig()->get("website.url");
+$rNav = $view->renderComponent(new RubriekNavbarComponent());
+$searchbar = $view->renderComponent(new SearchbarComponent());
+$body = $view->renderBody();
+$sessionActive = false;
+$sideNav = $this->renderComponent(new SidenavComponent());
+?>
+
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="<?= $baseUrl ?>materialize/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="<?= $baseUrl ?>style/style.css">
+    <?php foreach ($view->styles as $style) { ?>
+        <link rel="stylesheet" href="<?= $baseUrl ?><?= $style ?>.css">
+    <?php } ?>
+    <title>Eenmaal Andermaal</title>
+    <link rel="icon" href="<?= $baseUrl ?>style/img/logo_DeX_icon.ico" >
+</head>
+<body>
+<header>
+
+    <nav class="light-green">
+
+        <div class="nav-wrapper">
+            <?= $sideNav ?>
+            <div class="container">
+                <a href="<?= $baseUrl ?>" class="brand-logo"><img src="<?= $baseUrl ?>style/img/Logo.png" class="responsive-img" alt="Logo">EenmaalAndermaal</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="" class="top-link">Verkopen</a></li>
+                    <li><a href="" class="top-link">Voorwaarden</a></li>
+                    <li><a href="" class="top-link">Help & Info</a></li>
+                    <?php
+                    if ($sessionActive == true) {
+                        echo '
+                    <li><a href="" class="top-link">uitloggen</a></li>
+                    <li><a class="btn" href="#"><i class="Small material-icons left">account_circle</i>Mijn Profiel</a></li>
+                    ';
+                    } else {
+                        echo '               
+                    <li><a href="" class="top-link">Registreren</a></li>
+                    <li><a href="" class="btn">inloggen</a></li>
+                    ';
+                    }
+                    ?>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <?= $rNav ?>
+    <?php if (!$view->isHomepage()) { ?>
+    <div class="green accent-1">
+        <div class="container">
+            <?= $searchbar ?>
+        </div>
+    </div>
+    <?php } else { ?>
+    <div class="banner light-green accent-1">
+        <div class="hero">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <h3 class="blue-grey-text text-lighten-5 center-align">Verduurzaam! Verdien! Verkocht!</h3>
+                    </div>
+                    <div class="col s12">
+                        <div class="row">
+                            <div class="col s12 m8 l8 offset-l2 offset-m2 white z-depth-2">
+                                <?= $searchbar ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
+</header>
+<main>
+    <?= $body ?>
+</main>
+<footer class="page-footer light-green">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
+                    content.</p>
+            </div>
+            <div class="col">
+                <h5 class="white-text">Links</h5>
+            </div>
+        </div>
+    </div>
+</footer>
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="<?= $baseUrl ?>materialize/js/materialize.min.js"></script>
+<?php foreach ($view->scripts as $script) { ?>
+    <script src="<?= $baseUrl ?><?= $script ?>.js"></script>
+<?php } ?>
+
+</body>
+</html>

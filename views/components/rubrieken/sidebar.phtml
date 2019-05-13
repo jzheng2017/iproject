@@ -1,0 +1,21 @@
+<?php
+use EenmaalAndermaal\App;
+use EenmaalAndermaal\View\Component\RubriekSideComponent;
+/** @var RubriekSideComponent $this */
+$baseUrl = App::getApp()->getConfig()->get('website.url');
+?>
+<ul class="collapsible with-header light-green darken-2 hide-on-med-and-down">
+    <h5 class="brown-text text-lighten-5"><?= $this->rubriek->naam ?></h5>
+    <?php foreach ($this->rubriek->getChildren() as $rubriek) {?>
+    <li>
+        <div class="collapsible-header"><i class="material-icons "><?= "highlight_off" ?></i><?= $rubriek->naam ?></div>
+        <?php foreach ($rubriek->getChildren() as $subRubriek) { ?>
+            <a
+                    href="<?= $baseUrl . 'rubrieken/'. $this->rubriek->getIdentifier() . '/' . str_replace("&", "en", $subRubriek->naam) . '/' . $subRubriek->getIdentifier() ?>"
+                    class="collapsible-body <?= $this->activeId == $subRubriek->getIdentifier() ? 'active' : '' ?>">
+                <span><?= $subRubriek->naam ?></span>
+            </a>
+        <?php } ?>
+    </li>
+    <?php } ?>
+</ul>
