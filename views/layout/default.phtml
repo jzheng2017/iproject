@@ -11,6 +11,7 @@ $baseUrl = App::getApp()->getConfig()->get("website.url");
 $rNav = $view->renderComponent(new RubriekNavbarComponent());
 $searchbar = $view->renderComponent(new SearchbarComponent());
 $body = $view->renderBody();
+$sessionActive = false;
 $sideNav = $this->renderComponent(new SidenavComponent());
 ?>
 
@@ -43,8 +44,19 @@ $sideNav = $this->renderComponent(new SidenavComponent());
                     <li><a href="" class="top-link">Verkopen</a></li>
                     <li><a href="" class="top-link">Voorwaarden</a></li>
                     <li><a href="" class="top-link">Help & Info</a></li>
+                    <?php
+                    if ($sessionActive == true) {
+                        echo '
+                    <li><a href="" class="top-link">uitloggen</a></li>
+                    <li><a class="btn" href="#"><i class="Small material-icons left">account_circle</i>Mijn Profiel</a></li>
+                    ';
+                    } else {
+                        echo '               
                     <li><a href="" class="top-link">Registreren</a></li>
-                    <li><a href="" class="btn">Inloggen</a></li>
+                    <li><a href="" class="btn">inloggen</a></li>
+                    ';
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
