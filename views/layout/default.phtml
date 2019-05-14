@@ -68,25 +68,29 @@ $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
             </div>
         </div>
     <?php } else { ?>
-        <div class="banner light-green accent-1">
-            <div class="hero">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s12">
-                            <h3 class="blue-grey-text text-lighten-5 center-align">Verduurzaam! Verdien! Verkocht!</h3>
-                        </div>
-                        <div class="col s12">
-                            <div class="row">
-                                <div class="col s12 m8 l8 offset-l2 offset-m2 white z-depth-2">
-                                    <?= $searchbar ?>
-                                </div>
+    <div class="banner light-green accent-1">
+        <div class="hero">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <h3 class="blue-grey-text text-lighten-5 center-align">Verduurzaam! Verdien! Verkocht!</h3>
+                    </div>
+                    <div class="col s12 hide-on-med-and-down">
+                        <div class="row">
+                            <div class="col s12 m8 l8 offset-l2 offset-m2 white z-depth-2">
+                                <?= $searchbar ?>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row hide-on-large-only">
+                <div class="col s12 m8 l8 offset-l2 offset-m2 white z-depth-2">
+                    <?= $searchbar ?>
+                </div>
+            </div>
         </div>
-    <?php } ?>
+        <?php } ?>
 </header>
 <main>
     <?= $body ?>

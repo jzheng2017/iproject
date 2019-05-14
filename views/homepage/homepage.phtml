@@ -1,21 +1,57 @@
 <?php
+
+use EenmaalAndermaal\App;
 use EenmaalAndermaal\View\Component\VeilingCollectionComponent;
+$baseUrl = App::getApp()->getConfig()->get("website.url");
 ?>
 
 <div class="container">
-    <div class="section">
-        <div class="row">
-            <div class="col s12 grey lighten-5 center">
-                <h3 class="header">EenmaalAndermaal</h3>
-                <p class="caption">
-                    Omschrijving van homepagina EenmaalAndermaal
-                </p>
+    <div class="row">
+        <div class="col s12 worth-proposition">
+            <div class="row">
+                <div class="col s4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="<?= $baseUrl ?>style/img/duurzaam.jpg" alt="image by www.freevector.com">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">Duurzaam</span>
+                            <p class="">Koop tweedehands spullen om de wereld groener te maken. Het is zonde om weg te gooien, en op deze manier zorgen we voor een groene toekomst!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="<?= $baseUrl ?>style/img/bespaar.jpg" alt="image by www.freevector.com">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">Bespaar</span>
+                            <p>Bespaar op je aankopen. De prijs die je wil betalen ligt volledig aan jou! Op EenmaalAndermaal bespaar je geld, zonder in te leveren op kwaliteit!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="<?= $baseUrl ?>style/img/verkoop.jpg" alt="image by www.freevector.com">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">Verkoop</span>
+                            <p>Zijn er spullen waar je vanaf wil? Wordt verkoper! Als verkoper kan je jouw tweedehands spullen veilen. Zo geef je jouw spullen een tweede kans en verdien je er ook nog aan!</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col s12">
             <h3>Trending</h3>
+            <?= $this->renderComponent(new VeilingCollectionComponent($this->collection)) ?>
+        </div>
+        <div class="col s12">
+            <h3>Bij jou in de buurt</h3>
             <?= $this->renderComponent(new VeilingCollectionComponent($this->collection)) ?>
         </div>
     </div>
