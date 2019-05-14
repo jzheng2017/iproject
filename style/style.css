@@ -71,7 +71,6 @@ div, div *{
     .brand-logo {
         font-size: 16px !important;
         left: 40% !important;
-        top: 0 !important;
     }
     .brand-logo img {
         top: 2px !important;
@@ -82,6 +81,12 @@ div, div *{
     .brand-logo .site-name {
         position: absolute;
         top: 22px;
+    }
+}
+
+@media only screen and (max-width: 993px) {
+    .brand-logo {
+        top: 0 !important;
     }
 }
 
@@ -120,5 +125,22 @@ div, div *{
     width: 0;
     height: 0;
     display: none;
+}
+
+.worth-proposition > .row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.worth-proposition .col {
+    float: none !important;
+    padding-bottom: 10px;
+    flex: 0 0 auto;
+    margin-left: 0 !important;
+}
+
+.worth-proposition .card {
+    height: 100%;
 }
 
