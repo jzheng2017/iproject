@@ -8,14 +8,13 @@ use EenmaalAndermaal\View\Component\RubriekSideComponent;
         <?= $this->renderComponent(new RubriekSideComponent($this->rubriek, $this->activeId)); ?>
     </div>
     <div class="col l9 m12 s12">
-        <div class="container">
-            <div class="row">
-                <div class="col l12">
-                    <h1>BLA BLA BLABLA</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                        Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa</p>
-                </div>
+        <div class="row">
+            <div class="col l12">
+                <?= $this->renderComponent($this->breadCrumbComponent) ?>
+            </div>
+            <div class="col l12">
+                <h2><?= isset($this->subRubriek) ? $this->subRubriek->naam : $this->rubriek->naam ?></h2>
+                <?= $this->renderComponent(new \EenmaalAndermaal\View\Component\VeilingCollectionComponent($this->collection)) ?>
             </div>
         </div>
     </div>
