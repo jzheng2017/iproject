@@ -1,5 +1,6 @@
 <?php
 
+use EenmaalAndermaal\Controller\GebruikersController;
 use EenmaalAndermaal\Controller\IndexController;
 use EenmaalAndermaal\Controller\RubriekenController;
 use EenmaalAndermaal\Controller\VeilingController;
@@ -9,8 +10,9 @@ return [
         "controllers" => [
             IndexController::class,
             RubriekenController::class,
-            VeilingController::class
-        ]
+            VeilingController::class,
+            GebruikersController::class
+        ],
     ],
     "production" => [
         "controllers" => [

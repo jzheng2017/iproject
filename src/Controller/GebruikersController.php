@@ -1,15 +1,22 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Steven
- * Date: 17/05/2019
- * Time: 13:24
- */
+
 
 namespace EenmaalAndermaal\Controller;
 
 
-class RegistratieController
+use EenmaalAndermaal\Request\Request;
+use EenmaalAndermaal\Request\RequestMethod;
+use EenmaalAndermaal\Route\Route;
+use EenmaalAndermaal\Route\Router;
+use EenmaalAndermaal\View\RegistratieView;
+
+class GebruikersController implements Controller
 {
 
+    public function registerRoutes(Router &$router)
+    {
+        $router->addRoute(new Route("registreren", RequestMethod::GET(), function (Request $request) {
+            return (new RegistratieView())->render();
+        }));
+    }
 }
