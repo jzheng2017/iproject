@@ -54,7 +54,7 @@ $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
                         </li>
                     <?php } else { ?>
                         <li><a href="" class="top-link">Registreren</a></li>
-                        <li><a href="" class="btn">inloggen</a></li>
+                        <li><a href="<?= $baseUrl ?>/Login" class="btn">inloggen</a></li>
                     <?php } ?>
                 </ul>
             </div>
