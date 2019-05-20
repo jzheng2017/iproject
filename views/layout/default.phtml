@@ -55,7 +55,7 @@ $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
                         </li>
                     <?php } else { ?>
                         <li><a href="" class="top-link">Registreren</a></li>
-                        <li><a href="" class="btn">inloggen</a></li>
+                        <li><a href="<?= $baseUrl ?>/Login" class="btn">inloggen</a></li>
                     <?php } ?>
                 </ul>
             </div>
@@ -101,6 +101,7 @@ $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
         <div class="row">
             <div class="col">
                 <h5 class="white-text">Footer Content</h5>
+                <a class = "top-link white-text popout" href="<?= $baseUrl ?>PrivacyVerklaring">Privacy Verklaring</a>
                 <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
                     content.</p>
             </div>

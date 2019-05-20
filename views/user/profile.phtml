@@ -1,0 +1,127 @@
+<?php
+
+use EenmaalAndermaal\App;
+
+$baseUrl = App::getApp()->getConfig()->get("website.url");
+?>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h1>Profiel</h1>
+            <div class="row">
+                <div class="col s12 m4 l4"><img class="responsive-img" src="<?= $baseUrl ?>style/img/bespaar.jpg"></div>
+                <div class="col s12 m8 l8">
+                    <h4>Gegevens</h4>
+                    <b>Gebruikers informatie</b>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col s6 m6 l6 bold">Voornaam</div>
+                        <div class="col s6 m6 l6">John</div>
+
+                        <div class="col s6 m6 l6 bold">Achternaam</div>
+                        <div class="col s6 m6 l6">Doe</div>
+
+                        <div class="col s6 m6 l6 bold">Gebruikersnaam</div>
+                        <div class="col s6 m6 l6">verkoper1</div>
+
+                        <div class="col s6 m6 l6 bold">Geslacht</div>
+                        <div class="col s6 m6 l6">Man</div>
+
+                        <div class="col s6 m6 l6 bold">Stad</div>
+                        <div class="col s6 m6 l6">Arnhem</div>
+
+                        <div class="col s6 m6 l6 bold">Land</div>
+                        <div class="col s6 m6 l6">Nederland</div>
+                    </div>
+
+                    <b>Contact informatie</b>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col s6 m6 l6 bold">Email</div>
+                        <div class="col s6 m6 l6">johndoe@hotmail.nl</div>
+
+                        <div class="col s6 m6 l6 bold">Telefoonnummer</div>
+                        <div class="col s6 m6 l6">+31612345678</div>
+                    </div>
+
+                    <b>Status</b>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col s6 m6 l6 bold">Status</div>
+                        <div class="col s6 m6 l6">Verkoper</div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m4 l3">
+                    <h4>Reviews</h4>
+                    <div class="col s12 m12 l12">
+                        <div class="row">
+                            <div class="col s12 m12 l12">Aantal reviews: 5</div>
+                            <div class="col s12 m12 l12">Gemiddelde rating: 3.7</div>
+
+                            <div class="col s12 m12 l12">
+                                <b>Meest recente review</b>
+                                <div class="row">
+                                    <div class="col s12 m12 l12">
+                                        <div class="card white">
+                                            <div class="card-content black-text">
+                                                <span class="card-title">Mooi product!</span>
+                                                <b>Door: koper1</b>
+                                                <p>Product is van goed kwaliteit! Het is ook snel geleverd!</p>
+                                                <p class="bold">Rating: 4/5</p>
+                                            </div>
+                                        </div>
+                                        <button class="btn light-green">Bekijk alle reviews</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4 l3">
+                    <h4>Mijn veilingen</h4>
+                    <ul class="collection">
+                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item"><li >Veiling 1</li></a>
+                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item"><li >Veiling 2</li></a>
+                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item"><li >Veiling 2</li></a>
+                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item"><li >Veiling 4<span class="new badge light-green"></span></li></a>
+                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item"><li >Veiling 5</li></a>
+
+                    </ul>
+                </div>
+                <div class="col s12 m4 l3">
+                    <h4>Geboden veiling</h4>
+                    <ul class="collection">
+                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item"><li >Veiling 1</li></a>
+                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item"><li >Veiling 2<span class="new badge light-green"></span></li></a>
+                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item"><li >Veiling 2</li></a>
+                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item"><li >Veiling 4<span class="new badge light-green"></span></li></a>
+                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item"><li >Veiling 5</li></a>
+                    </ul>
+                </div>
+                <div class="col s12 m4 l3">
+                    <h4>Acties</h4>
+                    <ul class="profile-buttons">
+                        <li>
+                            <button class="btn light-green">Neem contact op</button>
+                        </li>
+                        <li>
+                            <button class="btn light-green">Rapporteer gebruiker</button>
+                        </li>
+                        <li>
+                            <button class="btn light-green">Wachtwoord vergeten</button>
+                        </li>
+                        <li>
+                            <button class="btn light-green">Gegevens aanpassen</button>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
