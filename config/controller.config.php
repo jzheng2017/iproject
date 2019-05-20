@@ -2,6 +2,7 @@
 
 use EenmaalAndermaal\Controller\IndexController;
 use EenmaalAndermaal\Controller\RubriekenController;
+use EenmaalAndermaal\Controller\UserController;
 use EenmaalAndermaal\Controller\VeilingController;
 
 return [
@@ -9,7 +10,8 @@ return [
         "controllers" => [
             IndexController::class,
             RubriekenController::class,
-            VeilingController::class
+            VeilingController::class,
+            UserController::class
         ]
     ],
     "production" => [
