@@ -1,0 +1,43 @@
+<?php
+/** @var \EenmaalAndermaal\View\Component\PrijsFilterComponent $this */
+$baseUrl = \EenmaalAndermaal\App::getApp()->getConfig()->get('website.url');
+$get = \EenmaalAndermaal\Services\GetService::getInstance();
+?>
+<div class="container">
+    <h5>zoek range</h5>
+    <form action="" class="col s12" onsubmit="return checkLocatie();" method="get">
+        <?= $get->createHiddenInputs(["locatie1", "locatie2"]) ?>
+        <div class="row hide-on-med-and-down">
+            <div class="input-field col s6 no-margin">
+                <input type="text" maxlength="32" id="search_zipcode" placeholder="Postcode">
+                <label for="search_zipcode"></label>
+            </div>
+            <div class="input-field col s6 no-margin">
+                <select name="" id="">
+                    <option value="-1" selected>Elke afstand</option>
+                    <option value="5">5km</option>
+                    <option value="10">10km</option>
+                    <option value="25">25km</option>
+                    <option value="35">35km</option>
+                    <option value="50">50km</option>
+                    <option value="75">75km</option>
+                    <option value="100">100km</option>
+                </select>
+            </div>
+            <input value="Filter" class="btn" type="submit">
+        </div>
+        <div class="row hide-on-large-only">
+            <div class="input-field col s6">
+                <input id="locatie1" type="text" class="validate quantity" min="0"
+                       value="<?= $get->getVar("locatie1") ?>" name="locatie1">
+                <label for="locatie1">Plaats1</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="locatie2" type="text" class="validate quantity" min="1"
+                       value="<?= $get->getVar("locatie2") ?>" name="locatie2">
+                <label for="locatie2">Plaats2</label>
+            </div>
+            <input value="Filter" class="btn" type="submit">
+        </div>
+    </form>
+</div>
