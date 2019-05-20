@@ -1,0 +1,12 @@
+.registratie-container {
+    margin: 20px;
+    padding: 30px;
+}
+
+.registratie-container .flex {
+    display: flex;
+}
+
+.registratie-container .flex.flex-end {
+    align-items: flex-end;
+}
