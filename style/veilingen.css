@@ -53,3 +53,6 @@
 .veiling-detail-container .tabs .tab a:focus.active {
     background-color: rgba(0,180,0,0.1);
 }
+.bold{
+    font-weight: bold;
+}
