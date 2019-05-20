@@ -6,5 +6,5 @@ $baseUrl = \EenmaalAndermaal\App::getApp()->getConfig()->get('website.url');
     <a href="<?= $baseUrl ?>"><i class="material-icons">home</i></a>
     <?php foreach ($this->crumbs as $crumb) { ?>
     <a href="<?= $baseUrl . $crumb['url'] ?>" class="breadcrumb"><?= $crumb["text"] ?></a>
-    <?php } ?>
+    <?php } ?>   
 </div>
