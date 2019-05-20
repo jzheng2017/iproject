@@ -1,5 +1,6 @@
 <?php
 
+use EenmaalAndermaal\Controller\GebruikersController;
 use EenmaalAndermaal\Controller\IndexController;
 use EenmaalAndermaal\Controller\LegalController;
 use EenmaalAndermaal\Controller\RubriekenController;
@@ -11,8 +12,9 @@ return [
             IndexController::class,
             RubriekenController::class,
             VeilingController::class,
-            LegalController::class
-        ]
+            LegalController::class,
+            GebruikersController::class
+        ],
     ],
     "production" => [
         "controllers" => [

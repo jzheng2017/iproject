@@ -1,0 +1,150 @@
+<div class="container">
+    <div class="gebruiker-registratie">
+        <div class="registratie-container z-depth-2">
+            <div class="row">
+                <div class="row"></div>
+                <nav>
+                    <div class="nav-wrapper light-green">
+                        <div class="col s8">
+                            <h3 class="brand-logo col s8">Registreer een account</h3>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="row"></div>
+            <form class="col s8">
+                <h5>Persoonlijke gegevens</h5>
+                <div class="row">
+                    <div class="input-field hoverable col s6">
+                        <i class="material-icons prefix">contacts</i>
+                        <input id="voornaam" type="text" class="validate">
+                        <label for="voornaam">Voornaam</label>
+                    </div>
+                    <div class="input-field hoverable col s6">
+                        <i class="material-icons prefix">contacts</i>
+                        <input id="achternaam" type="text" class="validate">
+                        <label for="achternaam">Achternaam</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field hoverable col s6">
+                        <i class="material-icons prefix">contacts</i>
+                        <input id="tussenvoegsel" type="text" class="validate">
+                        <label for="tussenvoegsel">Tussenvoegsel</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">contacts</i>
+                        <select name="geslacht" id="">
+                            <option value="" selected disabled>Geslacht</option>
+                            <option value="m">Man</option>
+                            <option value="v">Vrouw</option>
+                            <option value="a">Anders</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field hoverable col s6">
+                        <i class="material-icons prefix">local_phone</i>
+                        <input id="telefoonnummer" type="tel" class="validate" maxlength="10">
+                        <label for="telefoonnummer">Telefoonnummer</label>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="input-field hoverable col s6">
+                        <i class="material-icons prefix">location_city</i>
+                        <input id="provincie" type="text" class="validate">
+                        <label for="provincie">Provincie</label>
+                    </div>
+                    <div class="input-field hoverable col s6">
+                        <i class="material-icons prefix">location_city</i>
+                        <input id="stad" type="text" class="validate">
+                        <label for="stad">Stad</label>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="input-field hoverable col s6">
+                        <i class="material-icons prefix">home</i>
+                        <input id="postcode" type="text" class="validate" maxlength="4">
+                        <label for="postcode">Postcode</label>
+                    </div>
+                    <div class="input-field hoverable col s6">
+                        <i class="material-icons prefix">home</i>
+                        <input id="straat" type="text" class="validate">
+                        <label for="straat">Straat</label>
+                    </div>
+                </div>
+                <h5>Accountgegevens</h5>
+                <div class="row">
+                    <div class="input-field hoverable col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="gebruikersnaam" type="text" class="validate">
+                        <label for="gebruikersnaam">Gebruikersnaam</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field hoverable col s6">
+                        <i class="material-icons prefix">vpn_key</i>
+                        <input id="wachtwoord" type="password" class="validate">
+                        <label for="wachtwoord">Wachtwoord</label>
+                    </div>
+                    <div class="input-field hoverable col s6">
+                        <i class="material-icons prefix">replay</i>
+                        <input id="wachtwoord2" type="password" class="validate">
+                        <label for="wachtwoord2">Herhaal wachtwoord</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field hoverable col s6">
+                        <i class="material-icons prefix">email</i>
+                        <input id="email" type="email" class="validate">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-field hoverable col s6">
+                        <i class="material-icons prefix">email</i>
+                        <input id="email" type="email" class="validate">
+                        <label for="email">Herhaal email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <select name="geheime-vraag"
+                                id="geheime_vraag"
+                                tabindex="8">
+                            <option value="" selected disabled>Selecteer een geheime vraag en voer een antwoord in.
+                            </option>
+                            <option value="0">Meisjesnaam.</option>
+                            <option value="1">Naam van de stad waar je bent geboren.</option>
+                            <option value="2">Naam van eerste huisdier.</option>
+                        </select>
+                    </div>
+                    <div class="col s6">
+                        <input type="text" name="geheime-vraag-antwoord" id="geheime-vraag-antwoord" value=""/>
+                    </div>
+                </div>
+                <div class="row flex flex-end">
+                    <div class="col s6">
+                        <p>
+                            <label>
+                                <input type="checkbox" class="filled-in" checked="checked"/>
+                                <span>Ik accepteer de voorwaarden van de overeenkomst</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input type="checkbox" class="filled-in" checked="checked"/>
+                                <span>Ik wil meldingen per e-mail ontvangen</span>
+                            </label>
+                        </p>
+                    </div>
+                    <div class="col s6">
+                        <a class="waves-effect waves-light btn-large right hoverable light-green">
+                            <i class="large material-icons right">done</i>Registreren</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

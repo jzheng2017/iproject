@@ -14,6 +14,7 @@ use EenmaalAndermaal\View\Component\RubriekSideComponent;
             </div>
             <div class="col l12">
                 <h2><?= isset($this->subRubriek) ? $this->subRubriek->naam : $this->rubriek->naam ?></h2>
+                <p><?= isset($this->subRubriek) ? $this->subRubriek->beschrijving : $this->rubriek->beschrijving ?></p>
                 <?= $this->renderComponent(new \EenmaalAndermaal\View\Component\VeilingCollectionComponent($this->collection)) ?>
             </div>
         </div>
