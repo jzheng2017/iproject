@@ -116,6 +116,8 @@ $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous"></script>
 <script src="<?= $baseUrl ?>materialize/js/materialize.min.js"></script>
+<!-- Replace the value of the key parameter with your own API key. -->
+<script src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=initMap" async defer></script>
 <?php foreach ($view->scripts as $script) { ?>
     <script src="<?= $baseUrl ?><?= $script ?>.js"></script>
 <?php } ?>

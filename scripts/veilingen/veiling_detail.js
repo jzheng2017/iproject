@@ -24,5 +24,10 @@ function autoplay() {
     setTimeout(autoplay, 4500);
 }
 
-
-
+var map;
+function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -4.397, lng: 10.644},
+        zoom: 8
+    });
+}
