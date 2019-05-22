@@ -32,26 +32,81 @@ $baseUrl = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url")
                         </ul>
                     </div>
                     <div id="details" class="col s12">
+                        <div class="row">
+                            <div class="col s12">
+                                <h5>Wat wordt er geveild?</h5>
+                                <?= $this->veiling->titel ?>
+                            </div>
+                            <div class="col s12">
+                                <h5>Aanbieder</h5>
+                                <?= $this->veiling->verkoper ?>
+                            </div>
+                            <div class="col s12">
+                                <h5>Extra verplichte kosten</h5>
+                                -
+                            </div>
+                            <div class="col s12">
+                                <h5>Eventuele extra kosten</h5>
+                                -
+                            </div>
+                            <div class="col s12">
+                                <h5>Hoe maak je gebruik van de veiling?</h5>
+                                -
+                            </div>
+
+                            <div class="col s12">
+                                <h5>Voorwaarden & bijzonderheden</h5>
+                                -
+                            </div>
+                        </div>
                     </div>
                     <div id="meer-info" class="col s12">
                         <div class="col s12 extra-informatie">
-                            <h3>Extra-informatie</h3>
-                            <p class="left-align">Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de
-                                16e eeuw,
-                                toen een
-                                onbekende drukker een zet haak met letters nam en ze doLorem Ipsum is de standaard
-                                proeftekst in
-                                deze
-                                bedrijfstak sinds de 16e eeuw, toen een
-                                onbekende drukker een zethaak met letters nam en ze do
-                            </p>
+                            <h2>Extra info</h2>
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td class="bold">Startprijs</td>
+                                    <td><?= $this->veiling->startPrijs ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="bold">Betalingswijze</td>
+                                    <td><?= $this->veiling->betalingswijze ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="bold">Betalingsinstructie</td>
+                                    <td><?= $this->veiling->betalingsInstructie ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="bold">Verzendkosten</td>
+                                    <td><?= $this->veiling->verzendKosten ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="bold">Verzendinstructie</td>
+                                    <td><?= $this->veiling->verzendInstructie ?></td>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div id="locatie" class="col s12">
                         <div class="col s12 extra-informatie">
-                            <h3>Locatie</h3>
-                            <p class="left-align">Deze functie is tijdelijk niet beschikbaar.
-                            </p>
+                            <h2>Locatie</h2>
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td class="bold">Land van herkomst</td>
+                                    <td><?= $this->veiling->land ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="bold">Stad</td>
+                                    <td><?= $this->veiling->plaats ?></td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div id="verkoper" class="col s12">
