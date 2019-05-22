@@ -7,14 +7,14 @@ $url = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url");
 ?>
     <div class="veiling card">
         <div class="card-image">
-            <img src="https://placeimg.com/480/480/any">
+            <img class="materialboxed" data-caption="<?= $this->item->titel ?>" src="https://placeimg.com/720/480/any" >
+            <span class="card-title"><?= $this->item->titel ?></span>
         </div>
         <div class="card-content description">
-            <span class="card-title black-text"><?= $this->item->titel ?></span>
-            <p><?= $this->item->beschrijving ?></p>
+            <p><?= strlen($this->item->beschrijving) <= 128 ? $this->item->beschrijving : substr($this->item->beschrijving, 0, 128) . ' ...' ?></p>
         </div>
         <div class="card-content">
-            <p class="veiling-countdown"><?= $this->item->beginTijd ?><span class="right">&euro;<?=$this->item->prijs / 100 ?></span></p>
+            <p class="veiling-countdown"><span class="counter" id="countdown-<?= $this->item->getIdentifier() ?>"><?= date("H:m:s", strtotime($this->item->eindTijd)) ?></span><span class="right">&euro;<?=$this->item->prijs / 100 ?></span></p>
         </div>
         <div class="card-action">
             <a class="btn light-green darken-2" href="<?= $url ?>veiling/<?= $this->item->nummer ?>">Bekijk veiling</a>
