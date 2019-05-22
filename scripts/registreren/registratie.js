@@ -1,3 +1,35 @@
 $(document).ready(function() {
-    $('select').material_select();
+    $('select').formSelect();
+    $('.modal').modal();
+    $('#TOS').on('click', function() {
+    });
+    $('#TOStext').load("http://localhost/IProject/website/views/registreren/TOS.txt");
 });
+
+function validate(str){
+    var re = /^[A-Za-z]+$/;
+    if(re.test(str))
+        return true;
+    else
+        return false;
+}
+
+function checkRegistratie() {
+
+    if ($("#wachtwoord").val() !== $("#wachtwoord2").val()) {
+        alert("Wachtwoorden niet gelijk");
+    }
+    else if ($("#email1").val() !== $("#email2").val()) {
+        alert("e-mail adressen niet gelijk");
+    }
+    else if (!validate($("#voornaam"))) {
+        alert("geen geldige voornaam");
+    }
+    else if (!validate($("#achternaam"))) {
+        alert("geen geldige achternaam");
+    }
+    else if (!validate($("#provincie"))) {
+        alert("geen geldige provincie");
+    }
+
+}

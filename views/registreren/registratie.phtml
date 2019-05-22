@@ -1,3 +1,6 @@
+<?php
+$get = \EenmaalAndermaal\Services\GetService::getInstance();
+?>
 <div class="container">
     <div class="gebruiker-registratie">
         <div class="registratie-container z-depth-2">
@@ -12,24 +15,28 @@
                 </nav>
             </div>
             <div class="row"></div>
-            <form class="col s8">
+            <form action="" onsubmit="return checkRegistratie();" class="col s8" method="get">
+                <?= $get->createHiddenInputs(["naam", "achternaam", "tussenvoegsel", "tel", "provincie", "stad", "postcode", "straat", "gebruikersnaam"]) ?>
                 <h5>Persoonlijke gegevens</h5>
                 <div class="row">
                     <div class="input-field hoverable col s6">
                         <i class="material-icons prefix">contacts</i>
-                        <input id="voornaam" type="text" class="validate">
+                        <input id="voornaam" type="text" class="validate" required="" aria-required="true" name="naam"
+                               value="<?= $get->getVar("naam") ?>">
                         <label for="voornaam">Voornaam</label>
                     </div>
                     <div class="input-field hoverable col s6">
                         <i class="material-icons prefix">contacts</i>
-                        <input id="achternaam" type="text" class="validate">
+                        <input id="achternaam" type="text" class="validate" required="" aria-required="true"
+                               name="achternaam" value="<?= $get->getVar("achternaam") ?>">
                         <label for="achternaam">Achternaam</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field hoverable col s6">
                         <i class="material-icons prefix">contacts</i>
-                        <input id="tussenvoegsel" type="text" class="validate">
+                        <input id="tussenvoegsel" type="text" class="validate" name="tussenvoegsel"
+                               value="<?= $get->getVar("tussenvoegsel") ?>">
                         <label for="tussenvoegsel">Tussenvoegsel</label>
                     </div>
                     <div class="input-field col s6">
@@ -45,20 +52,23 @@
                 <div class="row">
                     <div class="input-field hoverable col s6">
                         <i class="material-icons prefix">local_phone</i>
-                        <input id="telefoonnummer" type="tel" class="validate" maxlength="10">
-                        <label for="telefoonnummer">Telefoonnummer</label>
+                        <input id="tel" type="tel" class="validate" maxlength="10" required=""
+                               aria-required="true" name="tel" value="<?= $get->getVar("tel") ?>">
+                        <label for="tel">Telefoonnummer</label>
                     </div>
 
                 </div>
                 <div class="row">
                     <div class="input-field hoverable col s6">
                         <i class="material-icons prefix">location_city</i>
-                        <input id="provincie" type="text" class="validate">
+                        <input id="provincie" type="text" class="validate" required="" aria-required="true"
+                               name="provincie" value="<?= $get->getVar("provincie") ?>">
                         <label for="provincie">Provincie</label>
                     </div>
                     <div class="input-field hoverable col s6">
                         <i class="material-icons prefix">location_city</i>
-                        <input id="stad" type="text" class="validate">
+                        <input id="stad" type="text" class="validate" required="" aria-required="true" name="stad"
+                               value="<?= $get->getVar("stad") ?>">
                         <label for="stad">Stad</label>
                     </div>
 
@@ -66,12 +76,14 @@
                 <div class="row">
                     <div class="input-field hoverable col s6">
                         <i class="material-icons prefix">home</i>
-                        <input id="postcode" type="text" class="validate" maxlength="4">
+                        <input id="postcode" type="text" class="validate" maxlength="32" required=""
+                               aria-required="true" name="postcode" value="<?= $get->getVar("postcode") ?>">
                         <label for="postcode">Postcode</label>
                     </div>
                     <div class="input-field hoverable col s6">
                         <i class="material-icons prefix">home</i>
-                        <input id="straat" type="text" class="validate">
+                        <input id="straat" type="text" class="validate" required="" aria-required="true" name="straat"
+                               value="<?= $get->getVar("straat") ?>">
                         <label for="straat">Straat</label>
                     </div>
                 </div>
@@ -79,32 +91,35 @@
                 <div class="row">
                     <div class="input-field hoverable col s6">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="gebruikersnaam" type="text" class="validate">
+                        <input id="gebruikersnaam" type="text" class="validate" required="" aria-required="true"
+                               name="gebruikersnaam" value="<?= $get->getVar("gebruikersnaam") ?>" max="25">
                         <label for="gebruikersnaam">Gebruikersnaam</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field hoverable col s6">
                         <i class="material-icons prefix">vpn_key</i>
-                        <input id="wachtwoord" type="password" class="validate">
-                        <label for="wachtwoord">Wachtwoord</label>
+                        <input id="wachtwoord" type="password" class="validate" required="" aria-required="true"
+                               name="wachtwoord" min="6">
+                        <label for=" wachtwoord">Wachtwoord</label>
                     </div>
                     <div class="input-field hoverable col s6">
                         <i class="material-icons prefix">replay</i>
-                        <input id="wachtwoord2" type="password" class="validate">
+                        <input id="wachtwoord2" type="password" class="validate" required="" aria-required="true"
+                               name="wachtwoord2" min="6">
                         <label for="wachtwoord2">Herhaal wachtwoord</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field hoverable col s6">
                         <i class="material-icons prefix">email</i>
-                        <input id="email" type="email" class="validate">
+                        <input id="email" type="email" class="validate" required="" aria-required="true" name="email">
                         <label for="email">Email</label>
                     </div>
                     <div class="input-field hoverable col s6">
                         <i class="material-icons prefix">email</i>
-                        <input id="email" type="email" class="validate">
-                        <label for="email">Herhaal email</label>
+                        <input id="email2" type="email" class="validate" required="" aria-required="true" name="email2">
+                        <label for="email2">Herhaal email</label>
                     </div>
                 </div>
                 <div class="row">
@@ -127,8 +142,9 @@
                     <div class="col s6">
                         <p>
                             <label>
-                                <input type="checkbox" class="filled-in" checked="checked"/>
-                                <span>Ik accepteer de voorwaarden van de overeenkomst</span>
+                                <input type="checkbox" required class="validate filled-in" id="TOS"/>
+                                <span>Ik accepteer de <a class="top-link modal-trigger" data-target="terms"
+                                                         href="#terms">voorwaarden van de overeenkomst</a></span>
                             </label>
                         </p>
                         <p>
@@ -138,13 +154,25 @@
                             </label>
                         </p>
                     </div>
+
                     <div class="col s6">
-                        <a class="waves-effect waves-light btn-large right hoverable light-green">
-                            <i class="large material-icons right">done</i>Registreren</a>
+                        <button class="waves-effect waves-light btn-large right hoverable light-green" type="submit">
+                            <i class="large material-icons right">done</i>Registreren
+                        </button>
                     </div>
                 </div>
             </form>
         </div>
+    </div>
+</div>
+
+<div id="terms" class="modal">
+    <div class="modal-content">
+        <h4>voorwaarden van de overeenkomst</h4>
+        <p id="TOStext"></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
 </div>
 

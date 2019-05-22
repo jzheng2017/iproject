@@ -24,7 +24,6 @@ $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="<?= $baseUrl ?>materialize/css/materialize.min.css">
-    <link href="<?= $baseUrl ?>style\nouislider.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="<?= $baseUrl ?>style/style.css">
     <?php foreach ($view->styles as $style) { ?>
@@ -54,7 +53,7 @@ $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
                         <li><a class="btn" href="#"><i class="Small material-icons left">account_circle</i>Mijn Profiel</a>
                         </li>
                     <?php } else { ?>
-                        <li><a href="" class="top-link">Registreren</a></li>
+                        <li><a href="<?= $baseUrl ?>/registreren" class="top-link">Registreren</a></li>
                         <li><a href="<?= $baseUrl ?>/Login" class="btn">inloggen</a></li>
                     <?php } ?>
                 </ul>
@@ -101,7 +100,7 @@ $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
         <div class="row">
             <div class="col">
                 <h5 class="white-text">Footer Content</h5>
-                <a class = "top-link white-text popout" href="<?= $baseUrl ?>PrivacyVerklaring">Privacy Verklaring</a>
+                <a class="top-link white-text popout" href="<?= $baseUrl ?>PrivacyVerklaring">Privacy Verklaring</a>
                 <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
                     content.</p>
             </div>
