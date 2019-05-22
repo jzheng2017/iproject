@@ -184,6 +184,11 @@ $baseUrl = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url")
                                 </div>
                             </div>
                         </form>
+                        <?php if ($this->veiling->koper != "" || isset($this->veiling->koper)){?>
+                        <div class="col s12">
+                            <b><?= $this->veiling->koper ?></b> heeft deze veiling gewonnen! Gefeliciteerd!
+                        </div>
+                        <?php }?>
                     </div>
                     <div class="row">
                         <div class="col l12 s12">
