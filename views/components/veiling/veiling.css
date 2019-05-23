@@ -3,10 +3,10 @@
     flex-direction: column;
 }
 .veiling.card .card-image img {
-    max-height: 200px !important;
+    height: 400px !important;
 }
 .veiling.card .card-image img.materialboxed.active {
-    max-height: none !important;
+    height: auto !important;
 }
 
 .veiling.card .card-title {

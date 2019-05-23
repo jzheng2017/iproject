@@ -10,16 +10,21 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
     <div class="row"></div>
     <div class="row">
         <div class="col s12 white center">
-            <h3 class="header left-align"><?= $this->veiling->titel ?>huehuehue</h3>
-            <span class="left">Deze veiling is 2380482x bekeken</span>
+            <h3 class="header left-align"><?= $this->veiling->titel ?></h3>
+            <span class="left">Deze veiling is <b><?= $this->veiling->weergaves ?>x</b> bekeken</span>
         </div>
+
         <div class="col m8 s12">
             <div class="carousel carousel-slider center">
-                <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"></a>
-                <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"></a>
-                <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"></a>
-                <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"></a>
+                <?php foreach ($this->veiling->images as $image) { ?>
+                    <a class="carousel-item" href="#one!"><img src="http://iproject21.icasites.nl/<?= $image ?>"></a>
+                <?php } ?>
             </div>
+
+            <div class="col s12 product-beschrijving">
+                <p class="left-align flow-text"><?= $this->veiling->beschrijvingKort ?></p>
+            </div>
+            <div class="row"></div>
             <div class="row">
                 <div class="col s12 product-beschrijving">
                     <p class="left-align flow-text"><?= $this->veiling->beschrijving ?></p>
@@ -109,10 +114,12 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
                             </div>
                         </div>
                     </div>
+>>>>>>> views/veilingen/veiling_detail.phtml
                 </div>
+
             </div>
         </div>
-        <div class="col m4 s12">
+        <div class="col l4 m4 s12">
             <div class="card no-margin green lighten-5">
                 <div class="card-content">
                     <h3 class="center-align no-margin">01:43:50</h3>
@@ -158,38 +165,130 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
                 </div>
             </div>
         </div>
-        <div class="col m4 s12">
-
-            <form class="card green lighten-5 col s12">
-                <div class="card-content">
-                    <span class="card-title">Feedback</span>
-                    <p>Deze veiling is gewonnen door jou! Gefeliciteerd!</p>
-
-                    <p>Geef een beoordeling over uw ervaring.</p>
+<<<<<<< views/veilingen/veiling_detail.phtml
+        <div id="details" class="col s12">
+<div class="col s12 details">
+            <h3>Details</h3>
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <b>Veiling informatie</b>
+                    <div class="divider"></div>
                     <div class="row">
-                        <div class="input-field col s12 m12 l12">
-                            <select required>
-                                <option value="" disabled selected>Kies een cijfer</option>
-                                <?php for ($i = 10; $i >= 1; $i--) { ?>
-                                    <option value="<?= $i ?>"><?= $i ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                        <div class="input-field col s12 m12 l12">
-                            <textarea id="opmerking" class="materialize-textarea"></textarea>
-                            <label for="opmerking">Opmerking</label>
-                        </div>
-                        <div class="col s12 m12 l12">
-                        <button class="btn light-green">Verzend</button>
-                        </div>
+                        <div class="col s6 m6 l6">Startprijs</div>
+                        <div class="col s6 m6 l6 bold">€ <?= $this->veiling->startPrijs / 100?></div>
+
+                        <div class="col s6 m6 l6">Betalingsmethode</div>
+                        <div class="col s6 m6 l6 bold"><?= $this->veiling->betalingsWijze ?></div>
+
+                        <div class="col s6 m6 l6">Betalen</div>
+                        <div class="col s6 m6 l6 bold"><?= $this->veiling->betalingsInstructie ?></div>
+
+                        <div class="col s6 m6 l6">Veiling start op</div>
+                        <div class="col s6 m6 l6 bold"><?= $this->veiling->beginDag ?> om <?= $this->veiling->beginTijd ?></div>
+
+                        <div class="col s6 m6 l6">Veiling eindigt op</div>
+                        <div class="col s6 m6 l6 bold"><?= $this->veiling->eindDag ?> op <?= $this->veiling->eindTijd?></div>
+
                     </div>
 
+                    <b>Verzending</b>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col s6 m6 l6">Verzendkosten</div>
+                        <div class="col s6 m6 l6 bold">€ <?= $this->veiling->verzendKosten / 100 ?></div>
+
+                        <div class="col s6 m6 l6">Verzending</div>
+                        <div class="col s6 m6 l6 bold"><?= $this->veiling->verzendInstructie ?></div>
+                    </div>
+
+                    <b>Plaats</b>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col s6 m6 l6">Land</div>
+                        <div class="col s6 m6 l6 bold"><?= $this->veiling->land?></div>
+
+                        <div class="col s6 m6 l6">Plaatsnaam</div>
+                        <div class="col s6 m6 l6 bold"><?= $this->veiling->plaatsNaam ?></div>
+
+                        <div class="col s6 m6 l6">Postcode</div>
+                        <div class="col s6 m6 l6 bold"><?= $this->veiling->postcode?></div>
+                    </div>
                 </div>
-            </form>
-        <div class="col l12 m12 s12">
-            <h4>Gerelateerde veilingen</h4>
-            <?=$this->renderComponent(new VeilingCollectionComponent($this->collection)) ?>
+                </div>
+            </div>
+        </div>
+        <div id="meer-info" class="col s12">
+            <div class="col s12 extra-informatie">
+                <h3>Extra-informatie</h3>
+                <p class="left-align"><?= $this->veiling->beschrijving ?></p>
+            </div>
+        </div>
+        <div id="locatie" class="col s12">
+            <div class="col s12 locatie">
+                <h3>Locatie</h3>
+                <iframe width='100%' height='500px' id='mapcanvas'
+                        src='https://maps.google.com/maps?q=<?= $this->veiling->postcode ?>+<?= $this->veiling->land ?>&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=&amp;output=embed'
+                        frameborder='0' scrolling='no' marginheight='0' marginwidth='0'>
+                    <div style='overflow:hidden;'>
+                        <div id='gmap_canvas' style='height:500px;width:100%;'></div>
+                    </div>
+                </iframe>
+
+            </div>
+        </div>
+        <div id="verkoper" class="col s12">
+            <div class="col s12 verkoper">
+                <h3>Verkoper</h3>
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <b>Gebruikers informatie</b>
+                        <div class="divider"></div>
+                        <div class="row">
+                            <div class="col s6 m6 l6 bold">Voornaam</div>
+                            <div class="col s6 m6 l6">John</div>
+
+                            <div class="col s6 m6 l6 bold">Achternaam</div>
+                            <div class="col s6 m6 l6">Doe</div>
+
+                            <div class="col s6 m6 l6 bold">Gebruikersnaam</div>
+                            <div class="col s6 m6 l6">verkoper1</div>
+
+                            <div class="col s6 m6 l6 bold">Geslacht</div>
+                            <div class="col s6 m6 l6">Man</div>
+
+                            <div class="col s6 m6 l6 bold">Stad</div>
+                            <div class="col s6 m6 l6">Arnhem</div>
+
+                            <div class="col s6 m6 l6 bold">Land</div>
+                            <div class="col s6 m6 l6">Nederland</div>
+                        </div>
+
+                        <b>Contact informatie</b>
+                        <div class="divider"></div>
+                        <div class="row">
+                            <div class="col s6 m6 l6 bold">Email</div>
+                            <div class="col s6 m6 l6">johndoe@hotmail.nl</div>
+
+                            <div class="col s6 m6 l6 bold">Telefoonnummer</div>
+                            <div class="col s6 m6 l6">+31612345678</div>
+                        </div>
+
+                        <b>Reviews</b>
+                        <div class="divider"></div>
+                        <div class="row">
+                            <div class="col s6 m6 l6 bold">Aantal reviews</div>
+                            <div class="col s6 m6 l6">84</div>
+
+                            <div class="col s6 m6 l6 bold">Gemiddelde rating</div>
+                            <div class="col s6 m6 l6">4.1/5</div>
+                        </div>
+                        <button class="btn light-green">Bekijk profiel</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 </div>
+</div>
+
