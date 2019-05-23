@@ -158,9 +158,38 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
                 </div>
             </div>
         </div>
+        <div class="col m4 s12">
+
+            <form class="card green lighten-5 col s12">
+                <div class="card-content">
+                    <span class="card-title">Feedback</span>
+                    <p>Deze veiling is gewonnen door jou! Gefeliciteerd!</p>
+
+                    <p>Geef een beoordeling over uw ervaring.</p>
+                    <div class="row">
+                        <div class="input-field col s12 m12 l12">
+                            <select required>
+                                <option value="" disabled selected>Kies een cijfer</option>
+                                <?php for ($i = 10; $i >= 1; $i--) { ?>
+                                    <option value="<?= $i ?>"><?= $i ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="input-field col s12 m12 l12">
+                            <textarea id="opmerking" class="materialize-textarea"></textarea>
+                            <label for="opmerking">Opmerking</label>
+                        </div>
+                        <div class="col s12 m12 l12">
+                        <button class="btn light-green">Verzend</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
         <div class="col l12 m12 s12">
             <h4>Gerelateerde veilingen</h4>
             <?=$this->renderComponent(new VeilingCollectionComponent($this->collection)) ?>
         </div>
     </div>
+</div>
 </div>
