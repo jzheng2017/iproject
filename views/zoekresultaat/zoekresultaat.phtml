@@ -1,0 +1,45 @@
+<?php
+
+use EenmaalAndermaal\View\Component\VeilingComponent;
+
+?>
+
+<div class="container">
+    <div class="row">
+        <div class="col ll4 m4 s12">
+            <p class="flow-text">Filteren</p>
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons">keyboard_arrow_right</i>Prijs
+                    </div>
+                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons">keyboard_arrow_right</i>Locatie
+                    </div>
+                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <i class="material-icons">keyboard_arrow_right</i>Kaas
+                    </div>
+                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li>
+            </ul>
+        </div>
+        <div class="col l8 m6 s12">
+            <p class="flow-text center-align">Zoekresultaten</p>
+            <div class="row">
+                <div class="col l4 m6 s12">
+                    <?php foreach ($this->collection as $item) { ?>
+                        <div class="col l4 m6 s12">
+                            <?= $this->renderComponent(new VeilingComponent($item)) ?>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
