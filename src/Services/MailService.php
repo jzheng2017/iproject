@@ -39,7 +39,9 @@ class MailService {
     public function sendMail($emailAdress, $subject)
     {
         $message = $this->renderMessage();
-        $header = 'From: ' . $this->sender;
+        $header = 'From: ' . $this->sender . "\r\n";
+        $header .= "MIME-Version: 1.0" . "\r\n";
+        $header .= "Content-type:text/html;charset=UTF-8" . "\r\n";
         if (!mail($emailAdress, $subject, $message, $header)) {
             //LOG ERROR PLEASE; Email not sent successfully
             return false;
