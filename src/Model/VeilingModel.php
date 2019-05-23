@@ -6,12 +6,13 @@ class VeilingModel extends Model {
     public $titel;
     public $beschrijving;
     public $startPrijs;
-    public $betalingswijze;
+    public $betalingsWijze;
     public $betalingsInstructie;
-    public $plaats;
+    public $plaatsNaam;
     public $land;
     public $verzendKosten;
     public $verzendInstructie;
+    public $postcode;
     public $verkoper;
     public $koper;
     public $beginDag;
