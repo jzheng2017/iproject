@@ -9,6 +9,8 @@ class RubriekModel extends Model
     public $naam;
     public $rubriek;
     public $volgnummer;
+    public $icon;
+    public $beschrijving;
 
     /**
      * @var RubriekModelCollection $children

@@ -1,5 +1,5 @@
 <?php
-$baseurl = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url")
+$baseUrl = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url")
 /** @var $this \EenmaalAndermaal\View\VeilingDetailView */
 ?>
 
@@ -7,7 +7,8 @@ $baseurl = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url")
     <div class="row"></div>
     <div class="row">
         <div class="col s12 white center">
-            <h3 class="header left-align"><?= $this->veiling->titel ?></h3>
+            <h3 class="header left-align"><?= $this->veiling->titel ?>huehuehue</h3>
+            <span class="left">Deze veiling is 2380482x bekeken</span>
         </div>
         <div class="col m8 s12">
             <div class="carousel carousel-slider center">
@@ -35,9 +36,11 @@ $baseurl = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url")
                     <div id="meer-info" class="col s12">
                         <div class="col s12 extra-informatie">
                             <h3>Extra-informatie</h3>
-                            <p class="left-align">Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw,
+                            <p class="left-align">Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de
+                                16e eeuw,
                                 toen een
-                                onbekende drukker een zet haak met letters nam en ze doLorem Ipsum is de standaard proeftekst in
+                                onbekende drukker een zet haak met letters nam en ze doLorem Ipsum is de standaard
+                                proeftekst in
                                 deze
                                 bedrijfstak sinds de 16e eeuw, toen een
                                 onbekende drukker een zethaak met letters nam en ze do
@@ -54,8 +57,52 @@ $baseurl = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url")
                     <div id="verkoper" class="col s12">
                         <div class="col s12 verkoper">
                             <h3>Verkoper</h3>
-                            <p class="left-align">Deze functie is tijdelijk niet beschikbaar.
-                            </p>
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <b>Gebruikers informatie</b>
+                                    <div class="divider"></div>
+                                    <div class="row">
+                                        <div class="col s6 m6 l6 bold">Voornaam</div>
+                                        <div class="col s6 m6 l6">John</div>
+
+                                        <div class="col s6 m6 l6 bold">Achternaam</div>
+                                        <div class="col s6 m6 l6">Doe</div>
+
+                                        <div class="col s6 m6 l6 bold">Gebruikersnaam</div>
+                                        <div class="col s6 m6 l6">verkoper1</div>
+
+                                        <div class="col s6 m6 l6 bold">Geslacht</div>
+                                        <div class="col s6 m6 l6">Man</div>
+
+                                        <div class="col s6 m6 l6 bold">Stad</div>
+                                        <div class="col s6 m6 l6">Arnhem</div>
+
+                                        <div class="col s6 m6 l6 bold">Land</div>
+                                        <div class="col s6 m6 l6">Nederland</div>
+                                    </div>
+
+                                    <b>Contact informatie</b>
+                                    <div class="divider"></div>
+                                    <div class="row">
+                                        <div class="col s6 m6 l6 bold">Email</div>
+                                        <div class="col s6 m6 l6">johndoe@hotmail.nl</div>
+
+                                        <div class="col s6 m6 l6 bold">Telefoonnummer</div>
+                                        <div class="col s6 m6 l6">+31612345678</div>
+                                    </div>
+
+                                    <b>Reviews</b>
+                                    <div class="divider"></div>
+                                    <div class="row">
+                                        <div class="col s6 m6 l6 bold">Aantal reviews</div>
+                                        <div class="col s6 m6 l6">84</div>
+
+                                        <div class="col s6 m6 l6 bold">Gemiddelde rating</div>
+                                        <div class="col s6 m6 l6">4.1/5</div>
+                                    </div>
+                                    <button class="btn light-green">Bekijk profiel</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -105,10 +152,6 @@ $baseurl = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url")
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card-action">
-                <a href="#">This is a link</a>
-                <a href="#">This is a link</a>
             </div>
         </div>
     </div>

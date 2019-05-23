@@ -1,0 +1,13 @@
+.verificatie-container {
+    margin: 20px;
+    padding: 30px;
+}
+
+.verificatie-container .flow-text {
+    font-weight: bold;
+}
+
+.verificatie-container img {
+    width: 100%;
+    max-height: 350px;
+}

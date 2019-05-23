@@ -1,0 +1,24 @@
+h4{
+    margin-top:0px;
+}
+
+.profile-buttons li{
+    margin-top:20px;
+}
+
+.profile-buttons>li>button{
+    width:100%;
+    overflow:visible;
+    overflow-wrap: break-word;
+}
+
+span.badge.new:after{
+    content: " update" !important;
+}
+
+.bold {
+    font-weight: bold;
+}
+a.collection-item{
+    color: black !important;
+}
