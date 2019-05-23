@@ -51,7 +51,7 @@ $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
                     <?php
                     if ($sessionActive == true) { ?>
                         <li><a href="" class="top-link">uitloggen</a></li>
-                        <li><a class="btn" href="#"><i class="Small material-icons left">account_circle</i>Mijn Profiel</a>
+                        <li><a class="btn" href="<?= $baseUrl ?>user/profile"><i class="Small material-icons left">account_circle</i>Mijn Profiel</a>
                         </li>
                     <?php } else { ?>
                         <li><a href="" class="top-link">Registreren</a></li>

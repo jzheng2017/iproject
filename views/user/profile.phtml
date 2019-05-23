@@ -3,11 +3,23 @@
 use EenmaalAndermaal\App;
 
 $baseUrl = App::getApp()->getConfig()->get("website.url");
+
+/*voor het testen*/
+$authentication = true;
 ?>
 <div class="container">
     <div class="row">
         <div class="col s12">
             <h1>Profiel</h1>
+            <?php if($authentication === false) { ?>
+            <div class="row red center-align">
+                <h2>U bent nog niet geverifieerd</h2>
+                <p>activeer u account via de mail.<br>
+                    Geen mail ontvangen?<br>
+                    <a class="top-link white-text" href=""><b>klik hier</b></a>
+                </p>
+            </div>
+            <?php } ?>
             <div class="row">
                 <div class="col s12 m4 l4"><img class="responsive-img" src="<?= $baseUrl ?>style/img/bespaar.jpg">
                         <button id="editbtn" class="waves-effect waves-light btn light-green" name="editbtn">
@@ -65,6 +77,7 @@ $baseUrl = App::getApp()->getConfig()->get("website.url");
                     </div>
                 </div>
             </div>
+            <?php if($authentication === true){ ?>
             <div class="row">
                 <div class="col s12 m4 l3">
                     <h4>Reviews</h4>
@@ -151,9 +164,9 @@ $baseUrl = App::getApp()->getConfig()->get("website.url");
                             <button class="btn light-green">Gegevens aanpassen</button>
                         </li>
                     </ul>
-
                 </div>
             </div>
         </div>
     </div>
+    <?php } ?>
 </div>
