@@ -24,7 +24,7 @@ class RubriekenController implements Controller
             $view->activeId = 0;
             $view->rubriek = $rubriek;
             $view->collection = new VeilingModelCollection();
-            $view->collection->getByTopParent($request->getVar("id"));
+            $view->collection->getAll();
             $view->breadCrumbComponent = new BreadcrumbComponent([
                 [
                     "url" => "rubrieken/{$rubriek->nummer}",
