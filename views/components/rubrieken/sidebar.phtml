@@ -8,7 +8,7 @@ $baseUrl = App::getApp()->getConfig()->get('website.url');
     <h5 class="brown-text text-lighten-5 rubriek-side-header"><?= $this->rubriek->naam ?></h5>
     <?php foreach ($this->rubriek->getChildren() as $rubriek) {?>
     <li>
-        <div class="collapsible-header"><i class="material-icons "><?= "highlight_off" ?></i><?= $rubriek->naam ?></div>
+        <div class="collapsible-header"><i class="material-icons "><?= $rubriek->icon ?></i><?= $rubriek->naam ?></div>
         <?php foreach ($rubriek->getChildren() as $subRubriek) { ?>
             <a
                     href="<?= $baseUrl . 'rubrieken/'. $this->rubriek->getIdentifier() . '/' . str_replace("&", "en", $subRubriek->naam) . '/' . $subRubriek->getIdentifier() ?>"
