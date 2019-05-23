@@ -7,7 +7,10 @@ return [
         ],
         /* Website configuration */
         "website" => [
-            "url" => "http://localhost/IProject/website/"
+            "url" => "http://localhost/IProject/website/",
+            "mail" => [
+                "sender" => "no-reply@eenmaalandermaal.nl"
+            ]
         ]
     ],
     "production" => [
@@ -16,7 +19,10 @@ return [
         ],
         /* Website configuration */
         "website" => [
-            "url" => "http://iproject21.icasites.nl/"
+            "url" => "http://iproject21.icasites.nl/",
+            "mail" => [
+                "sender" => "no-reply@eenmaalandermaal.nl"
+            ]
         ]
     ]
 ];
