@@ -16,12 +16,11 @@ return [
             IndexController::class,
             RubriekenController::class,
             VeilingController::class,
-            ZoekResultaatController::class
-            VerificatieController::class
+            ZoekResultaatController::class,
+            VerificatieController::class,
             UserController::class,
             LoginController::class,
             LegalController::class,
-            GebruikersController::class
         ],
     ],
     "production" => [

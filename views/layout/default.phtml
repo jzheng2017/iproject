@@ -12,7 +12,7 @@ $baseUrl = App::getApp()->getConfig()->get("website.url");
 $rNav = $view->renderComponent(new RubriekNavbarComponent());
 $searchbar = $view->renderComponent(new SearchbarComponent());
 $body = $view->renderBody();
-$sessionActive = true;
+$sessionActive = false;
 $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
 ?>
 
