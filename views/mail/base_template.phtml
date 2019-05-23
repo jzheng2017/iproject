@@ -1,0 +1,23 @@
+<?php
+use EenmaalAndermaal\Services\MailService;
+/** @var MailService $mail */
+$mail = $this;
+?>
+<html lang="nl">
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="33%" align="center" valign="top"
+            style="font-family:Arial, Helvetica, sans-serif; font-size:2px; color:#ffffff;">.
+        </td>
+        <td width="35%" align="center" valign="top">
+            <h1><?= $mail->getVar("titel") ?></h1>
+            <p><?= $mail->getVar("message") ?></p>
+        </td>
+        <td width="33%" align="center" valign="top"
+            style="font-family:Arial, Helvetica, sans-serif; font-size:2px; color:#ffffff;">.
+        </td>
+    </tr>
+</table>
+</body>
+</html>
