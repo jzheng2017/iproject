@@ -4,12 +4,14 @@ namespace EenmaalAndermaal\Model;
 class VeilingModel extends Model {
     public $nummer;
     public $titel;
+    public $beschrijvingKort;
     public $beschrijving;
     public $startPrijs;
-    public $betalingswijze;
+    public $betalingsWijze;
     public $betalingsInstructie;
-    public $plaats;
+    public $plaatsNaam;
     public $land;
+    public $postcode;
     public $verzendKosten;
     public $verzendInstructie;
     public $verkoper;
@@ -19,7 +21,16 @@ class VeilingModel extends Model {
     public $eindDag;
     public $eindTijd;
     public $gesloten;
-    public $prijs;
+    public $verkoopPrijs;
+    public $parent;
+    public $weergaves;
+    public $thumbnail;
+
+    public $images = [];
+
+    public $lat;
+    public $long;
+
 
     /**
      * @return string the field used as primary key for the entity
