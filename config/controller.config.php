@@ -7,6 +7,8 @@ use EenmaalAndermaal\Controller\LegalController;
 use EenmaalAndermaal\Controller\RubriekenController;
 use EenmaalAndermaal\Controller\UserController;
 use EenmaalAndermaal\Controller\VeilingController;
+use EenmaalAndermaal\Controller\ZoekResultaatController;
+use EenmaalAndermaal\Controller\VerificatieController;
 
 return [
     "dev" => [
@@ -14,6 +16,8 @@ return [
             IndexController::class,
             RubriekenController::class,
             VeilingController::class,
+            ZoekResultaatController::class
+            VerificatieController::class
             UserController::class,
             LoginController::class,
             LegalController::class,

@@ -1,6 +1,9 @@
 <?php
-$baseUrl = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url")
+
+$baseUrl = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url");
 /** @var $this \EenmaalAndermaal\View\VeilingDetailView */
+use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
+
 ?>
 
 <div class="container veiling-detail-container">
@@ -29,6 +32,7 @@ $baseUrl = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url")
                             <li class="tab col s3"><a class="light-green-text" href="#meer-info">Meer info</a></li>
                             <li class="tab col s3"><a class="light-green-text" href="#locatie">Locatie</a></li>
                             <li class="tab col s3"><a class="light-green-text" href="#verkoper">Verkoper</a></li>
+
                         </ul>
                     </div>
                     <div id="details" class="col s12">
@@ -182,7 +186,9 @@ $baseUrl = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url")
 
                 </div>
             </form>
-
+        <div class="col l12 m12 s12">
+            <h4>Gerelateerde veilingen</h4>
+            <?=$this->renderComponent(new VeilingCollectionComponent($this->collection)) ?>
         </div>
     </div>
 </div>

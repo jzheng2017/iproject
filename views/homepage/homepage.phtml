@@ -7,6 +7,16 @@ $baseUrl = App::getApp()->getConfig()->get("website.url");
 
 <div class="container">
     <div class="row">
+        <div class="col s12">
+            <h3>Trending</h3>
+            <?= $this->renderComponent(new VeilingCollectionComponent($this->collection)) ?>
+        </div>
+        <div class="col s12">
+            <h3>Bij jou in de buurt</h3>
+            <?= $this->renderComponent(new VeilingCollectionComponent($this->collection)) ?>
+        </div>
+    </div>
+    <div class="row">
         <div class="col s12 worth-proposition">
             <div class="row">
                 <div class="col s12 m12 l4">
@@ -43,16 +53,6 @@ $baseUrl = App::getApp()->getConfig()->get("website.url");
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s12">
-            <h3>Trending</h3>
-            <?= $this->renderComponent(new VeilingCollectionComponent($this->collection)) ?>
-        </div>
-        <div class="col s12">
-            <h3>Bij jou in de buurt</h3>
-            <?= $this->renderComponent(new VeilingCollectionComponent($this->collection)) ?>
         </div>
     </div>
  </div>
