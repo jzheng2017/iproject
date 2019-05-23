@@ -22,13 +22,5 @@ class IndexController implements Controller {
             $view->collection = $collection;
             return $view->render();
         }));
-
-        $router->addRoute(new Route("mail/test/12341234/test123", RequestMethod::GET(), function (Request $request) {
-            $mail = new MailService("verify");
-            $mail->addVar("voornaam", "joey");
-            $mail->addVar("token", "121dsg2vtudfsq");
-            $mail->sendMail("joey.gameslabs@gmail.com", "Verificatie test");
-            return $mail;
-        }));
     }
 }
