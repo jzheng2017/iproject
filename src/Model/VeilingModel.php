@@ -12,6 +12,7 @@ class VeilingModel extends Model {
     public $land;
     public $verzendKosten;
     public $verzendInstructie;
+    public $weergaves;
     public $postcode;
     public $verkoper;
     public $koper;
