@@ -3,9 +3,11 @@ namespace EenmaalAndermaal\Controller;
 
 use EenmaalAndermaal\Model\VeilingModel;
 use EenmaalAndermaal\Model\VeilingModelCollection;
+use EenmaalAndermaal\Request\Request;
 use EenmaalAndermaal\Request\RequestMethod;
 use EenmaalAndermaal\Route\Route;
 use EenmaalAndermaal\Route\Router;
+use EenmaalAndermaal\Services\MailService;
 use EenmaalAndermaal\View\View;
 
 class IndexController implements Controller {

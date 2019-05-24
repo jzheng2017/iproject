@@ -3,5 +3,7 @@
     "psr-4": {
       "EenmaalAndermaal\\": "src/"
     }
+  },
+  "require": {
   }
 }

@@ -21,7 +21,6 @@ return [
             UserController::class,
             LoginController::class,
             LegalController::class,
-            GebruikersController::class
         ],
     ],
     "production" => [

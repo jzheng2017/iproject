@@ -40,7 +40,7 @@ class Config
     {
         if (isset($result[$keys[$index]])) {
             if (count($keys) - 1 > $index) {
-                return $this->getByKeys($keys, $result[$index], ++$index);
+                return $this->getByKeys($keys, $result[$keys[$index]], ++$index);
             } else {
                 return $result[$keys[$index]];
             }
