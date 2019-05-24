@@ -8,10 +8,7 @@ $(document).ready(function() {
 
 function validate(str){
     var re = /^[A-Za-z]+$/;
-    if(re.test(str))
-        return true;
-    else
-        return false;
+    return re.test(str.val().toString());
 }
 
 function checkRegistratie() {
@@ -19,8 +16,8 @@ function checkRegistratie() {
     if ($("#wachtwoord").val() !== $("#wachtwoord2").val()) {
         alert("Wachtwoorden niet gelijk");
     }
-    else if ($("#email1").val() !== $("#email2").val()) {
-        alert("e-mail adressen niet gelijk");
+    else if ($("#email").val() !== $("#email2").val()) {
+         alert("e-mail adressen niet gelijk");
     }
     else if (!validate($("#voornaam"))) {
         alert("geen geldige voornaam");
@@ -30,6 +27,8 @@ function checkRegistratie() {
     }
     else if (!validate($("#provincie"))) {
         alert("geen geldige provincie");
+    }
+    else {
     }
 
 }
