@@ -19,5 +19,8 @@ class LoginController implements Controller {
         $router->addRoute(new Route("registreren", RequestMethod::GET(), function (Request $request) {
             return (new RegistratieView())->render();
         }));
+        $router->addRoute(new Route("registreren", RequestMethod::POST(), function (Request $request) {
+            return (new RegistratieView())->render();
+        }));
     }
 }

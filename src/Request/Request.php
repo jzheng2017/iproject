@@ -56,4 +56,12 @@ class Request {
     public function getVar(string $name) {
         return isset($this->vars[$name]) ? $this->vars[$name] : false;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
 }
