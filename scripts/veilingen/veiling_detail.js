@@ -12,17 +12,53 @@ $('.carousel').carousel({
 
 $(document).ready(function(){
     $('ul.tabs').tabs();
+    M.updateTextFields();
+
+    setVeilingCounter(function(id) {
+        let veilingCounter = $("#" + id);
+        veilingCounter.html("<h3 class='center-align no-margin veiling-counter'>Gesloten</h3><div class='row'></div>");
+    })();
+
+
+    function getBiedingen() {
+        let id = $("#veiling-detail").data('id');
+        $.ajax( 'http://iproject21.icasites.nl/api/veilingen/' + id +'/biedingen' , {
+            method: 'get',
+            success: function(response) {
+                let result = response.body;
+                let list = $('#biedingen-list');
+                list.html("");
+                for (let i in result) {
+                    list.append('<tr>\n<td class="left">' + result[i].naam + '</td>\n<td>€ ' + result[i].bod / 100 + '</td>\n</tr>')
+                }
+                setTimeout( getBiedingen,1000);
+            }
+        })
+    }
+
+    getBiedingen();
 });
 
-$(document).ready(function() {
-    M.updateTextFields();
-});
+function setVeilingCounter(zeroCallback) {
+    return function() {
+        let veilingCounter = $(".veiling-counter");
+        let seconds = veilingCounter.data("end") - Date.now() / 1000;
+        let time = new String(seconds).toHHMMSS();
+        veilingCounter.text(time);
+        if (seconds > 0) {
+            setTimeout(setVeilingCounter(zeroCallback), 1000);
+        } else {
+            zeroCallback(veilingCounter.data('id'));
+        }
+    };
+}
 
 autoplay();
 function autoplay() {
     $('.carousel').carousel('next');
     setTimeout(autoplay, 4500);
 }
+
 
 
 

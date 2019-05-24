@@ -41,6 +41,7 @@ $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
 
         gtag('config', 'UA-140726132-1');
     </script>
+    <script>let base_url = '<?= $baseUrl ?>';</script>
 </head>
 <body>
 <header>
@@ -125,6 +126,7 @@ $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous"></script>
 <script src="<?= $baseUrl ?>materialize/js/materialize.min.js"></script>
+<script src="<?= $baseUrl ?>scripts/base.js"></script>
 <?php foreach ($view->scripts as $script) { ?>
     <script src="<?= $baseUrl ?><?= $script ?>.js"></script>
 <?php } ?>
