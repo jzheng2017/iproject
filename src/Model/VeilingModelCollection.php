@@ -16,6 +16,30 @@ class VeilingModelCollection extends ModelCollection
 
     public function getByParent(string $id)
     {
+        $apiRequest = new ApiRequest("rubrieken/sub/$id/veilingen", RequestMethod::GET());
+        if ($apiRequest->connect()) {
+            $this->fromResultSet($apiRequest->getResult());
+            return true;
+        } else {
+            Debug::dump($apiRequest->getError());
+            die();
+        }
+    }
+
+    public function getRelated(string $id)
+    {
+        $apiRequest = new ApiRequest("veilingen/{$id}/gerelateerd", RequestMethod::GET());
+        if ($apiRequest->connect()) {
+            $this->fromResultSet($apiRequest->getResult());
+            return true;
+        } else {
+            Debug::dump($apiRequest->getError());
+            die();
+        }
+    }
+
+    public function getByTopParent(string $id)
+    {
         $apiRequest = new ApiRequest("rubrieken/$id/veilingen", RequestMethod::GET());
         if ($apiRequest->connect()) {
             $this->fromResultSet($apiRequest->getResult());

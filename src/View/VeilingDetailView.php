@@ -16,7 +16,7 @@ class VeilingDetailView extends View
         $this->veiling = $veiling;
         $this->homepage = false;
         $this->collection = new VeilingModelCollection();
-        $this->collection->getTopThree();
+        $this->collection->getRelated($veiling->getIdentifier());
         $this->addStyle("style/veilingen");
         $this->addScript("scripts/veilingen/veiling_detail");
     }

@@ -4,11 +4,12 @@ $baseUrl = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url");
 
 /** @var $this \EenmaalAndermaal\View\VeilingDetailView */
 
+use EenmaalAndermaal\Util\StringUtil as S;
 use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
 
 ?>
 
-<div class="container veiling-detail-container" id="veiling-detail" data-id="<?= $this->veiling->getIdentifier() ?>" >
+<div class="container veiling-detail-container" id="veiling-detail" data-id="<?= $this->veiling->getIdentifier() ?>">
     <div class="row"></div>
     <div class="row">
         <div class="col s12 white center">
@@ -17,10 +18,10 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
         </div>
         <div class="col m8 s12">
             <div class="carousel carousel-slider center">
-                <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"></a>
-                <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"></a>
-                <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"></a>
-                <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"></a>
+                <?php foreach ($this->veiling->images as $image) { ?>
+                    <div class="carousel-item"><img src="http://iproject21.icasites.nl/<?= $image ?>"></div>
+                <?php } ?>
+
             </div>
             <div class="row">
                 <div class="row"></div>
@@ -43,7 +44,7 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
                                     <div class="divider"></div>
                                     <div class="row">
                                         <div class="col s6 m6 l6">Startprijs</div>
-                                        <div class="col s6 m6 l6 bold">€ <?= $this->veiling->startPrijs / 100 ?></div>
+                                        <div class="col s6 m6 l6 bold"><?= S::euro($this->veiling->startPrijs) ?></div>
 
                                         <div class="col s6 m6 l6">Betalingsmethode</div>
                                         <div class="col s6 m6 l6 bold"><?= $this->veiling->betalingsWijze ?></div>
@@ -52,12 +53,10 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
                                         <div class="col s6 m6 l6 bold"><?= $this->veiling->betalingsInstructie ?></div>
 
                                         <div class="col s6 m6 l6">Veiling start op</div>
-                                        <div class="col s6 m6 l6 bold"><?= $this->veiling->beginDag ?>
-                                            om <?= $this->veiling->beginTijd ?></div>
+                                        <div class="col s6 m6 l6 bold"><?= S::timeDutch($this->veiling->beginDag . ' ' . $this->veiling->beginTijd) ?></div>
 
                                         <div class="col s6 m6 l6">Veiling eindigt op</div>
-                                        <div class="col s6 m6 l6 bold"><?= $this->veiling->eindDag ?>
-                                            op <?= $this->veiling->eindTijd ?></div>
+                                        <div class="col s6 m6 l6 bold"><?= S::timeDutch($this->veiling->eindDag . ' ' . $this->veiling->eindTijd) ?></div>
 
                                     </div>
 
@@ -65,8 +64,7 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
                                     <div class="divider"></div>
                                     <div class="row">
                                         <div class="col s6 m6 l6">Verzendkosten</div>
-                                        <div class="col s6 m6 l6 bold">
-                                            € <?= $this->veiling->verzendKosten / 100 ?></div>
+                                        <div class="col s6 m6 l6 bold"><?= S::euro($this->veiling->verzendKosten) ?></div>
 
                                         <div class="col s6 m6 l6">Verzending</div>
                                         <div class="col s6 m6 l6 bold"><?= $this->veiling->verzendInstructie ?></div>
@@ -167,7 +165,8 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
                     <div id="veiling-<?= $this->veiling->getIdentifier() ?>">
                         <h3 class="center-align no-margin veiling-counter"
                             data-id="veiling-<?= $this->veiling->getIdentifier() ?>"
-                            data-end="<?= strtotime($this->veiling->eindDag . " " . $this->veiling->eindTijd) ?>">Gesloten</h3>
+                            data-end="<?= strtotime($this->veiling->eindDag . " " . $this->veiling->eindTijd) ?>">
+                            Gesloten</h3>
                         <div class="row">
                             <form class="col s12" method="post" action="">
                                 <div class="row">

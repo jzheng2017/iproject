@@ -1,9 +1,10 @@
 .veiling-detail-container .carousel-item img {
-    border-radius: 10px;
     height: 100%;
-}
-.veiling-detail-container .carousel-item img {
     border-radius: 2px;
+    display: block;
+    cursor: pointer;
+    width: auto !important;
+    margin: 0 auto;
 }
 
 /* label color */
