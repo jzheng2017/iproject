@@ -2,14 +2,18 @@
 
 namespace EenmaalAndermaal\Controller;
 
+use EenmaalAndermaal\App;
 use EenmaalAndermaal\Model\GebruikerModel;
 use EenmaalAndermaal\Model\LandModelCollection;
 use EenmaalAndermaal\Model\VraagModelCollection;
+use EenmaalAndermaal\Request\ApiRequest;
 use EenmaalAndermaal\Request\Request;
 use EenmaalAndermaal\Request\RequestMethod;
 use EenmaalAndermaal\Route\Route;
 use EenmaalAndermaal\Route\Router;
 use EenmaalAndermaal\Services\MailService;
+use EenmaalAndermaal\Services\SessionService;
+use EenmaalAndermaal\Util\Debug;
 use EenmaalAndermaal\View\RegistratieView;
 use EenmaalAndermaal\View\View;
 
@@ -18,10 +22,41 @@ class LoginController implements Controller
 
     public function registerRoutes(Router &$router)
     {
-        $router->addRoute(new Route("login", RequestMethod::GET(), function () {
+        $router->addRoute(new Route("login", RequestMethod::GET(), function (Request $request) {
             $view = new View("login/Login");
             return $view->render();
         }));
+
+        $router->addRoute(new Route("login", RequestMethod::POST(), function (Request $request) {
+            $view = new View("login/Login");
+            $post = $request->getPost();
+            $view->error = "";
+            if (isset($post['gebruikersnaam'])) {
+                if (isset($post['wachtwoord'])) {
+                    $gebruikersnaam = $post['gebruikersnaam'];
+                    $wachtwoord = $post['wachtwoord'];
+                    $r = new ApiRequest("gebruikers/{$gebruikersnaam}/login", RequestMethod::POST());
+                    if ($r->connect(['password' => $wachtwoord])) {
+                        $result = $r->getResult();
+                        if (isset($result['login']) && $result['login']) {
+                            SessionService::getInstance()->set("userId", $gebruikersnaam);
+                            header("Location: " . App::getApp()->getConfig()->get("website.url"));
+                        } else {
+                            $view->error = 'Wachtwoord en gebruikersnaam combinatie klopt niet';
+                        }
+                    } else {
+                        $view->error = 'Wachtwoord en gebruikersnaam combinatie klopt niet';
+                    }
+                } else {
+                    $view->error = "Geen wachtwoord gevonden";
+                }
+            } else {
+                $view->error = "Geen gebruikersnaam gevonden";
+            }
+
+            return $view->render();
+        }));
+
         $router->addRoute(new Route("registreren", RequestMethod::GET(), function (Request $request) {
             $v = new RegistratieView();
             $v->vragen = new VraagModelCollection();

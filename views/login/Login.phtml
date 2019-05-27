@@ -5,34 +5,32 @@
  * Date: 17-5-2019
  * Time: 16:20
  */
-?>
 
-<div class="section"></div>
-<div class="section"></div>
-<center>
+use EenmaalAndermaal\App; ?>
+
+<div class="row"></div>
+<div class="row"></div>
+<div class="center">
     <h5 class="light-green-text">EenmaalAndermaal <br> Login</h5>
     <div class="section"></div>
 
     <div class="container">
-        <div class="z-depth-1 grey lighten-4 row"
-             style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
-
-            <form class="col s12" method="post">
-                <div class='row'>
+        <div class="row ">
+            <form class="col s12 m8 offset-m2 l4 offset-l4 card light-green lighten-5" method="post">
+                <div class='row light-green lighten-5 card-content'>
                     <div class='col s12'>
+                        <?php if (isset($this->error) && !empty($this->error)) { ?>
+                            <p class="left-align red-text light-green lighten-3 z-depth-1"><?= $this->error ?></p>
+                        <?php } ?>
                     </div>
-                </div>
-
-                <div class='row'>
                     <div class='input-field col s12'>
-                        <input class='validate' type="text" name='Gebruikersnaam' id='Gebruikersnaam'/>
-                        <label for='Gebruikersnaam'>Gebruikersnaam</label>
+                        <input class='validate' type="text" name='gebruikersnaam' id='gebruikersnaam'
+                               value="<?= isset($this->post['gebruikersnaam']) ? $this->post['gebruikersnaam'] : "" ?>"/>
+                        <label for='gebruikersnaam'>Gebruikersnaam</label>
                     </div>
-                </div>
-
-                <div class='row'>
                     <div class='input-field col s12'>
-                        <input class='validate' type='password' name='password' id='password'/>
+                        <input class='validate' type='password' name='wachtwoord' id='password'
+                        value="<?= isset($this->post['wachtwoord']) ? $this->post['wachtwoord'] : "" ?>"/>
                         <label for='password'>Wachtwoord</label>
                     </div>
                     <label style='float: right;'>
@@ -41,14 +39,14 @@
                 </div>
                 <br/>
                 <div class='row'>
-                    <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect light-green'>
-                        Login
+                    <button type='submit' class='btn btn-large waves-effect light-green'>
+                         Login
                     </button>
                 </div>
             </form>
         </div>
     </div>
-    <a href="#!">Registreren</a>
+    <a href="<?= App::getApp()->getConfig()->get("website.url") ?>registreren">Registreren</a>
     <div class="section"></div>
     <div class="section"></div>
-</center>
+</div>
