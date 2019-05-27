@@ -10,7 +10,3 @@
 .registratie-container .flex.flex-end {
     align-items: flex-end;
 }
-
-.card-content ul>li {
-    list-style-type:disc !important;
-}
