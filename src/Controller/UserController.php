@@ -15,19 +15,19 @@ class UserController implements Controller
 {
     public function registerRoutes(Router &$router)
     {
-        $router->addRoute(new Route("user/profile", RequestMethod::GET(), function () {
+        $router->addRoute(new Route("profiel", RequestMethod::GET(), function () {
             $view = new ProfileView("user/profile");
             $view->homepage = false;
             return $view->render();
         }));
 
-        $router->addRoute(new Route("forgotpassword", RequestMethod::GET(), function () {
-          $view = new View("user/forgotpassword");
+        $router->addRoute(new Route("wachtwoordvergeten", RequestMethod::GET(), function () {
+          $view = new View("gebruiker/forgotpassword");
           $view->homepage = false;
           return $view->render();
         }));
 
-        $router->addRoute(new Route("newpassword",RequestMethod::GET(),function () {
+        $router->addRoute(new Route("wachtwoordreset",RequestMethod::GET(),function () {
             $view = new View("user/newpassword");
             $view->homepage = false;
             return $view->render();

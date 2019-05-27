@@ -1,7 +1,9 @@
 <?php
+
 namespace EenmaalAndermaal\Request;
 
-class Request {
+class Request
+{
 
     private $get;
 
@@ -53,7 +55,13 @@ class Request {
         $this->vars = $args;
     }
 
-    public function getVar(string $name) {
+    public function getPost()
+    {
+        return $this->post;
+    }
+
+    public function getVar(string $name)
+    {
         return isset($this->vars[$name]) ? $this->vars[$name] : false;
     }
 }

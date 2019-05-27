@@ -28,7 +28,7 @@ abstract class Model
         if (empty($identifier)) {
             $request = new ApiRequest($this->getPath(), RequestMethod::POST());
         } else {
-            $request = new ApiRequest($this->getPath() . "/" . $this->getIdentifier(), RequestMethod::PUT());
+            $request = new ApiRequest($this->getPath() . "/" . $this->getIdentifier(), RequestMethod::POST());
         }
 
         if ($request->connect(get_object_vars($this))) {
@@ -47,16 +47,13 @@ abstract class Model
                 $this->map($request->getResult()[0]);
                 return true;
             }
-            return false;
-        } else {
-            Debug::dump($request->getError());
-            die();
         }
+        return false;
     }
 
     public function delete(): bool
     {
-        $request = new ApiRequest($this->getPath(), RequestMethod::DELETE());
+        $request = new ApiRequest($this->getPath() . "/" . $this->getIdentifier() . "/delete", RequestMethod::POST());
         if ($request->connect()) {
             return true;
         } else {
