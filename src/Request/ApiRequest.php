@@ -2,6 +2,8 @@
 namespace EenmaalAndermaal\Request;
 
 use EenmaalAndermaal\App;
+use EenmaalAndermaal\Services\UserService;
+use http\Client\Curl\User;
 
 class ApiRequest {
 
@@ -35,6 +37,9 @@ class ApiRequest {
         if (count($data)) {
             $header[] = 'Content-Type:application/json';
             curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
+        }
+        if (UserService::getInstance()->userLoggedIn()) {
+            $header[] = 'Username:' . UserService::getInstance()->getCurrentUsername();
         }
         curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
 
