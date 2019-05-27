@@ -46,6 +46,7 @@ class RegistratieModel extends Model
         return $errors;
     }
 
+
     public function verify()
     {
         $errors = "";
@@ -66,14 +67,13 @@ class RegistratieModel extends Model
             if (!filter_var($this->fields['email2'], FILTER_VALIDATE_EMAIL)) {
                 $errors .= "<li>Herhaalde email is incorrect ingevuld</li>";
             }
-//            if (!empty(validatePassword($this->fields['wachtwoord']))) {
-//                $errors .= validatePassword($this->fields['wachtwoord']);
-//            }
+
             if (empty($this->fields['wachtwoord2'])) {
                 $errors .= "<li>Herhaalde wachtwoord is niet ingevuld</li>";
             } else if ($this->fields['wachtwoord'] !== $this->fields['wachtwoord2']) {
                 $errors .= "<li>De wachtwoorden komen niet overeen</li>";
             }
+            $errors .= $this->validatePassword($this->fields['wachtwoord']);
         }
         return $errors;
     }
