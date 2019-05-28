@@ -43,4 +43,25 @@ class VeilingModel extends Model {
     {
         return "veilingen";
     }
+
+    /**
+     * @return int minimal bid for this auction
+     */
+    public function getMinBod(): int
+    {
+        if ($this->verkoopPrijs >= 500000) {
+            return $this->verkoopPrijs + 5000;
+        }
+        if ($this->verkoopPrijs >= 100000) {
+            return $this->verkoopPrijs + 1000;
+        }
+        if ($this->verkoopPrijs >= 50000) {
+            return $this->verkoopPrijs + 500;
+        }
+        if ($this->verkoopPrijs >= 5000) {
+            return $this->verkoopPrijs + 100;
+        }
+        return $this->verkoopPrijs + 50;
+
+    }
 }
