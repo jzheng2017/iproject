@@ -3,6 +3,7 @@
 $view =& $this;
 
 use EenmaalAndermaal\App;
+use EenmaalAndermaal\Services\UserService;
 use EenmaalAndermaal\View\Component\RubriekNavbarComponent;
 use EenmaalAndermaal\View\Component\SearchbarComponent;
 use EenmaalAndermaal\View\View;
@@ -59,9 +60,9 @@ $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
                     <li><a href="" class="top-link">Voorwaarden</a></li>
                     <li><a href="" class="top-link">Help & Info</a></li>
                     <?php
-                    if ($sessionActive == true) { ?>
-                        <li><a href="" class="top-link">uitloggen</a></li>
-                        <li><a class="btn" href="#"><i class="Small material-icons left">account_circle</i>Mijn Profiel</a>
+                    if (UserService::getInstance()->userLoggedIn()) { ?>
+                        <li><a href="<?= $baseUrl ?>uitloggen" class="top-link">uitloggen</a></li>
+                        <li><a class="btn" href="<?= $baseUrl ?>profiel"><i class="Small material-icons left">account_circle</i>Mijn Profiel</a>
                         </li>
                     <?php } else { ?>
                         <li><a href="<?= $baseUrl ?>registreren" class="top-link">Registreren</a></li>
