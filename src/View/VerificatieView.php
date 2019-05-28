@@ -12,6 +12,10 @@ class VerificatieView extends View
 {
     public $verificatie;
 
+    public $bestaat;
+
+    public $naam;
+
     public function __construct()
     {
         parent::__construct("verificatie/verifieren");

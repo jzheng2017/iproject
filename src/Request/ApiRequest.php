@@ -36,7 +36,7 @@ class ApiRequest
 
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $this->requestMethod);
 
-        if (count($data)) {
+        if (count($data) || $this->requestMethod == RequestMethod::POST()) {
             $header[] = 'Content-Type:application/json';
             curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
         }
