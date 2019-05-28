@@ -17,8 +17,8 @@ $mail = $this;
             <div style="background-color: #f1f8e9; padding: 20px;">
                 <h2>Veiling Gewonnen!</h2>
                 <p>Beste <?= $mail->getVar("voornaam") ?>,</p>
-                <p>Van harte gefeliciteerd met het winnen van veiling <?=  $mail->getVar("titel")?>. Om de veiling in ontvangst te nemen moet u contact opnemen met de verkoper: </p>
-                <p><a href="http://iproject21.icasites.nl/confirm/<?= $mail->getVar("token") ?>">http://iproject21.icasites.nl/confirm/<?= $mail->getVar("token") ?></a></p>
+                <p>Van harte gefeliciteerd met het winnen van veiling <?=  $mail->getVar("titel")?>. Bekijk de gewonnen veiling: </p>
+                <p><a href="http://iproject21.icasites.nl/veiling/<?= $mail->getVar("id") ?>">http://iproject21.icasites.nl/veiling/<?= $mail->getVar("id") ?></a></p>
             </div>
         </td>
         <td width="33%" align="center" valign="top"
