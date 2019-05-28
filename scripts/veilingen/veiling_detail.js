@@ -29,12 +29,16 @@ $(document).ready(function(){
                 let list = $('#biedingen-list');
                 list.html("");
                 for (let i in result) {
-                    list.append('<tr>\n<td class="left">' + result[i].naam + '</td>\n<td>€ ' + result[i].bod / 100 + '</td>\n</tr>')
+                    list.append('<tr>\n<td class="left">' + result[i].naam + '</td>\n<td>€ ' + parseFloat(Math.round(result[i].bod) / 100).toFixed(2) + '</td>\n</tr>')
                 }
                 setTimeout( getBiedingen,1000);
             }
         })
     }
+
+    $('.disable-on-click').on('click', function( ) {
+        $(this).attr('disabled', true);
+    });
 
     getBiedingen();
 });

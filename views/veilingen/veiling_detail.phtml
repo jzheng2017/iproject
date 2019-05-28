@@ -174,11 +174,11 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
                                     <div class="row">
                                         <div class="input-field col s6">
                                             <i class="material-icons prefix">euro_symbol</i>
-                                            <input id="icon_prefix" type="number" name="bedrag" class="validate">
+                                            <input id="icon_prefix" type="number" value="<?= $this->veiling->getMinBod() / 100 ?>" min="<?= $this->veiling->getMinBod() / 100 ?>" name="bedrag" class="validate">
                                             <label for="icon_prefix">Bod</label>
                                         </div>
                                         <div class="valign-wrapper">
-                                            <button class="btn waves-effect waves-light ali" type="submit"
+                                            <button class="btn waves-effect waves-light ali disable-on-click" type="submit"
                                                     name="action">Bod
                                                 plaatsen
                                                 <i class="material-icons right"></i>
