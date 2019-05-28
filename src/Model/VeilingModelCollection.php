@@ -2,6 +2,7 @@
 
 namespace EenmaalAndermaal\Model;
 
+use EenmaalAndermaal\App;
 use EenmaalAndermaal\Request\ApiRequest;
 use EenmaalAndermaal\Request\RequestMethod;
 use EenmaalAndermaal\Util\Debug;
@@ -46,6 +47,19 @@ class VeilingModelCollection extends ModelCollection
             return true;
         } else {
             Debug::dump($apiRequest->getError());
+            die();
+        }
+    }
+
+    public function search(array $params = [])
+    {
+        $r = new ApiRequest($this->model->getPath(), RequestMethod::GET(), $params);
+        die($r->getPath());
+        if ($r->connect()) {
+            $this->fromResultSet($r->getResult());
+            return true;
+        } else {
+            Debug::dump($r->getError());
             die();
         }
     }
