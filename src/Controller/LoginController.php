@@ -13,6 +13,7 @@ use EenmaalAndermaal\Route\Route;
 use EenmaalAndermaal\Route\Router;
 use EenmaalAndermaal\Services\MailService;
 use EenmaalAndermaal\Services\SessionService;
+use EenmaalAndermaal\Services\UserService;
 use EenmaalAndermaal\Util\Debug;
 use EenmaalAndermaal\View\RegistratieView;
 use EenmaalAndermaal\View\View;
@@ -25,6 +26,11 @@ class LoginController implements Controller
         $router->addRoute(new Route("login", RequestMethod::GET(), function (Request $request) {
             $view = new View("login/Login");
             return $view->render();
+        }));
+
+        $router->addRoute(new Route("uitloggen", RequestMethod::GET(), function () {
+            UserService::getInstance()->logout();
+            header("Location: " . App::getApp()->getConfig()->get("website.url"));
         }));
 
         $router->addRoute(new Route("login", RequestMethod::POST(), function (Request $request) {
