@@ -18,7 +18,7 @@ $mail = $this;
                 <h2>Account verificatie</h2>
                 <p>Beste <?= $mail->getVar("voornaam") ?>,</p>
                 <p>Dankuwel voor het registreren bij EenmaalAndermaal. Om uw account te kunnen gebruiken klik op de onderstaande link:</p>
-                <p><a href="http://iproject21.icasites.nl/confirm/<?= $mail->getVar("token") ?>">http://iproject21.icasites.nl/confirm/<?= $mail->getVar("token") ?></a></p>
+                <p><a href="http://iproject21.icasites.nl/profiel/<?= $mail->getVar("gebruikersnaam") ?>/confirm/<?= $mail->getVar("token") ?>">http://iproject21.icasites.nl/confirm/<?= $mail->getVar("token") ?></a></p>
             </div>
         </td>
         <td width="33%" align="center" valign="top"
