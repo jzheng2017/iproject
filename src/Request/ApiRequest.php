@@ -1,11 +1,13 @@
 <?php
+
 namespace EenmaalAndermaal\Request;
 
 use EenmaalAndermaal\App;
 use EenmaalAndermaal\Services\UserService;
 use http\Client\Curl\User;
 
-class ApiRequest {
+class ApiRequest
+{
 
     private $requestMethod;
 
@@ -15,9 +17,9 @@ class ApiRequest {
 
     private $error;
 
-    public function __construct(string $path, RequestMethod $requestMethod)
+    public function __construct(string $path, RequestMethod $requestMethod, $params = [])
     {
-        $this->path = strtr(urlencode($path), ['%2F' => "/"] );
+        $this->path = strtr(urlencode($path), ['%2F' => "/"]) . (count($params) > 0 ? "?" . http_build_query($params) : "");
         $this->requestMethod = $requestMethod;
     }
 
@@ -28,7 +30,7 @@ class ApiRequest {
 
         $header = [];
 
-        $header[] = "api-key:"  .App::getApp()->getConfig()->get("API.key");
+        $header[] = "api-key:" . App::getApp()->getConfig()->get("API.key");
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
@@ -51,6 +53,14 @@ class ApiRequest {
             $this->error = json_decode($result, true);
             return false;
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getPath(): string
+    {
+        return $this->path;
     }
 
     /**

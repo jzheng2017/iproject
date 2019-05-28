@@ -1,33 +1,46 @@
 <?php
+use EenmaalAndermaal\App;
+use EenmaalAndermaal\Services\GetService;
 /** @var \EenmaalAndermaal\View\Component\PrijsFilterComponent $this */
-$baseUrl = \EenmaalAndermaal\App::getApp()->getConfig()->get('website.url');
-$get = \EenmaalAndermaal\Services\GetService::getInstance();
-?>
-<div class="container">
-    <h5>Prijs range</h5>
-    <form action="" class="col s12" onsubmit="return checkPrijs();" method="get">
-        <?= $get->createHiddenInputs(["minPrijs", "maxPrijs"]) ?>
-        <div class="row hide-on-med-and-down">
-            <div class="input-field col s6">
-                <input id="minPrijs" type="number" class="validate quantity" min="0" value="<?= $get->getVar("minPrijs")  ?>" name="minPrijs">
-                <label for="minPrijs">Minprijs</label>
-            </div>
-            <div class="input-field col s6">
-                <input id="maxPrijs" type="number" class="validate quantity" min="1" value="<?= $get->getVar("maxPrijs")  ?>" name="maxPrijs">
-                <label for="maxPrijs">Maxprijs</label>
-            </div>
-            <input value="Filter" class="btn" type="submit">
+$baseUrl = App::getApp()->getConfig()->get('website.url');
+$get = GetService::getInstance();
+ ?>
+<div class="row">
+    <div class="col l12 m12 s12">
+        <h5>Prijs</h5>
+        <div class="col s12" onsubmit="return checkPrijs();">
+            <form method="get" action="" class="row hide-on-med-and-down">
+                <?= $get->createHiddenInputs(["minPrijs", "maxPrijs"]) ?>
+                <div class="input-field col s6">
+                    <input id="minPrijs1" type="number" class="validate quantity" min="0"
+                           value="<?= $get->getVar("minPrijs") ?>"
+                           name="minPrijs">
+                    <label for="minPrijs1">Minprijs</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="maxPrijs1" type="number" class="validate quantity" min="1"
+                           value="<?= $get->getVar("maxPrijs") ?>"
+                           name="maxPrijs">
+                    <label for="maxPrijs1">Maxprijs</label>
+                </div>
+                <input value="Filter" class="btn" type="submit">
+            </form>
+            <form method="get" class="row hide-on-large-only">
+                <?= $get->createHiddenInputs(["minPrijs", "maxPrijs"]) ?>
+                <div class="input-field">
+                    <input id="minPrijs2" type="number" class="validate quantity" min="0"
+                           value="<?= $get->getVar("minPrijs") ?>"
+                           name="minPrijs">
+                    <label for="minPrijs2">Minprijs</label>
+                </div>
+                <div class="input-field">
+                    <input id="maxPrijs2" type="number" class="validate quantity" min="1"
+                           value="<?= $get->getVar("maxPrijs") ?>"
+                           name="maxPrijs">
+                    <label for="maxPrijs2">Maxprijs</label>
+                </div>
+                <input value="Filter" class="btn" type="submit">
+            </form>
         </div>
-        <div class="row hide-on-large-only">
-            <div class="input-field">
-                <input id="minPrijs" type="number" class="validate quantity" min="0" value="<?= $get->getVar("minPrijs")  ?>" name="minPrijs">
-                <label for="minPrijs">Minprijs</label>
-            </div>
-            <div class="input-field">
-                <input id="maxPrijs" type="number" class="validate quantity" min="1" value="<?= $get->getVar("maxPrijs")  ?>" name="maxPrijs">
-                <label for="maxPrijs">Maxprijs</label>
-            </div>
-            <input value="Filter" class="btn" type="submit">
-        </div>
-    </form>
+    </div>
 </div>

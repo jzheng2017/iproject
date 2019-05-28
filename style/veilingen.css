@@ -1,10 +1,15 @@
 .veiling-detail-container .carousel-item img {
-    height: 100%;
+    height: auto;
     border-radius: 2px;
     display: block;
     cursor: pointer;
     width: auto !important;
+    max-width: 100% !important;
     margin: 0 auto;
+}
+
+.veiling-detail-container .carousel-item {
+    left: -50%;
 }
 
 /* label color */

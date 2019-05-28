@@ -34,7 +34,7 @@ namespace EenmaalAndermaal\Services {
 
         public function getVar($key)
         {
-            if (isset($this->variables[$key])) {
+            if (isset($this->variables[$key]) && !empty($this->variables[$key])) {
                 return $this->variables[$key];
             }
             return false;

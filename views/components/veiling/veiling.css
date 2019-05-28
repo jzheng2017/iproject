@@ -8,6 +8,7 @@
 .veiling.card .card-image img.materialboxed.active {
     height: auto !important;
     width: 100vh !important;
+    max-width: 100% !important;
     max-height: 80vh !important;
     margin: 0 auto;
 }

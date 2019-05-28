@@ -1,49 +1,56 @@
 <?php
+use EenmaalAndermaal\App;
+use EenmaalAndermaal\Services\GetService;
 /** @var \EenmaalAndermaal\View\Component\PrijsFilterComponent $this */
-$baseUrl = \EenmaalAndermaal\App::getApp()->getConfig()->get('website.url');
-$get = \EenmaalAndermaal\Services\GetService::getInstance();
+$baseUrl = App::getApp()->getConfig()->get('website.url');
+$get = GetService::getInstance();
 ?>
-<div class="container">
-    <h5>zoek range</h5>
-    <form action="" class="col s12" onsubmit="return checkLocatie();" method="get">
-        <?= $get->createHiddenInputs(["locatie1", "locatie2"]) ?>
-        <div class="row hide-on-med-and-down">
-            <div class="input-field col s6 no-margin">
-                <input type="text" maxlength="32" id="search_zipcode" placeholder="Postcode">
-                <label for="search_zipcode"></label>
-            </div>
-            <div class="input-field col s6 no-margin">
-                <select name="" id="">
-                    <option value="-1" selected>Elke afstand</option>
-                    <option value="5">5km</option>
-                    <option value="10">10km</option>
-                    <option value="25">25km</option>
-                    <option value="35">35km</option>
-                    <option value="50">50km</option>
-                    <option value="75">75km</option>
-                    <option value="100">100km</option>
-                </select>
-            </div>
-            <input value="Filter" class="btn" type="submit">
+<div class="row">
+    <div class="col l12 m12 s12">
+        <h5>Afstand</h5>
+        <div class="col s12">
+            <form method="get" action="" class="row hide-on-med-and-down">
+                <?= $get->createHiddenInputs(["postcode", "maxAfstand"]) ?>
+                <div class="input-field col s6 no-margin">
+                    <input type="text" name="postcode" maxlength="32" id="search_zipcode" placeholder="Postcode"
+                           value="<?= $get->getVar("postcode") ?>">
+                    <label for="search_zipcode"></label>
+                </div>
+                <div class="input-field col s6 no-margin">
+                    <select name="maxAfstand" id="">
+                        <option value="-1"  <?= in_array($get->getVar("maxAfstand"), [false, -1, null, '']) ? "selected" : "" ?>>Elke afstand</option>
+                        <option value="5"  <?= $get->getVar("maxAfstand") == 5 ? "selected" : "" ?>>5km</option>
+                        <option value="10" <?= $get->getVar("maxAfstand") == 10 ? "selected" : "" ?>>10km</option>
+                        <option value="25" <?= $get->getVar("maxAfstand") == 25 ? "selected" : "" ?>>25km</option>
+                        <option value="35" <?= $get->getVar("maxAfstand") == 35 ? "selected" : "" ?>>35km</option>
+                        <option value="50" <?= $get->getVar("maxAfstand") == 50 ? "selected" : "" ?>>50km</option>
+                        <option value="75" <?= $get->getVar("maxAfstand") == 75 ? "selected" : "" ?>>75km</option>
+                        <option value="100" <?= $get->getVar("maxAfstand") == 100 ? "selected" : "" ?>>100km</option>
+                    </select>
+                </div>
+                <input value="Filter" class="btn" type="submit">
+            </form>
+            <form method="get" action="" class="row hide-on-large-only">
+                <?= $get->createHiddenInputs(["postcode", "maxAfstand"]) ?>
+                <div class="input-field col s6 no-margin">
+                    <input type="text" name="afstand" maxlength="32" id="search_zipcode" placeholder="Postcode"
+                        value="<?= $get->getVar("postcode") ?>">
+                    <label for="search_zipcode"></label>
+                </div>
+                <div class="input-field">
+                    <select name="maxAfstand" id="">
+                        <option value="-1"  <?= in_array($get->getVar("maxAfstand"), [false, -1, null, '']) ? "selected" : "" ?>>Elke afstand</option>
+                        <option value="5"  <?= $get->getVar("maxAfstand") == 5 ? "selected" : "" ?>>5km</option>
+                        <option value="10" <?= $get->getVar("maxAfstand") == 10 ? "selected" : "" ?>>10km</option>
+                        <option value="25" <?= $get->getVar("maxAfstand") == 25 ? "selected" : "" ?>>25km</option>
+                        <option value="35" <?= $get->getVar("maxAfstand") == 35 ? "selected" : "" ?>>35km</option>
+                        <option value="50" <?= $get->getVar("maxAfstand") == 50 ? "selected" : "" ?>>50km</option>
+                        <option value="75" <?= $get->getVar("maxAfstand") == 75 ? "selected" : "" ?>>75km</option>
+                        <option value="100" <?= $get->getVar("maxAfstand") == 100 ? "selected" : "" ?>>100km</option>
+                    </select>
+                </div>
+                <input value="Filter" class="btn" type="submit">
+            </form>
         </div>
-        <div class="row hide-on-large-only">
-            <div class="input-field col s6 no-margin">
-                <input type="text" maxlength="32" id="search_zipcode" placeholder="Postcode">
-                <label for="search_zipcode"></label>
-            </div>
-            <div class="input-field">
-                <select name="" id="">
-                    <option value="-1" selected>Elke afstand</option>
-                    <option value="5">5km</option>
-                    <option value="10">10km</option>
-                    <option value="25">25km</option>
-                    <option value="35">35km</option>
-                    <option value="50">50km</option>
-                    <option value="75">75km</option>
-                    <option value="100">100km</option>
-                </select>
-            </div>
-            <input value="Filter" class="btn" type="submit">
-        </div>
-    </form>
+    </div>
 </div>
