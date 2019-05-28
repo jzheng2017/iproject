@@ -2,7 +2,7 @@ $(document).ready(function () {
 });
 
 $('#editbtn').click(function () {
-    for (i = 0; i <= 6; i++) {
+    for (i = 0; i <= 8; i++) {
         var $div = $('#uservalue' + i), isEditable = $div.is('.editable');
 
         $div.prop('contenteditable', !isEditable).toggleClass('editable')
@@ -11,7 +11,7 @@ $('#editbtn').click(function () {
 });
 
 $('#canceledit').click(function () {
-    for (i = 0; i <= 6; i++) {
+    for (i = 0; i <= 8; i++) {
         var $div = $('#uservalue' + i), isEditable = $div.is('.editable');
 
         $div.prop('contenteditable', !isEditable).toggleClass('editable')
@@ -19,7 +19,7 @@ $('#canceledit').click(function () {
     togglebuttuns();
 });
 $('#saveedit').click(function () {
-    for (i = 0; i <= 6; i++) {
+    for (i = 0; i <= 8; i++) {
         var $div = $('#uservalue' + i), isEditable = $div.is('.editable');
 
         $div.prop('contenteditable', !isEditable).toggleClass('editable')
