@@ -36,8 +36,8 @@ $(document).ready(function(){
         })
     }
 
-    $('.disable-on-click').on('click', function( ) {
-        $(this).attr('disabled', true);
+    $('form').submit(function( ) {
+        $('.disable-on-click').attr('disabled', true);
     });
 
     getBiedingen();
