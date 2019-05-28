@@ -19,8 +19,10 @@
     color: blue;
 }
 
-.material-icons {
+.breadcrumb i{
     color: black;
+}
+.material-icons {
     margin-right: 2px;
     position: relative;
     top: 4px

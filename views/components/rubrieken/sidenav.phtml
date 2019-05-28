@@ -1,6 +1,7 @@
 <?php
 
 use EenmaalAndermaal\App;
+use EenmaalAndermaal\Services\UserService;
 use EenmaalAndermaal\View\Component\SidenavComponent;
 
 /** @var SidenavComponent $this */
@@ -30,10 +31,16 @@ $baseUrl = App::getApp()->getConfig()->get('website.url');
         <li>
             <div class="divider"></div>
         </li>
-        <li><a href="#"><i class="material-icons">person</i>Login</a></li>
-        <li><a href="#"><i class="material-icons">person</i>Registreren</a></li>
+        <?php if (!UserService::getInstance()->userLoggedIn()) { ?>
+            <li><a href="<?= $baseUrl ?>uitloggen" class="top-link"><i class="material-icons">backspace</i>Uitloggen</a></li>
+            <li><a href="<?= $baseUrl ?>profiel"><i class="Small material-icons left">account_circle</i>Mijn Profiel</a>
+        <?php } else { ?>
+            <li><a href="<?= $baseUrl ?>login"><i class="material-icons">person</i>Login</a></li>
+            <li><a href="<?= $baseUrl ?>registreren"><i class="material-icons">person</i>Registreren</a></li>
+        <?php } ?>
     </ul>
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 <?php if ($this->homepage !== true) { ?>
-    <a href="#" data-target="nav-search-container" class="searchbar-trigger hide-on-large-only"><i class="material-icons">search</i></a>
+    <a href="#" data-target="nav-search-container" class="searchbar-trigger hide-on-large-only"><i
+                class="material-icons">search</i></a>
 <?php }
