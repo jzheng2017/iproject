@@ -54,7 +54,6 @@ class VeilingModelCollection extends ModelCollection
     public function search(array $params = [])
     {
         $r = new ApiRequest($this->model->getPath(), RequestMethod::GET(), $params);
-        die($r->getPath());
         if ($r->connect()) {
             $this->fromResultSet($r->getResult());
             return true;
