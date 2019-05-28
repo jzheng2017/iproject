@@ -3,10 +3,19 @@
     padding: 30px;
 }
 
-.registratie-container .flex {
-    display: flex;
+span.title{
+    font-size:2vw;
+    margin-left:10px;
 }
 
-.registratie-container .flex.flex-end {
-    align-items: flex-end;
+@media screen and (max-width: 900px) {
+    span.title {
+        font-size: 3vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    span.title{
+        font-size:4vw;
+    }
 }
