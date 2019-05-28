@@ -15,9 +15,9 @@ class VeilingModelCollection extends ModelCollection
         parent::__construct(new VeilingModel());
     }
 
-    public function getByParent(string $id)
+    public function getByParent(string $id, $params = [])
     {
-        $apiRequest = new ApiRequest("rubrieken/sub/$id/veilingen", RequestMethod::GET());
+        $apiRequest = new ApiRequest("rubrieken/sub/$id/veilingen", RequestMethod::GET(), $params);
         if ($apiRequest->connect()) {
             $this->fromResultSet($apiRequest->getResult());
             return true;
@@ -39,9 +39,9 @@ class VeilingModelCollection extends ModelCollection
         }
     }
 
-    public function getByTopParent(string $id)
+    public function getByTopParent(string $id, $params = [])
     {
-        $apiRequest = new ApiRequest("rubrieken/$id/veilingen", RequestMethod::GET());
+        $apiRequest = new ApiRequest("rubrieken/$id/veilingen", RequestMethod::GET(), $params);
         if ($apiRequest->connect()) {
             $this->fromResultSet($apiRequest->getResult());
             return true;
@@ -54,7 +54,6 @@ class VeilingModelCollection extends ModelCollection
     public function search(array $params = [])
     {
         $r = new ApiRequest($this->model->getPath(), RequestMethod::GET(), $params);
-        die($r->getPath());
         if ($r->connect()) {
             $this->fromResultSet($r->getResult());
             return true;

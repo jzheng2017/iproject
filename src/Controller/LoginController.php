@@ -88,6 +88,7 @@ class LoginController implements Controller
                     $mail = new MailService("verify");
                     $mail->addVar("voornaam", $user->voornaam);
                     $mail->addVar("token", $user->getToken());
+                    $mail->addVar("gebruikersnaam", $user->getIdentifier());
                     $mail->sendMail($user->email, "Verificatie account EenmaalAndermaal");
                     return (new View("registreren/success"))->render();
                 } else {

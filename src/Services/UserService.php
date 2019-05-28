@@ -3,6 +3,7 @@
 namespace EenmaalAndermaal\Services;
 
 use EenmaalAndermaal\Model\GebruikerModel;
+use EenmaalAndermaal\Util\Debug;
 
 class UserService
 {

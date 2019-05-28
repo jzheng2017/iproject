@@ -10,13 +10,21 @@ use EenmaalAndermaal\View\ZoekResultaatView;
 ?>
 
 <div class="row">
-    <div class="col l3 m4 s12">
-        <p class="flow-text">Filteren</p>
-        <?= $this->renderComponent(new PrijsFilterComponent()) ?>
-        <?= $this->renderComponent(new AfstandFilterComponent()) ?>
+    <div class="col l2 m4 s12">
+        <div class="row">
+            <div class="col s12">
+                <p class="flow-text center-align">Filteren</p>
+                <div class="row">
+                    <div class="col offset-s1 s11 light-green lighten-4 z-depth-1">
+                        <?= $this->renderComponent(new PrijsFilterComponent()) ?>
+                        <?= $this->renderComponent(new AfstandFilterComponent()) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="col l9 m6 s12">
+    <div class="col l10 m6 s12">
         <div class="container">
             <p class="flow-text center-align">Zoekresultaten</p>
             <div class="row">

@@ -2,13 +2,17 @@
 namespace EenmaalAndermaal\Controller;
 
 use EenmaalAndermaal\App;
+use EenmaalAndermaal\Model\GebruikerModel;
 use EenmaalAndermaal\Model\VeilingModel;
+use EenmaalAndermaal\Model\VeilingModelCollection;
 use EenmaalAndermaal\Request\ApiRequest;
 use EenmaalAndermaal\Request\Request;
 use EenmaalAndermaal\Request\RequestMethod;
 use EenmaalAndermaal\Request\Response;
 use EenmaalAndermaal\Route\Route;
 use EenmaalAndermaal\Route\Router;
+use EenmaalAndermaal\Services\MailService;
+use EenmaalAndermaal\Services\UserService;
 use EenmaalAndermaal\View\VeilingDetailView;
 
 class VeilingController implements Controller {
@@ -22,17 +26,45 @@ class VeilingController implements Controller {
         }));
 
         $router->addRoute(new Route("veiling/{id}", RequestMethod::POST(), function (Request $request) {
-            $apiRequest = new ApiRequest("veilingen/" . $request->getVar("id") . "/biedingen", RequestMethod::POST());
-            if ($apiRequest->connect([
-                "bedrag" => $_POST['bedrag'] * 100,
-                "gebruiker" => 'TestGebruiker' //TODO: Change to logged in user
-            ])) {
-                header("Location: " . App::getApp()->getConfig()->get("website.url") . "veiling/" . $request->getVar("id") );
-                die();
+            if (UserService::getInstance()->userLoggedIn()) {
+                $apiRequest = new ApiRequest("veilingen/" . $request->getVar("id") . "/biedingen", RequestMethod::POST());
+                if (!$apiRequest->connect([
+                    "bedrag" => $_POST['bedrag'] * 100,
+                    "gebruiker" => UserService::getInstance()->getCurrentUser()->getIdentifier()
+                ])) {
+                    die(new Response(500, "Server error", [
+                        $apiRequest->getError()
+                    ]));
+                }
             }
-            die(new Response(500, "Server error", [
-                $apiRequest->getError()
-            ]));
+            header("Location: " . App::getApp()->getConfig()->get("website.url") . "veiling/" . $request->getVar("id") );
+            die();
+        }));
+
+        $router->addRoute(new Route("sluitveilingen", RequestMethod::POST(), function (Request $request) {
+            $r = new ApiRequest("veilingen/manage/sluit", RequestMethod::GET());
+            $gesloten = 0;
+            if ($r->connect()) {
+                (new ApiRequest("veilingen/manage/sluit", RequestMethod::POST()))->connect();
+                $vm = new VeilingModelCollection();
+                $vm->fromResultSet($r->getResult());
+                foreach ($vm as &$value) {
+                    /** @var $value VeilingModel */
+                    $g = new GebruikerModel();
+                    $g->map($value->koper);
+                    $mail = new MailService("veiling_gewonnen");
+                    $mail->addVar('voornaam', $g->voornaam);
+                    $mail->addVar('titel', $value->titel);
+                    $mail->addVar('id', $value->getIdentifier());
+                    if ($mail->sendMail($g->email, 'Veiling gewonnen!')) {
+                       $gesloten++;
+                    }
+                }
+
+            }
+            return new Response(200, "success", [
+                "gesloten" => $gesloten
+            ]);
         }));
     }
 }

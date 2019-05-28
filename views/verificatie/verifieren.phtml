@@ -1,41 +1,39 @@
 <?php
 $baseURL = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url");
-if ($this->bestaat) {
+if (!$this->bestaat) {
     ?>
-<div class="container center-align">
-    <div class="row">
-        <div class="col l8 offset-l2 verificatie-container">
-            <p class="flow-text left-align">Helaas, verificatie niet gelukt</p>
-            <img class="responsive-img" src="<?= $baseURL ?>style/img/failed.jpg">
-        </div>
+    <div class="container center-align">
         <div class="row">
-            <div class="col l8 offset-l2">
-                <p class="left-align">
-                    Uw account is niet geverifierd. Probeer het opnieuw.
-                </p>
-                <a class="waves-effect waves-light btn-small light-green left" href="#">Leer meer over...</a>
-                <a class="waves-effect waves-light btn-small light-green right" href="#">Opnieuw proberen</a>
+            <div class="col l8 offset-l2 verificatie-container">
+                <p class="flow-text left-align">Helaas, verificatie niet gelukt</p>
+                <img class="responsive-img" src="<?= $baseURL ?>style/img/failed.jpg">
+            </div>
+            <div class="row">
+                <div class="col l8 offset-l2">
+                    <p class="left-align">
+                        Uw account is niet geverifierd. Probeer het opnieuw als u zeker weet dat de link juist is. Lukt
+                        het alsnog niet neem contact op met de webbeheerder.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 <?php } else { ?>
-<div class="container center-align">
-    <div class="row">
-        <div class="col l8 offset-l2 verificatie-container">
-            <p class="flow-text left-align">Gefeliciteerd, u bent geverifieerd!</p>
-            <img class="responsive-img" src="<?= $baseURL ?>style/img/verified.png">
-        </div>
+    <div class="container center-align">
         <div class="row">
-            <div class="col l8 offset-l2">
-                <p class="left-align">
-                    Uw account <b>Kaasbanaan</b> is geverifieerd. Het account heeft nu geverifieerde
-                    gebruikersrechten.
-                </p>
-                <a class="waves-effect waves-light btn-small light-green left" href="#">Leer meer over...</a>
-                <a class="waves-effect waves-light btn-small light-green right" href="#">OK</a>
+            <div class="col l8 offset-l2 verificatie-container">
+                <p class="flow-text left-align">Gefeliciteerd, u bent geverifieerd!</p>
+                <img class="responsive-img" src="<?= $baseURL ?>style/img/verified.png">
+            </div>
+            <div class="row">
+                <div class="col l8 offset-l2">
+                    <p class="left-align">
+                        Uw account <?= $this->naam ?> is geverifieerd. Het account heeft nu geverifieerde
+                        gebruikersrechten.
+                    </p>
+                    <a class="waves-effect waves-light btn-small light-green right" href="#">Bekijk je profiel</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 <?php } ?>
