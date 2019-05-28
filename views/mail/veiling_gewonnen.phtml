@@ -1,0 +1,31 @@
+<?php
+use EenmaalAndermaal\Services\MailService;
+/** @var MailService $mail */
+$mail = $this;
+?>
+<html style="font-family:Arial, Helvetica, sans-serif;" lang="nl">
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td width="33%" align="center" valign="top"
+            style="font-size:2px; color:#ffffff;">.
+        </td>
+        <td width="35%" align="center" valign="top">
+            <div style="height: 100px; background-color: #7cb342; padding: 20px;">
+                <h1 style="color: #ffffff">Eenmaal Andermaal</h1>
+            </div>
+            <div style="background-color: #f1f8e9; padding: 20px;">
+                <h2>Veiling Gewonnen!</h2>
+                <p>Beste <?= $mail->getVar("voornaam") ?>,</p>
+                <p>Van harte gefeliciteerd met het winnen van veiling <?=  $mail->getVar("titel")?>. Om de veiling in ontvangst te nemen moet u contact opnemen met de verkoper: </p>
+                <p><a href="http://iproject21.icasites.nl/confirm/<?= $mail->getVar("token") ?>">http://iproject21.icasites.nl/confirm/<?= $mail->getVar("token") ?></a></p>
+            </div>
+        </td>
+        <td width="33%" align="center" valign="top"
+            style="font-size:2px; color:#ffffff;">.
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+
