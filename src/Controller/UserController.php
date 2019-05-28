@@ -21,13 +21,13 @@ class UserController implements Controller
             return $view->render();
         }));
 
-        $router->addRoute(new Route("wachtwoordvergeten", RequestMethod::GET(), function () {
-          $view = new View("gebruiker/forgotpassword");
+        $router->addRoute(new Route("wachtwoord-vergeten", RequestMethod::GET(), function () {
+          $view = new View("user/forgotpassword");
           $view->homepage = false;
           return $view->render();
         }));
 
-        $router->addRoute(new Route("wachtwoordreset",RequestMethod::GET(),function () {
+        $router->addRoute(new Route("wachtwoord-reset",RequestMethod::GET(),function () {
             $view = new View("user/newpassword");
             $view->homepage = false;
             return $view->render();

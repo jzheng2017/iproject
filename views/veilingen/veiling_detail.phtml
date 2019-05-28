@@ -17,202 +17,204 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
             <h3 class="header left-align"><?= $this->veiling->titel ?></h3>
             <span class="left">Deze veiling is <b><?= $this->veiling->weergaves ?>x</b> bekeken</span>
         </div>
-        <div class="col m8 s12">
-            <div class="carousel carousel-slider center">
+        <div class="col s12">
+            <div class="col l8 m6 s12 carousel carousel-slider center">
                 <?php foreach ($this->veiling->images as $image) { ?>
                     <div class="carousel-item"><img src="http://iproject21.icasites.nl/<?= $image ?>"></div>
                 <?php } ?>
 
             </div>
-            <div class="row">
-                <div class="row"></div>
-                <div class="row">
-                    <div class="col s12">
-                        <ul class="tabs">
-                            <li class="tab col s3"><a class="active light-green-text" href="#details">Details</a></li>
-                            <li class="tab col s3"><a class="light-green-text" href="#meer-info">Meer info</a></li>
-                            <li class="tab col s3"><a class="light-green-text" href="#locatie">Locatie</a></li>
-                            <li class="tab col s3"><a class="light-green-text" href="#verkoper">Verkoper</a></li>
-
-                        </ul>
-                    </div>
-                    <div id="details" class="col s12">
-                        <div class="col s12 details">
-                            <h3>Details</h3>
+            <div class="col l4 m6 s12">
+                <div class="card no-margin green lighten-5">
+                    <div class="card-content">
+                        <div id="veiling-<?= $this->veiling->getIdentifier() ?>">
+                            <h3 class="center-align no-margin veiling-counter"
+                                data-id="veiling-<?= $this->veiling->getIdentifier() ?>"
+                                data-end="<?= strtotime($this->veiling->eindDag . " " . $this->veiling->eindTijd) ?>">
+                                Gesloten</h3>
                             <div class="row">
-                                <div class="col s12 m12 l12">
-                                    <b>Veiling informatie</b>
-                                    <div class="divider"></div>
-                                    <div class="row">
-                                        <div class="col s6 m6 l6">Startprijs</div>
-                                        <div class="col s6 m6 l6 bold"><?= S::euro($this->veiling->startPrijs) ?></div>
-
-                                        <div class="col s6 m6 l6">Betalingsmethode</div>
-                                        <div class="col s6 m6 l6 bold"><?= $this->veiling->betalingsWijze ?></div>
-
-                                        <div class="col s6 m6 l6">Betalen</div>
-                                        <div class="col s6 m6 l6 bold"><?= $this->veiling->betalingsInstructie ?></div>
-
-                                        <div class="col s6 m6 l6">Veiling start op</div>
-                                        <div class="col s6 m6 l6 bold"><?= S::timeDutch($this->veiling->beginDag . ' ' . $this->veiling->beginTijd) ?></div>
-
-                                        <div class="col s6 m6 l6">Veiling eindigt op</div>
-                                        <div class="col s6 m6 l6 bold"><?= S::timeDutch($this->veiling->eindDag . ' ' . $this->veiling->eindTijd) ?></div>
-
+                                <?php if (UserService::getInstance()->userLoggedIn() && UserService::getInstance()->getCurrentUser()->verificatie == '1') { ?>
+                                    <form class="col s12" method="post" action="">
+                                        <div class="row">
+                                            <div class="input-field col s6">
+                                                <i class="material-icons prefix">euro_symbol</i>
+                                                <input id="icon_prefix" type="number" value="<?= $this->veiling->getMinBod() / 100 ?>" min="<?= $this->veiling->getMinBod() / 100 ?>" name="bedrag" class="validate">
+                                                <label for="icon_prefix">Bod</label>
+                                            </div>
+                                            <div class="valign-wrapper">
+                                                <button class="btn waves-effect waves-light ali disable-on-click" type="submit"
+                                                        name="action">Bod
+                                                    plaatsen
+                                                    <i class="material-icons right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                <?php } else if (UserService::getInstance()->getCurrentUser()->verificatie == '0') { ?>
+                                    <div class="col s12">
+                                        <p class=" center flow-text light-green-text text-darken-4">Verifieer je <a
+                                                    href="<?= $baseUrl ?>profiel">account</a> om mee te bieden</p>
                                     </div>
-
-                                    <b>Verzending</b>
-                                    <div class="divider"></div>
-                                    <div class="row">
-                                        <div class="col s6 m6 l6">Verzendkosten</div>
-                                        <div class="col s6 m6 l6 bold"><?= S::euro($this->veiling->verzendKosten) ?></div>
-
-                                        <div class="col s6 m6 l6">Verzending</div>
-                                        <div class="col s6 m6 l6 bold"><?= $this->veiling->verzendInstructie ?></div>
+                                <?php } else { ?>
+                                    <div class="col s12">
+                                        <p class=" center flow-text light-green-text text-darken-4"><a
+                                                    href="<?= $baseUrl ?>login">Log in</a> om mee te bieden</p>
                                     </div>
-
-                                    <b>Plaats</b>
-                                    <div class="divider"></div>
-                                    <div class="row">
-                                        <div class="col s6 m6 l6">Land</div>
-                                        <div class="col s6 m6 l6 bold"><?= $this->veiling->land ?></div>
-
-                                        <div class="col s6 m6 l6">Plaatsnaam</div>
-                                        <div class="col s6 m6 l6 bold"><?= $this->veiling->plaatsNaam ?></div>
-
-                                        <div class="col s6 m6 l6">Postcode</div>
-                                        <div class="col s6 m6 l6 bold"><?= $this->veiling->postcode ?></div>
-                                    </div>
-                                </div>
+                                <?php } ?>
                             </div>
                         </div>
-                    </div>
-                    <div id="meer-info" class="col s12">
-                        <div class="col s12 extra-informatie">
-                            <h3>Extra-informatie</h3>
-                            <p class="left-align"><?= $this->veiling->beschrijving ?></p>
-                        </div>
-                    </div>
-                    <div id="locatie" class="col s12">
-                        <div class="col s12 locatie">
-                            <h3>Locatie</h3>
-                            <iframe width='100%' height='500px' id='mapcanvas'
-                                    src='https://maps.google.com/maps?q=<?= $this->veiling->postcode ?>+<?= $this->veiling->land ?>&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=&amp;output=embed'
-                                    frameborder='0' scrolling='no' marginheight='0' marginwidth='0'>
-                                <div style='overflow:hidden;'>
-                                    <div id='gmap_canvas' style='height:500px;width:100%;'></div>
-                                </div>
-                            </iframe>
+                        <div class="row">
+                            <div class="col l12 s12">
+                                <div class="biedingen white">
+                                    <table class="">
+                                        <thead>
+                                        <tr>
+                                            <th class="left">Gebruiker</th>
+                                            <th>Bod</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="biedingen-list">
 
-                        </div>
-                    </div>
-                    <div id="verkoper" class="col s12">
-                        <div class="col s12 verkoper">
-                            <h3>Verkoper</h3>
-                            <div class="row">
-                                <div class="col s12 m12 l12">
-                                    <b>Gebruikers informatie</b>
-                                    <div class="divider"></div>
-                                    <div class="row">
-                                        <div class="col s6 m6 l6 bold">Voornaam</div>
-                                        <div class="col s6 m6 l6">John</div>
-
-                                        <div class="col s6 m6 l6 bold">Achternaam</div>
-                                        <div class="col s6 m6 l6">Doe</div>
-
-                                        <div class="col s6 m6 l6 bold">Gebruikersnaam</div>
-                                        <div class="col s6 m6 l6">verkoper1</div>
-
-                                        <div class="col s6 m6 l6 bold">Geslacht</div>
-                                        <div class="col s6 m6 l6">Man</div>
-
-                                        <div class="col s6 m6 l6 bold">Stad</div>
-                                        <div class="col s6 m6 l6">Arnhem</div>
-
-                                        <div class="col s6 m6 l6 bold">Land</div>
-                                        <div class="col s6 m6 l6">Nederland</div>
-                                    </div>
-
-                                    <b>Contact informatie</b>
-                                    <div class="divider"></div>
-                                    <div class="row">
-                                        <div class="col s6 m6 l6 bold">Email</div>
-                                        <div class="col s6 m6 l6">johndoe@hotmail.nl</div>
-
-                                        <div class="col s6 m6 l6 bold">Telefoonnummer</div>
-                                        <div class="col s6 m6 l6">+31612345678</div>
-                                    </div>
-
-                                    <b>Reviews</b>
-                                    <div class="divider"></div>
-                                    <div class="row">
-                                        <div class="col s6 m6 l6 bold">Aantal reviews</div>
-                                        <div class="col s6 m6 l6">84</div>
-
-                                        <div class="col s6 m6 l6 bold">Gemiddelde rating</div>
-                                        <div class="col s6 m6 l6">4.1/5</div>
-                                    </div>
-                                    <button class="btn light-green">Bekijk profiel</button>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
-        <div class="col m4 s12">
-            <div class="card no-margin green lighten-5">
-                <div class="card-content">
-                    <div id="veiling-<?= $this->veiling->getIdentifier() ?>">
-                        <h3 class="center-align no-margin veiling-counter"
-                            data-id="veiling-<?= $this->veiling->getIdentifier() ?>"
-                            data-end="<?= strtotime($this->veiling->eindDag . " " . $this->veiling->eindTijd) ?>">
-                            Gesloten</h3>
+
+        <div class="row">
+            <div class="row"></div>
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s3"><a class="active light-green-text" href="#details">Details</a></li>
+                        <li class="tab col s3"><a class="light-green-text" href="#meer-info">Meer info</a></li>
+                        <li class="tab col s3"><a class="light-green-text" href="#locatie">Locatie</a></li>
+                        <li class="tab col s3"><a class="light-green-text" href="#verkoper">Verkoper</a></li>
+
+                    </ul>
+                </div>
+                <div id="details" class="col s12">
+                    <div class="col s12 details">
+                        <h3>Details</h3>
                         <div class="row">
-                            <?php if (UserService::getInstance()->userLoggedIn() && UserService::getInstance()->getCurrentUser()->verificatie == '1') { ?>
-                                <form class="col s12" method="post" action="">
-                                    <div class="row">
-                                        <div class="input-field col s6">
-                                            <i class="material-icons prefix">euro_symbol</i>
-                                            <input id="icon_prefix" type="number" value="<?= $this->veiling->getMinBod() / 100 ?>" min="<?= $this->veiling->getMinBod() / 100 ?>" name="bedrag" class="validate">
-                                            <label for="icon_prefix">Bod</label>
-                                        </div>
-                                        <div class="valign-wrapper">
-                                            <button class="btn waves-effect waves-light ali disable-on-click" type="submit"
-                                                    name="action">Bod
-                                                plaatsen
-                                                <i class="material-icons right"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            <?php } else if (UserService::getInstance()->getCurrentUser()->verificatie == '0') { ?>
-                                <div class="col s12">
-                                    <p class=" center flow-text light-green-text text-darken-4">Verifieer je <a
-                                                href="<?= $baseUrl ?>profiel">account</a> om mee te bieden</p>
+                            <div class="col s12 m12 l12">
+                                <b>Veiling informatie</b>
+                                <div class="divider"></div>
+                                <div class="row">
+                                    <div class="col s6 m6 l6">Startprijs</div>
+                                    <div class="col s6 m6 l6 bold"><?= S::euro($this->veiling->startPrijs) ?></div>
+
+                                    <div class="col s6 m6 l6">Betalingsmethode</div>
+                                    <div class="col s6 m6 l6 bold"><?= $this->veiling->betalingsWijze ?></div>
+
+                                    <div class="col s6 m6 l6">Betalen</div>
+                                    <div class="col s6 m6 l6 bold"><?= $this->veiling->betalingsInstructie ?></div>
+
+                                    <div class="col s6 m6 l6">Veiling start op</div>
+                                    <div class="col s6 m6 l6 bold"><?= S::timeDutch($this->veiling->beginDag . ' ' . $this->veiling->beginTijd) ?></div>
+
+                                    <div class="col s6 m6 l6">Veiling eindigt op</div>
+                                    <div class="col s6 m6 l6 bold"><?= S::timeDutch($this->veiling->eindDag . ' ' . $this->veiling->eindTijd) ?></div>
+
                                 </div>
-                            <?php } else { ?>
-                                <div class="col s12">
-                                    <p class=" center flow-text light-green-text text-darken-4"><a
-                                                href="<?= $baseUrl ?>login">Log in</a> om mee te bieden</p>
+
+                                <b>Verzending</b>
+                                <div class="divider"></div>
+                                <div class="row">
+                                    <div class="col s6 m6 l6">Verzendkosten</div>
+                                    <div class="col s6 m6 l6 bold"><?= S::euro($this->veiling->verzendKosten) ?></div>
+
+                                    <div class="col s6 m6 l6">Verzending</div>
+                                    <div class="col s6 m6 l6 bold"><?= $this->veiling->verzendInstructie ?></div>
                                 </div>
-                            <?php } ?>
+
+                                <b>Plaats</b>
+                                <div class="divider"></div>
+                                <div class="row">
+                                    <div class="col s6 m6 l6">Land</div>
+                                    <div class="col s6 m6 l6 bold"><?= $this->veiling->land ?></div>
+
+                                    <div class="col s6 m6 l6">Plaatsnaam</div>
+                                    <div class="col s6 m6 l6 bold"><?= $this->veiling->plaatsNaam ?></div>
+
+                                    <div class="col s6 m6 l6">Postcode</div>
+                                    <div class="col s6 m6 l6 bold"><?= $this->veiling->postcode ?></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col l12 s12">
-                            <div class="biedingen white">
-                                <table class="">
-                                    <thead>
-                                    <tr>
-                                        <th class="left">Gebruiker</th>
-                                        <th>Bod</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="biedingen-list">
+                </div>
+                <div id="meer-info" class="col s12">
+                    <div class="col s12 extra-informatie">
+                        <h3>Extra-informatie</h3>
+                        <p class="left-align"><?= $this->veiling->beschrijving ?></p>
+                    </div>
+                </div>
+                <div id="locatie" class="col s12">
+                    <div class="col s12 locatie">
+                        <h3>Locatie</h3>
+                        <iframe width='100%' height='500px' id='mapcanvas'
+                                src='https://maps.google.com/maps?q=<?= $this->veiling->postcode ?>+<?= $this->veiling->land ?>&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=&amp;output=embed'
+                                frameborder='0' scrolling='no' marginheight='0' marginwidth='0'>
+                            <div style='overflow:hidden;'>
+                                <div id='gmap_canvas' style='height:500px;width:100%;'></div>
+                            </div>
+                        </iframe>
 
-                                    </tbody>
-                                </table>
+                    </div>
+                </div>
+                <div id="verkoper" class="col s12">
+                    <div class="col s12 verkoper">
+                        <h3>Verkoper</h3>
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <b>Gebruikers informatie</b>
+                                <div class="divider"></div>
+                                <div class="row">
+                                    <div class="col s6 m6 l6 bold">Voornaam</div>
+                                    <div class="col s6 m6 l6">John</div>
+
+                                    <div class="col s6 m6 l6 bold">Achternaam</div>
+                                    <div class="col s6 m6 l6">Doe</div>
+
+                                    <div class="col s6 m6 l6 bold">Gebruikersnaam</div>
+                                    <div class="col s6 m6 l6">verkoper1</div>
+
+                                    <div class="col s6 m6 l6 bold">Geslacht</div>
+                                    <div class="col s6 m6 l6">Man</div>
+
+                                    <div class="col s6 m6 l6 bold">Stad</div>
+                                    <div class="col s6 m6 l6">Arnhem</div>
+
+                                    <div class="col s6 m6 l6 bold">Land</div>
+                                    <div class="col s6 m6 l6">Nederland</div>
+                                </div>
+
+                                <b>Contact informatie</b>
+                                <div class="divider"></div>
+                                <div class="row">
+                                    <div class="col s6 m6 l6 bold">Email</div>
+                                    <div class="col s6 m6 l6">johndoe@hotmail.nl</div>
+
+                                    <div class="col s6 m6 l6 bold">Telefoonnummer</div>
+                                    <div class="col s6 m6 l6">+31612345678</div>
+                                </div>
+
+                                <b>Reviews</b>
+                                <div class="divider"></div>
+                                <div class="row">
+                                    <div class="col s6 m6 l6 bold">Aantal reviews</div>
+                                    <div class="col s6 m6 l6">84</div>
+
+                                    <div class="col s6 m6 l6 bold">Gemiddelde rating</div>
+                                    <div class="col s6 m6 l6">4.1/5</div>
+                                </div>
+                                <button class="btn light-green">Bekijk profiel</button>
                             </div>
                         </div>
                     </div>
