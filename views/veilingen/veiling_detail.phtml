@@ -209,10 +209,10 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
                                 <div class="divider"></div>
                                 <div class="row">
                                     <div class="col s6 m6 l6 bold">Aantal reviews</div>
-                                    <div class="col s6 m6 l6">84</div>
+                                    <div class="col s6 m6 l6"><?= $this->feedback['reviews'] ?></div>
 
                                     <div class="col s6 m6 l6 bold">Gemiddelde rating</div>
-                                    <div class="col s6 m6 l6">4.1/5</div>
+                                    <div class="col s6 m6 l6"><?= $this->feedback['rating'] ?>/10</div>
                                 </div>
                                 <button class="btn light-green">Bekijk profiel</button>
                             </div>
