@@ -13,6 +13,7 @@ use EenmaalAndermaal\Route\Route;
 use EenmaalAndermaal\Route\Router;
 use EenmaalAndermaal\Services\MailService;
 use EenmaalAndermaal\Services\UserService;
+use EenmaalAndermaal\Util\Debug;
 use EenmaalAndermaal\View\VeilingDetailView;
 
 class VeilingController implements Controller {
@@ -22,7 +23,11 @@ class VeilingController implements Controller {
         $router->addRoute(new Route("veiling/{id}", RequestMethod::GET(), function (Request $request) {
             $v = new VeilingModel();
             $v->getOne($request->getVar("id"));
-            return (new VeilingDetailView($v))->render();
+            $view = new VeilingDetailView($v);
+            $r = new ApiRequest("verkoper/{$v->verkoper}/feedback", RequestMethod::GET());
+            $r->connect();
+            $view->feedback = $r->getResult()[0];
+            return ($view)->render();
         }));
 
         $router->addRoute(new Route("veiling/{id}", RequestMethod::POST(), function (Request $request) {
