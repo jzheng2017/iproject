@@ -31,7 +31,7 @@ $baseUrl = App::getApp()->getConfig()->get('website.url');
         <li>
             <div class="divider"></div>
         </li>
-        <?php if (!UserService::getInstance()->userLoggedIn()) { ?>
+        <?php if (UserService::getInstance()->userLoggedIn()) { ?>
             <li><a href="<?= $baseUrl ?>uitloggen" class="top-link"><i class="material-icons">backspace</i>Uitloggen</a></li>
             <li><a href="<?= $baseUrl ?>profiel"><i class="Small material-icons left">account_circle</i>Mijn Profiel</a>
         <?php } else { ?>
