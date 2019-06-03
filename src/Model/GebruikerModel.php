@@ -81,6 +81,14 @@ class GebruikerModel extends Model
         return $r->getResult()['result'];
     }
 
+    private function containsSpecialChars($string){
+        if (preg_match('/[^a-z0-9 _]+/i', $string))
+        {
+           return true;
+        }
+        return false;
+    }
+
     private function emailExists()
     {
         $r = new ApiRequest("gebruikers/email/{$this->email}/exists", RequestMethod::GET());
@@ -124,10 +132,25 @@ class GebruikerModel extends Model
 
         if (empty($this->plaatsnaam)) {
             $errors[] = "Geen plaatsnaam ingevoerd";
+        }else if ($this->containsSpecialChars($this->plaatsnaam)){
+            $errors[] = "Plaatsnaam mag geen speciale karakters bevatten";
+        }
+
+        if (empty($this->postcode)){
+            $errors[] = "Geen postcode ingevoerd";
+        }else if($this->containsSpecialChars($this->postcode)){
+            $errors[] = "Postcode mag geen speciale karakters bevatten";
         }
 
         if (empty(($this->adres))) {
             $errors[] = "Geen adres ingevoerd";
+        }
+        else if($this->containsSpecialChars($this->adres)){
+            $errors[] = "Adres mag geen speciale karakters bevatten";
+        }
+
+        if ($this->containsSpecialChars($this->adresAanvulling)){
+            $errors[] = "Adres aanvulling mag geen speciale karakters bevatten";
         }
 
         if (empty($this->telefoonnummer)) {
