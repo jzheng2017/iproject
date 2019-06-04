@@ -44,6 +44,7 @@ class ApiRequest
             $header[] = 'Username:' . UserService::getInstance()->getCurrentUsername();
         }
         curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
         $result = curl_exec($curl);
         if (curl_getinfo($curl, CURLINFO_HTTP_CODE) == 200) {
