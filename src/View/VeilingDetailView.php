@@ -11,6 +11,8 @@ class VeilingDetailView extends View
     public $veiling;
     public $collection;
     public $feedback;
+    public $userFeedback;
+
     public function __construct(VeilingModel $veiling)
     {
         parent::__construct("veilingen/veiling_detail");

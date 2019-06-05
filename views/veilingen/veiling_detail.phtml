@@ -25,65 +25,67 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
 
             </div>
             <div class="col l4 m6 s12">
-                <div class="card no-margin green lighten-5">
-                    <div class="card-content">
-                        <div id="veiling-<?= $this->veiling->getIdentifier() ?>">
-                            <h3 class="center-align no-margin veiling-counter"
-                                data-id="veiling-<?= $this->veiling->getIdentifier() ?>"
-                                data-end="<?= strtotime($this->veiling->eindDag . " " . $this->veiling->eindTijd) ?>">
-                                Gesloten</h3>
-                            <div class="row">
-                                <?php if (UserService::getInstance()->userLoggedIn() && UserService::getInstance()->getCurrentUser()->verificatie == '1') { ?>
-                                    <form class="col s12" method="post" action="">
-                                        <div class="row">
-                                            <div class="input-field col s6">
-                                                <i class="material-icons prefix">euro_symbol</i>
-                                                <input id="icon_prefix" type="number" value="<?= $this->veiling->getMinBod() / 100 ?>" min="<?= $this->veiling->getMinBod() / 100 ?>" name="bedrag" class="validate">
-                                                <label for="icon_prefix">Bod</label>
+                    <div class="card no-margin green lighten-5">
+                        <div class="card-content">
+                            <div id="veiling-<?= $this->veiling->getIdentifier() ?>">
+                                <h3 class="center-align no-margin veiling-counter"
+                                    data-id="veiling-<?= $this->veiling->getIdentifier() ?>"
+                                    data-end="<?= strtotime($this->veiling->eindDag . " " . $this->veiling->eindTijd) ?>">
+                                    Gesloten</h3>
+                                <div class="row">
+                                    <?php if (UserService::getInstance()->userLoggedIn() && UserService::getInstance()->getCurrentUser()->verificatie == '1') { ?>
+                                        <form class="col s12" method="post" action="">
+                                            <div class="row">
+                                                <div class="input-field col s6">
+                                                    <i class="material-icons prefix">euro_symbol</i>
+                                                    <input id="icon_prefix" type="number" value="<?= $this->veiling->getMinBod() / 100 ?>" min="<?= $this->veiling->getMinBod() / 100 ?>" name="bedrag" class="validate">
+                                                    <label for="icon_prefix">Bod</label>
+                                                </div>
+                                                <div class="valign-wrapper">
+                                                    <button class="btn waves-effect waves-light ali disable-on-click" type="submit"
+                                                            name="action">Bod
+                                                        plaatsen
+                                                        <i class="material-icons right"></i>
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <div class="valign-wrapper">
-                                                <button class="btn waves-effect waves-light ali disable-on-click" type="submit"
-                                                        name="action">Bod
-                                                    plaatsen
-                                                    <i class="material-icons right"></i>
-                                                </button>
-                                            </div>
+                                        </form>
+                                    <?php } else if (UserService::getInstance()->getCurrentUser()->verificatie == '0') { ?>
+                                        <div class="col s12">
+                                            <p class=" center flow-text light-green-text text-darken-4">Verifieer je <a
+                                                        href="<?= $baseUrl ?>profiel">account</a> om mee te bieden</p>
                                         </div>
-                                    </form>
-                                <?php } else if (UserService::getInstance()->getCurrentUser()->verificatie == '0') { ?>
-                                    <div class="col s12">
-                                        <p class=" center flow-text light-green-text text-darken-4">Verifieer je <a
-                                                    href="<?= $baseUrl ?>profiel">account</a> om mee te bieden</p>
-                                    </div>
-                                <?php } else { ?>
-                                    <div class="col s12">
-                                        <p class=" center flow-text light-green-text text-darken-4"><a
-                                                    href="<?= $baseUrl ?>login">Log in</a> om mee te bieden</p>
-                                    </div>
-                                <?php } ?>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col l12 s12">
-                                <div class="biedingen white">
-                                    <table class="">
-                                        <thead>
-                                        <tr>
-                                            <th class="left">Gebruiker</th>
-                                            <th>Bod</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="biedingen-list">
-
-                                        </tbody>
-                                    </table>
+                                    <?php } else { ?>
+                                        <div class="col s12">
+                                            <p class=" center flow-text light-green-text text-darken-4"><a
+                                                        href="<?= $baseUrl ?>login">Log in</a> om mee te bieden</p>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col l12 s12">
+                                    <div class="biedingen white">
+                                        <table class="">
+                                            <thead>
+                                            <tr>
+                                                <th class="left">Gebruiker</th>
+                                                <th>Bod</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="biedingen-list">
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php if (($this->veiling->gesloten) && ($this->veiling->koper == UserService::getInstance()->getCurrentUser()->getIdentifier())){?>
+                            <a class="btn light-green" href="<?= $baseUrl ?>feedback/<?= $this->veiling->nummer?>">Geef feedback op de verkoper</a>
+                            <?php }?>
                         </div>
                     </div>
-                </div>
             </div>
-
         </div>
 
         <div class="row">

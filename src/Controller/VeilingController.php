@@ -2,6 +2,7 @@
 namespace EenmaalAndermaal\Controller;
 
 use EenmaalAndermaal\App;
+use EenmaalAndermaal\Model\FeedbackModel;
 use EenmaalAndermaal\Model\GebruikerModel;
 use EenmaalAndermaal\Model\VeilingModel;
 use EenmaalAndermaal\Model\VeilingModelCollection;
