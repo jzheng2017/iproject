@@ -1,5 +1,6 @@
 <?php
 
+use EenmaalAndermaal\Controller\FeedbackController;
 use EenmaalAndermaal\Controller\GebruikersController;
 use EenmaalAndermaal\Controller\IndexController;
 use EenmaalAndermaal\Controller\LoginController;
@@ -21,6 +22,7 @@ return [
             UserController::class,
             LoginController::class,
             LegalController::class,
+            FeedbackController::class
         ],
     ],
     "production" => [
