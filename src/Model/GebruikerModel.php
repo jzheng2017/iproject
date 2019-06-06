@@ -116,14 +116,23 @@ class GebruikerModel extends Model
         if (empty($this->voornaam)) {
             $errors[] = "Geen voornaam ingevoerd";
         }
+        if ($this->containsSpecialChars($this->voornaam)){
+            $errors[] = "Voornaam mag geen speciale tekens bevatten";
+        }
         if (empty($this->achternaam)) {
             $errors[] = "Geen achternaam ingevoerd";
+        }
+        if ($this->containsSpecialChars($this->achternaam)){
+            $errors[] = "Achternaam mag geen speciale tekens bevatten";
         }
 
         if (empty($this->gebruikersnaam)) {
             $errors[] = "Geen gebruikersnaam gekozen";
         } else if ($this->gebruikerExists()) {
             $errors[] = "Gebruikersnaam bestaat al";
+        }
+        if ($this->containsSpecialChars($this->gebruikersnaam)){
+            $errors[] = "Gebruikersnaam mag geen speciale tekens bevatten";
         }
 
         if (empty($this->land)) {
@@ -155,6 +164,9 @@ class GebruikerModel extends Model
 
         if (empty($this->telefoonnummer)) {
             $errors[] = "Geen telefoonnummer ingevoerd";
+        }
+        if ($this->containsSpecialChars($this->telefoonnummer)){
+            $errors[] = "Telefoonummer mag geen speciale karakters bevatten";
         }
 
         if ($this->email !== $this->email2) {
