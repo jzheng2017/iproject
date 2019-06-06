@@ -105,7 +105,7 @@
                 <div class="row">
                     <div class="input-field hoverable col m6 s12">
                         <i class="material-icons prefix">home</i>
-                        <input id="adresaanvulling" type="text" name="adresaanvulling" class="validate"
+                        <input id="adresaanvulling" type="text" name="adresAanvulling" class="validate"
                                value="<?= isset($this->fields['adresaanvulling']) ? $this->fields['adresaanvulling'] : "" ?>">
                         <label for="adresaanvulling">Adres aanvulling</label>
                     </div>
@@ -171,8 +171,10 @@
                     <div class="col m12 s12">
                         <p>
                             <label>
-                                <input type="checkbox" class="filled-in" checked="checked"/>
-                                <span>Ik accepteer de voorwaarden van de overeenkomst</span>
+                                <input type="checkbox" required class="validate filled-in" id="TOS"/>
+                                <span>Ik accepteer de <a class="top-link modal-trigger" data-target="terms"
+                                                         href="#terms">voorwaarden van de overeenkomst</a></span>
+
                             </label>
                         </p>
                         <p>
@@ -191,6 +193,15 @@
                 </div>
             </form>
         </div>
+    </div>
+</div>
+<div id="terms" class="modal">
+    <div class="modal-content">
+        <h4>Voorwaarden van de overeenkomst</h4>
+        <p id="TOStext"></p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" id="agree" class="modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
 </div>
 
