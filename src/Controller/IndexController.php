@@ -7,6 +7,7 @@ use EenmaalAndermaal\Request\Request;
 use EenmaalAndermaal\Request\RequestMethod;
 use EenmaalAndermaal\Route\Route;
 use EenmaalAndermaal\Route\Router;
+use EenmaalAndermaal\Services\LoggingService;
 use EenmaalAndermaal\Services\MailService;
 use EenmaalAndermaal\View\View;
 
@@ -15,6 +16,7 @@ class IndexController implements Controller {
     public function registerRoutes(Router &$router)
     {
         $router->addRoute(new Route("", RequestMethod::GET(), function() {
+            LoggingService::log("/");
             $view = new View("homepage/homepage");
             $view->homepage = true;
             $collection = new VeilingModelCollection();

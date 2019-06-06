@@ -10,6 +10,7 @@ use EenmaalAndermaal\Request\Request;
 use EenmaalAndermaal\Request\RequestMethod;
 use EenmaalAndermaal\Route\Route;
 use EenmaalAndermaal\Services\GetService;
+use EenmaalAndermaal\Services\LoggingService;
 use EenmaalAndermaal\Services\ZipcodeService;
 use EenmaalAndermaal\Util\Debug;
 use EenmaalAndermaal\View\ZoekResultaatView;
@@ -42,6 +43,9 @@ class ZoekResultaatController implements Controller
             if ($get->getVar("postcode")) {
                 list($params['lat'], $params['long']) = ZipcodeService::getLatLong($get->getVar("postcode"));
             }
+            LoggingService::log("/zoekresultaat", [
+                "params" => $params
+            ]);
             $view->zoekresultaat->search($params);
             return $view->render();
         }));
