@@ -1,4 +1,5 @@
 <?php
+
 namespace EenmaalAndermaal\Controller;
 
 use EenmaalAndermaal\App;
@@ -11,16 +12,19 @@ use EenmaalAndermaal\Request\RequestMethod;
 use EenmaalAndermaal\Request\Response;
 use EenmaalAndermaal\Route\Route;
 use EenmaalAndermaal\Route\Router;
+use EenmaalAndermaal\Services\LoggingService;
 use EenmaalAndermaal\Services\MailService;
 use EenmaalAndermaal\Services\UserService;
 use EenmaalAndermaal\Util\Debug;
 use EenmaalAndermaal\View\VeilingDetailView;
 
-class VeilingController implements Controller {
+class VeilingController implements Controller
+{
 
     public function registerRoutes(Router &$router)
     {
-        $router->addRoute(new Route("veiling/{id}", RequestMethod::GET(), function (Request $request) {
+        $router->addRoute(new Route("/veiling/{id}", RequestMethod::GET(), function (Request $request) {
+            LoggingService::log("veiling/" . $request->getVar("id"));
             $v = new VeilingModel();
             $v->getOne($request->getVar("id"));
             $view = new VeilingDetailView($v);
@@ -30,19 +34,23 @@ class VeilingController implements Controller {
             return ($view)->render();
         }));
 
-        $router->addRoute(new Route("veiling/{id}", RequestMethod::POST(), function (Request $request) {
+        $router->addRoute(new Route("/veiling/{id}", RequestMethod::POST(), function (Request $request) {
             if (UserService::getInstance()->userLoggedIn()) {
                 $apiRequest = new ApiRequest("veilingen/" . $request->getVar("id") . "/biedingen", RequestMethod::POST());
-                if (!$apiRequest->connect([
+                $data = [
                     "bedrag" => $_POST['bedrag'] * 100,
                     "gebruiker" => UserService::getInstance()->getCurrentUser()->getIdentifier()
-                ])) {
+                ];
+                if (!$apiRequest->connect($data)) {
                     die(new Response(500, "Server error", [
                         $apiRequest->getError()
                     ]));
                 }
+                LoggingService::log("/veiling/" . $request->getVar("id"), [
+                    "bod" => $data
+                ]);
             }
-            header("Location: " . App::getApp()->getConfig()->get("website.url") . "veiling/" . $request->getVar("id") );
+            header("Location: " . App::getApp()->getConfig()->get("website.url") . "veiling/" . $request->getVar("id"));
             die();
         }));
 
@@ -62,7 +70,7 @@ class VeilingController implements Controller {
                     $mail->addVar('titel', $value->titel);
                     $mail->addVar('id', $value->getIdentifier());
                     if ($mail->sendMail($g->email, 'Veiling gewonnen!')) {
-                       $gesloten++;
+                        $gesloten++;
                     }
                 }
 

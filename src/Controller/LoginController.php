@@ -11,6 +11,7 @@ use EenmaalAndermaal\Request\Request;
 use EenmaalAndermaal\Request\RequestMethod;
 use EenmaalAndermaal\Route\Route;
 use EenmaalAndermaal\Route\Router;
+use EenmaalAndermaal\Services\LoggingService;
 use EenmaalAndermaal\Services\MailService;
 use EenmaalAndermaal\Services\SessionService;
 use EenmaalAndermaal\Services\UserService;
@@ -24,11 +25,13 @@ class LoginController implements Controller
     public function registerRoutes(Router &$router)
     {
         $router->addRoute(new Route("login", RequestMethod::GET(), function (Request $request) {
+            LoggingService::log("/login");
             $view = new View("login/Login");
             return $view->render();
         }));
 
         $router->addRoute(new Route("uitloggen", RequestMethod::GET(), function () {
+            LoggingService::log("/logout");
             UserService::getInstance()->logout();
             header("Location: " . App::getApp()->getConfig()->get("website.url"));
         }));
@@ -45,14 +48,23 @@ class LoginController implements Controller
                     if ($r->connect(['password' => $wachtwoord])) {
                         $result = $r->getResult();
                         if (isset($result['login']) && $result['login']) {
+                            LoggingService::log("login", [
+                                "login" => true,
+                                "user" => $gebruikersnaam
+                            ]);
                             SessionService::getInstance()->set("userId", $gebruikersnaam);
                             header("Location: " . App::getApp()->getConfig()->get("website.url"));
+                            die();
                         } else {
                             $view->error = 'Wachtwoord en gebruikersnaam combinatie klopt niet';
                         }
                     } else {
                         $view->error = 'Wachtwoord en gebruikersnaam combinatie klopt niet';
                     }
+                    LoggingService::log("/login", [
+                        "login" => false,
+                        "user" => $gebruikersnaam
+                    ]);
                 } else {
                     $view->error = "Geen wachtwoord gevonden";
                 }

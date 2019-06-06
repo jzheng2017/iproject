@@ -10,6 +10,7 @@ use EenmaalAndermaal\Request\RequestMethod;
 use EenmaalAndermaal\Request\Response;
 use EenmaalAndermaal\Route\Route;
 use EenmaalAndermaal\Route\Router;
+use EenmaalAndermaal\Services\LoggingService;
 use EenmaalAndermaal\Services\SessionService;
 use EenmaalAndermaal\Services\UserService;
 use EenmaalAndermaal\View\ProfileView;
@@ -21,24 +22,28 @@ class UserController implements Controller
     public function registerRoutes(Router &$router)
     {
         $router->addRoute(new Route("profiel", RequestMethod::GET(), function () {
+            LoggingService::log("profiel");
             $view = new ProfileView("user/profile");
             $view->homepage = false;
             return $view->render();
         }));
 
         $router->addRoute(new Route("wachtwoord-vergeten", RequestMethod::GET(), function () {
-          $view = new View("user/forgotpassword");
-          $view->homepage = false;
-          return $view->render();
+            LoggingService::log("wachtwoord-vergeten");
+            $view = new View("user/forgotpassword");
+            $view->homepage = false;
+            return $view->render();
         }));
 
-        $router->addRoute(new Route("wachtwoord-reset",RequestMethod::GET(),function () {
+        $router->addRoute(new Route("wachtwoord-reset", RequestMethod::GET(), function () {
+            LoggingService::log("wachtwoord-reset");
             $view = new View("user/newpassword");
             $view->homepage = false;
             return $view->render();
         }));
 
-        $router->addRoute(new Route("verwijderAVG", RequestMethod::GET(), function() {
+        $router->addRoute(new Route("verwijderAVG", RequestMethod::GET(), function () {
+            LoggingService::log("verwijderAVG");
             if (UserService::getInstance()->userLoggedIn()) {
                 return new View("user/avg_delete");
             }
@@ -46,15 +51,23 @@ class UserController implements Controller
             die();
         }));
 
-        $router->addRoute(new Route("verwijderAVG", RequestMethod::POST(), function() {
+
+        $router->addRoute(new Route("verwijderAVG", RequestMethod::POST(), function () {
             if (UserService::getInstance()->userLoggedIn()) {
                 UserService::getInstance()->logout();
                 $gebruikersnaam = UserService::getInstance()->getCurrentUser()->gebruikersnaam;
                 $r = new ApiRequest("gebruikers/{$gebruikersnaam}/delete", RequestMethod::POST());
                 if ($r->connect()) {
+                    LoggingService::log("/verwijderAVG", [
+                        "delete" => true
+                    ]);
+                    UserService::getInstance()->logout();
                     header("Location: " . App::getApp()->getConfig()->get("website.url"));
                     die();
                 } else {
+                    LoggingService::log("/verwijderAVG", [
+                        "delete" => false
+                    ]);
                     return new Response(500, "Server error", $r->getError());
                 }
             }
