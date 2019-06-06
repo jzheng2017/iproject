@@ -25,7 +25,7 @@ class VerificatieController implements Controller
             if ($r->connect()) {
                 $view->bestaat = isset($r->getResult()['affected']);
             }
-            LoggingService::log("/profiel/{$view->naam}/confirm/{$token}", [
+            LoggingService::log("GET /profiel/{$view->naam}/confirm/{$token}", [
                 "success" => $view->bestaat
             ]);
             return $view->render();

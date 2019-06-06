@@ -16,7 +16,7 @@ class IndexController implements Controller {
     public function registerRoutes(Router &$router)
     {
         $router->addRoute(new Route("", RequestMethod::GET(), function() {
-            LoggingService::log("/");
+            LoggingService::log("GET /");
             $view = new View("homepage/homepage");
             $view->homepage = true;
             $collection = new VeilingModelCollection();

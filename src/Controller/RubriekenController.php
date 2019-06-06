@@ -41,7 +41,7 @@ class RubriekenController implements Controller
             if ($get->getVar("postcode")) {
                 list($params['lat'], $params['long']) = ZipcodeService::getLatLong($get->getVar("postcode"));
             }
-            LoggingService::log("/rubrieken/" . $request->getVar("id"), $params);
+            LoggingService::log("GET /rubrieken/" . $request->getVar("id"), $params);
             $view->collection->getByTopParent($request->getVar("id"), $params);
             $view->breadCrumbComponent = new BreadcrumbComponent([
                 [
@@ -76,7 +76,7 @@ class RubriekenController implements Controller
             if ($get->getVar("postcode")) {
                 list($params['lat'], $params['long']) = ZipcodeService::getLatLong($get->getVar("postcode"));
             }
-            LoggingService::log("/rubrieken/" . $request->getVar("id") . "/" . $request->getVar("naam") . "/" . $request->getVar("sub"), $params);
+            LoggingService::log("GET /rubrieken/" . $request->getVar("id") . "/" . $request->getVar("naam") . "/" . $request->getVar("sub"), $params);
             $view->collection->getByParent($view->activeId, $params);
             $view->breadCrumbComponent = new BreadcrumbComponent([
                 [

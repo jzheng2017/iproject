@@ -12,7 +12,7 @@ class LegalController implements Controller {
     public function registerRoutes(Router &$router)
     {
         $router->addRoute(new Route("privacyverklaring", RequestMethod::GET(), function() {
-            LoggingService::log("/privacyverklaring");
+            LoggingService::log("GET /privacyverklaring");
             $view = new View("wetgeving\PrivacyVerklaring");
             return $view->render();
         }));

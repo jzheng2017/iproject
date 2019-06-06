@@ -24,7 +24,7 @@ class VeilingController implements Controller
     public function registerRoutes(Router &$router)
     {
         $router->addRoute(new Route("veiling/{id}", RequestMethod::GET(), function (Request $request) {
-            LoggingService::log("/veiling/" . $request->getVar("id"));
+            LoggingService::log("GET /veiling/" . $request->getVar("id"));
             $v = new VeilingModel();
             $v->getOne($request->getVar("id"));
             $view = new VeilingDetailView($v);
@@ -46,7 +46,7 @@ class VeilingController implements Controller
                         $apiRequest->getError()
                     ]));
                 }
-                LoggingService::log("/veiling/" . $request->getVar("id"), [
+                LoggingService::log("POST /veiling/" . $request->getVar("id"), [
                     "bod" => $data
                 ]);
             }
