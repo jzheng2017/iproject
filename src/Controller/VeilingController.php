@@ -23,8 +23,8 @@ class VeilingController implements Controller
 
     public function registerRoutes(Router &$router)
     {
-        $router->addRoute(new Route("/veiling/{id}", RequestMethod::GET(), function (Request $request) {
-            LoggingService::log("veiling/" . $request->getVar("id"));
+        $router->addRoute(new Route("veiling/{id}", RequestMethod::GET(), function (Request $request) {
+            LoggingService::log("/veiling/" . $request->getVar("id"));
             $v = new VeilingModel();
             $v->getOne($request->getVar("id"));
             $view = new VeilingDetailView($v);
@@ -34,9 +34,9 @@ class VeilingController implements Controller
             return ($view)->render();
         }));
 
-        $router->addRoute(new Route("/veiling/{id}", RequestMethod::POST(), function (Request $request) {
+        $router->addRoute(new Route("veiling/{id}", RequestMethod::POST(), function (Request $request) {
             if (UserService::getInstance()->userLoggedIn()) {
-                $apiRequest = new ApiRequest("veilingen/" . $request->getVar("id") . "/biedingen", RequestMethod::POST());
+                $apiRequest = new ApiRequest("/veilingen/" . $request->getVar("id") . "/biedingen", RequestMethod::POST());
                 $data = [
                     "bedrag" => $_POST['bedrag'] * 100,
                     "gebruiker" => UserService::getInstance()->getCurrentUser()->getIdentifier()
