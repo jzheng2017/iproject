@@ -43,7 +43,7 @@ class ZoekResultaatController implements Controller
             if ($get->getVar("postcode")) {
                 list($params['lat'], $params['long']) = ZipcodeService::getLatLong($get->getVar("postcode"));
             }
-            LoggingService::log("/zoekresultaat", [
+            LoggingService::log("GET /zoekresultaat", [
                 "params" => $params
             ]);
             $view->zoekresultaat->search($params);

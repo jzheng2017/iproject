@@ -25,13 +25,13 @@ class LoginController implements Controller
     public function registerRoutes(Router &$router)
     {
         $router->addRoute(new Route("login", RequestMethod::GET(), function (Request $request) {
-            LoggingService::log("/login");
+            LoggingService::log("GET /login");
             $view = new View("login/Login");
             return $view->render();
         }));
 
         $router->addRoute(new Route("uitloggen", RequestMethod::GET(), function () {
-            LoggingService::log("/logout");
+            LoggingService::log("GET /logout");
             UserService::getInstance()->logout();
             header("Location: " . App::getApp()->getConfig()->get("website.url"));
         }));
@@ -48,11 +48,11 @@ class LoginController implements Controller
                     if ($r->connect(['password' => $wachtwoord])) {
                         $result = $r->getResult();
                         if (isset($result['login']) && $result['login']) {
-                            LoggingService::log("login", [
+                            SessionService::getInstance()->set("userId", $gebruikersnaam);
+                            LoggingService::log("POST /login", [
                                 "login" => true,
                                 "user" => $gebruikersnaam
                             ]);
-                            SessionService::getInstance()->set("userId", $gebruikersnaam);
                             header("Location: " . App::getApp()->getConfig()->get("website.url"));
                             die();
                         } else {
@@ -61,7 +61,7 @@ class LoginController implements Controller
                     } else {
                         $view->error = 'Wachtwoord en gebruikersnaam combinatie klopt niet';
                     }
-                    LoggingService::log("/login", [
+                    LoggingService::log("POST /login", [
                         "login" => false,
                         "user" => $gebruikersnaam
                     ]);
