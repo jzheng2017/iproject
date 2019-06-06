@@ -1,5 +1,7 @@
 <?php
 
+use API\Controller\TestController;
+use EenmaalAndermaal\Controller\FeedbackController;
 use EenmaalAndermaal\Controller\GebruikersController;
 use EenmaalAndermaal\Controller\IndexController;
 use EenmaalAndermaal\Controller\LoginController;
@@ -20,7 +22,7 @@ return [
             VerificatieController::class,
             UserController::class,
             LoginController::class,
-            LegalController::class,
+            LegalController::class
         ],
     ],
     "production" => [

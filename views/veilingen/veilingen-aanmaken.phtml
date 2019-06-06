@@ -1,0 +1,264 @@
+<?php use EenmaalAndermaal\Services\UserService;
+
+/** @var $this \EenmaalAndermaal\View\CreateVeilingView */
+if (UserService::getInstance()->getCurrentUser()->permissie > 1) {
+    ?>
+    <?php if ($this->success) { ?>
+        <div class="container">
+            <div class="card light-green lighten-2">
+                <div class="card-content">
+                    <span class="card-title">Succesvol</span>
+                    <p>Uw veiling is succesvol opgeslagen!</p>
+                </div>
+            </div>
+            <h2>Veiling gegevens</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Veld</th>
+                    <th>Uw invoer</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($this->fields as $key => $value) { ?>
+                    <tr>
+                        <td><?= $key ?></td>
+                        <?php if ($key == "betalingsWijze" || $key == "parent") {
+                            $fullValue = "";
+                            ?>
+                            <?php foreach ($value as $v) {
+                                $fullValue .= $v . ", ";
+                                ?>
+
+                            <?php } ?>
+                            <td><?= $fullValue ?></td>
+                        <?php } else { ?>
+                            <td><?= $value ?></td>
+                        <?php } ?>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    <?php } else { ?>
+        <div class="container">
+            <h1>Maak een veiling aan</h1>
+            <?php if (count($this->errors)) { ?>
+                <div class="row">
+                    <div class="col s12 m6 l4">
+                        <div class="card red lighten-1">
+                            <div class="card-content">
+                                <span class="card-title">Er is iets fout gegaan</span>
+                                <ul>
+                                    <?php foreach ($this->errors as $error) { ?>
+                                        <li><?= $error ?></li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php }
+            ?>
+            <div class="row">
+                <form method="post" class="col s12" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="Voer een titel voor de veiling in" id="titel" name="titel" type="text"
+                                   class="validate"
+                                   value="<?= isset($this->fields['titel']) ? $this->fields['titel'] : "" ?>"
+                                   required>
+                            <label for="titel">Veiling titel</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="file-field input-field col s12 m6 l6">
+                            <div class="btn light-green">
+                                <span>File</span>
+                                <input type="file" name="thumbnail" required>
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text"
+                                       placeholder="Upload een thumbnail (max 5 MB, max 1 afbeelding)">
+                            </div>
+                        </div>
+                        <div class="file-field input-field col s12 m6 l6">
+                            <div class="btn light-green">
+                                <span>File</span>
+                                <input type="file" name="images[]" multiple required>
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text"
+                                       placeholder="Upload een of meerdere afbeeldingen (max 5 MB per afbeelding, max 4 afbeeldingen)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="input-field col s12 m6 l6">
+                    <textarea id="beschrijvingKort" name="beschrijvingKort" class="validate materialize-textarea"
+                              rows="50" maxlength="255"
+                              required><?= isset($this->fields['beschrijvingKort']) ? $this->fields['beschrijvingKort'] : "" ?></textarea>
+                            <label for="beschrijvingKort">Product korte beschrijving</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                    <textarea id="beschrijving" name="beschrijving" class="validate materialize-textarea" rows="50"
+                              required><?= isset($this->fields['beschrijving']) ? $this->fields['beschrijving'] : "" ?></textarea>
+                            <label for="beschrijving">Product beschrijving</label>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <select id="betalingsWijze" name="betalingsWijze[]" multiple required>
+                                <option value="" disabled>Kies een betalingsmethode</option>
+                                <option value="bank">Bank/Giro</option>
+                                <option value="contant">Contant</option>
+                                <option value="anders">Anders</option>
+
+                            </select>
+                            <label for="betalingsWijze">Betalingsmethode</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <input type="text" id="betalingsInstructie" name="betalingsInstructie"
+                                   value="<?= isset($this->fields['betalingsInstructie']) ? $this->fields['betalingsInstructie'] : "" ?>"
+                                   placeholder="Vul in betalingsInstructie">
+                            <label for="betalingsInstructie">Betalingsinstructie</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <input type="text" id="verzendInstructie" name="verzendInstructie"
+                                   value="<?= isset($this->fields['verzendInstructie']) ? $this->fields['verzendInstructie'] : "" ?>"
+                                   placeholder="Vul in verzendInstructie">
+                            <label for="verzendInstructie">Verzendinstructies</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <input type="number" id="verzendKosten" name="verzendKosten"
+                                   placeholder="Vul in verzendKosten"
+                                   value="<?= isset($this->fields['verzendKosten']) ? $this->fields['verzendKosten'] : "" ?>"
+                                   min="1">
+                            <label for="verzendKosten">Verzendkosten</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <ul class="collapsible">
+
+                                <?php foreach ($this->rubrieken as $rubriek) {
+                                    /** @var \EenmaalAndermaal\Model\RubriekModel $rubriek */
+                                    ?>
+                                    <li>
+                                        <div class="collapsible-header"><?= $rubriek->naam ?></div>
+                                        <div class="collapsible-body">
+                                            <ul class="collapsible">
+                                                <?php
+                                                foreach ($rubriek->children as $subRubriek) {
+                                                    /** @var $subRubriek \EenmaalAndermaal\Model\RubriekModel */
+                                                    ?>
+                                                    <li>
+                                                        <div class="collapsible-header"><?= $subRubriek->naam ?></div>
+                                                        <div class="collapsible-body">
+                                                            <ul class="collapsible">
+                                                                <?php
+                                                                /** @var $subsub \EenmaalAndermaal\Model\RubriekModel */
+                                                                foreach ($subRubriek->children as $subsub) {
+                                                                    ?>
+                                                                    <li>
+                                                                        <label class="input-field">
+                                                                            <input type="checkbox"
+                                                                                   name="parent[]" <?= (count($this->fields) > 0) && in_array($subsub->getIdentifier(), $this->fields['parent']) ? 'checked' : '' ?>
+                                                                                   value="<?= $subsub->getIdentifier() ?>">
+                                                                            <span><?= $subsub->naam ?></span>
+                                                                        </label>
+                                                                    </li>
+                                                                <?php }
+                                                                ?>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                <?php } ?>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                            <!--                        <label for="rubriek">Rubriek</label>-->
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <select id="looptijd" name="looptijd" required>
+                                <option value="" selected disabled>Kies een looptijd</option>
+                                <option value="1">1 dag</option>
+                                <option value="3">3 dagen</option>
+                                <option value="5">5 dagen</option>
+                                <option value="7">7 dagen</option>
+                                <option value="10">10 dagen</option>
+                            </select>
+                            <label for="looptijd">Looptijd</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m2 l2">
+                            <input type="number" id="startPrijs" class="validate" name="startPrijs" min="1"
+                                   placeholder="Vul een startPrijs"
+                                   value="<?= isset($this->fields['startPrijs']) ? $this->fields['startPrijs'] : "" ?>"
+                                   required>
+                            <label for="startPrijs">Startprijs</label>
+                        </div>
+
+                        <div class="input-field col s12 m2 l2">
+                            <input type="number" id="verkoopPrijs" class="validate"
+                                   value="<?= isset($this->fields['verkoopPrijs']) ? $this->fields['verkoopPrijs'] : "" ?>"
+                                   name="verkoopPrijs" min="1"
+                                   placeholder="Vul een verkoopPrijs" required>
+                            <label for="verkoopPrijs">Verkoopprijs</label>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="input-field col s12 m4 l4">
+                            <input type="text" id="plaatsNaam" class="validate" name="plaatsNaam"
+                                   value="<?= isset($this->fields['plaatsNaam']) ? $this->fields['plaatsNaam'] : "" ?>"
+                                   placeholder="Vul een stad in" required>
+                            <label for="plaatsNaam">Stad</label>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input type="text" id="postcode" class="validate" name="postcode"
+                                   value="<?= isset($this->fields['postcode']) ? $this->fields['postcode'] : "" ?>"
+                                   placeholder="Vul een postcode in" required>
+                            <label for="postcode">Postcode</label>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <select name="land"
+                                    id="land"
+                                    tabindex="8" class="validate" required>
+                                <option value=""
+                                    <?= count($this->fields) ? "" : "selected" ?> disabled>Selecteer een land
+                                </option>
+                                <?php foreach ($this->landen as $land) {
+                                    /** @var \EenmaalAndermaal\Model\LandModel $land */
+                                    ?>
+                                    <option value="<?= $land->landcode ?>"
+                                        <?= isset($this->fields['land']) && $land->landcode == $this->fields['land'] ? 'selected' : '' ?>
+                                    ><?= $land->naam ?></option>
+                                <?php } ?>
+                            </select>
+                            <label for="land">Land</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <input type="submit" value="Submit" class="btn light-green">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    <?php }
+} else {
+    ?>
+    <div class="container">
+        <h1>Er ging iets fout</h1>
+        <p>U hebt geen toegang tot deze pagina.</p>
+    </div>
+<?php } ?>
