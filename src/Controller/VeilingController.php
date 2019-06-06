@@ -61,7 +61,7 @@ class VeilingController implements Controller
                 (new ApiRequest("veilingen/manage/sluit", RequestMethod::POST()))->connect();
                 $vm = new VeilingModelCollection();
                 $vm->fromResultSet($r->getResult());
-                foreach ($vm as &$value) {
+                foreach ($vm as $value) {
                     /** @var $value VeilingModel */
                     $g = new GebruikerModel();
                     $g->map($value->koper);
