@@ -3,6 +3,9 @@
 use EenmaalAndermaal\App;
 
 $baseUrl = App::getApp()->getConfig()->get("website.url");
+$getUser = \EenmaalAndermaal\Services\UserService::getInstance();
+
+$editable = false;
 ?>
 <div class="container">
     <div class="row">
@@ -10,11 +13,11 @@ $baseUrl = App::getApp()->getConfig()->get("website.url");
             <h1>Profiel</h1>
             <div class="row">
                 <div class="col s12 m4 l4"><img class="responsive-img" src="<?= $baseUrl ?>style/img/bespaar.jpg">
-                        <button id="editbtn" class="waves-effect waves-light btn light-green" name="editbtn">
-                            <i class="large material-icons right">build</i>Edit
-                        </button>
+                    <button id="editbtn" class="waves-effect waves-light btn light-green" name="editbtn">
+                        <i class="large material-icons right">build</i>Edit
+                    </button>
                     <div id="savecancel" name="editbtns" style="display: none">
-                        <button id="saveedit" class="waves-effect waves-light btn light-green" name="editbtn">
+                        <button id="saveedit" class="waves-effect waves-light btn light-green" name="saveedit">
                             <i class="large material-icons right">save</i>save
                         </button>
                         <button id="canceledit" class="waves-effect waves-light btn red" name="editbtn">
@@ -27,133 +30,146 @@ $baseUrl = App::getApp()->getConfig()->get("website.url");
                     <b>Gebruikers informatie</b>
                     <div class="divider"></div>
                     <div class="row">
-                        <div class="col s6 m6 l6 bold">Voornaam</div>
-                        <div id="uservalue1" name="uservalue1" class="col s6 m6 l6">John</div>
-
-                        <div class="col s6 m6 l6 bold">Achternaam</div>
-                        <div id="uservalue2" name="uservalue2" class="col s6 m6 l6">Doe</div>
-
                         <div class="col s6 m6 l6 bold">Gebruikersnaam</div>
-                        <div class="col s6 m6 l6">verkoper1</div>
+                        <div class="col s6 m6 l6"><?= $getUser->getCurrentUsername() ?></div>
 
-                        <div class="col s6 m6 l6 bold">Geslacht</div>
-                        <div id="uservalue4" name="uservalue4" class="col s6 m6 l6">Man</div>
-
+                        <div class="col s6 m6 l6 bold">Voornaam</div>
+                        <div id="uservalue1" name="uservalue1" class="col s6 m6 l6"><?=
+                            $getUser->getCurrentUser()->voornaam ?></div>
+                        <div class="col s6 m6 l6 bold">Achternaam</div>
+                        <div id="uservalue2" name="uservalue2" class="col s6 m6 l6"><?=
+                            $getUser->getCurrentUser()->achternaam ?></div>
                         <div class="col s6 m6 l6 bold">Stad</div>
-                        <div id="uservalue5" name="uservalue5" class="col s6 m6 l6">Arnhem</div>
-
+                        <div id="uservalue3" name="uservalue3" class="col s6 m6 l6"><?=
+                            $getUser->getCurrentUser()->plaatsnaam ?></div>
                         <div class="col s6 m6 l6 bold">Land</div>
-                        <div id="uservalue6" name="uservalue6" class="col s6 m6 l6">Nederland</div>
-                    </div>
-
-                    <b>Contact informatie</b>
-                    <div class="divider"></div>
-                    <div class="row">
-                        <div class="col s6 m6 l6 bold">Email</div>
-                        <div class="col s6 m6 l6" id="uservalue7" name="uservalue7">johndoe@hotmail.nl</div>
-
-                        <div class="col s6 m6 l6 bold">Telefoonnummer</div>
-                        <div class="col s6 m6 l6" id="uservalue8" name="uservalue8">+31612345678</div>
-                    </div>
-
-                    <b>Status</b>
-                    <div class="divider"></div>
-                    <div class="row">
-                        <div class="col s6 m6 l6 bold">Status</div>
-                        <div class="col s6 m6 l6">Verkoper</div>
-
+                        <div id="uservalue4" name="uservalue4" class="col s6 m6 l6"><?=
+                            $getUser->getCurrentUser()->land ?></div>
+                        <div id="dropdown" class="col s6 m6 l6">
+                            <select name="land"
+                                    id="land"
+                                    tabindex="8"
+                                    class="validate" required>
+                                <option value="" <?= count($this->fields) ? "" : "selected" ?> disabled>Selecteer een land
+                                </option>
+                                <?php foreach ($this->landen as $land) {
+                                    /** @var \EenmaalAndermaal\Model\LandModel $land */
+                                    ?>
+                                    <option value="<?= $land->landcode ?>"
+                                        <?= isset($getUser->getCurrentUser()->land) && $land->landcode == $getUser->getCurrentUser()->land ? 'selected' : '' ?>
+                                    ><?= $land->naam ?></option>
+                                <?php } ?>
+                            </select>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col s12 m4 l3">
-                    <h4>Reviews</h4>
-                    <div class="col s12 m12 l12">
-                        <div class="row">
-                            <div class="col s12 m12 l12">Aantal reviews: 5</div>
-                            <div class="col s12 m12 l12">Gemiddelde rating: 3.7</div>
-
-                            <div class="col s12 m12 l12">
-                                <b>Meest recente review</b>
-                                <div class="row">
-                                    <div class="col s12 m12 l12">
-                                        <div class="card white">
-                                            <div class="card-content black-text">
-                                                <span class="card-title">Mooi product!</span>
-                                                <b>Door: koper1</b>
-                                                <p>Product is van goed kwaliteit! Het is ook snel geleverd!</p>
-                                                <p class="bold">Rating: 4/5</p>
-                                            </div>
-                                        </div>
-                                        <button class="btn light-green">Bekijk alle reviews</button>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+                <b>Contact informatie</b>
+                <div class="divider"></div>
+                <div class="row">
+                    <div class="col s6 m6 l6 bold">Email</div>
+                    <div class="col s6 m6 l6" id="uservalue5" name="uservalue5"><?=
+                        $getUser->getCurrentUser()->email ?></div>
+                    <div class="col s6 m6 l6 bold">Telefoonnummer</div>
+                    <div class="col s6 m6 l6" id="uservalue6" name="uservalue6"><?=
+                        $getUser->getCurrentUser()->telefoonnummer ?></div>
                 </div>
-                <div class="col s12 m4 l3">
-                    <h4>Mijn veilingen</h4>
-                    <ul class="collection">
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 1</li>
-                        </a>
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 2</li>
-                        </a>
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 2</li>
-                        </a>
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 4<span class="new badge light-green"></span></li>
-                        </a>
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 5</li>
-                        </a>
 
-                    </ul>
-                </div>
-                <div class="col s12 m4 l3">
-                    <h4>Geboden veiling</h4>
-                    <ul class="collection">
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 1</li>
-                        </a>
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 2<span class="new badge light-green"></span></li>
-                        </a>
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 2</li>
-                        </a>
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 4<span class="new badge light-green"></span></li>
-                        </a>
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 5</li>
-                        </a>
-                    </ul>
-                </div>
-                <div class="col s12 m4 l3">
-                    <h4>Acties</h4>
-                    <ul class="profile-buttons">
-                        <li>
-                            <button class="btn light-green">Neem contact op</button>
-                        </li>
-                        <li>
-                            <button class="btn light-green">Rapporteer gebruiker</button>
-                        </li>
-                        <li>
-                            <button class="btn light-green">Wachtwoord vergeten</button>
-                        </li>
-                        <li>
-                            <button class="btn light-green">Gegevens aanpassen</button>
-                        </li>
-                    </ul>
+                <b>Status</b>
+                <div class="divider"></div>
+                <div class="row">
+                    <div class="col s6 m6 l6 bold">Status</div>
+                    <div class="col s6 m6 l6">Verkoper</div>
 
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="row">
+    <div class="col s12 m4 l3">
+        <h4>Reviews</h4>
+        <div class="col s12 m12 l12">
+            <div class="row">
+                <div class="col s12 m12 l12">Aantal reviews: 5</div>
+                <div class="col s12 m12 l12">Gemiddelde rating: 3.7</div>
+
+                <div class="col s12 m12 l12">
+                    <b>Meest recente review</b>
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <div class="card white">
+                                <div class="card-content black-text">
+                                    <span class="card-title">Mooi product!</span>
+                                    <b>Door: koper1</b>
+                                    <p>Product is van goed kwaliteit! Het is ook snel geleverd!</p>
+                                    <p class="bold">Rating: 4/5</p>
+                                </div>
+                            </div>
+                            <button class="btn light-green">Bekijk alle reviews</button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m4 l3">
+        <h4>Mijn veilingen</h4>
+        <ul class="collection">
+            <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
+                <li>Veiling 1</li>
+            </a>
+            <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
+                <li>Veiling 2</li>
+            </a>
+            <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
+                <li>Veiling 2</li>
+            </a>
+            <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
+                <li>Veiling 4<span class="new badge light-green"></span></li>
+            </a>
+            <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
+                <li>Veiling 5</li>
+            </a>
+
+        </ul>
+    </div>
+    <div class="col s12 m4 l3">
+        <h4>Geboden veiling</h4>
+        <ul class="collection">
+            <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
+                <li>Veiling 1</li>
+            </a>
+            <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
+                <li>Veiling 2<span class="new badge light-green"></span></li>
+            </a>
+            <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
+                <li>Veiling 2</li>
+            </a>
+            <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
+                <li>Veiling 4<span class="new badge light-green"></span></li>
+            </a>
+            <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
+                <li>Veiling 5</li>
+            </a>
+        </ul>
+    </div>
+    <div class="col s12 m4 l3">
+        <h4>Acties</h4>
+        <ul class="profile-buttons">
+            <li>
+                <button class="btn btn-large light-green">Verkoper worden</button>
+            </li>
+            <li>
+                <button class="btn light-green">Wachtwoord vergeten</button>
+            </li>
+            <li>
+                <button class="btn light-green">Verwijder gegevens</button>
+            </li>
+        </ul>
+
+    </div>
+</div>
+</div>
+</div>
 </div>
