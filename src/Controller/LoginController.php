@@ -76,6 +76,7 @@ class LoginController implements Controller
         }));
 
         $router->addRoute(new Route("registreren", RequestMethod::GET(), function (Request $request) {
+            LoggingService::log("registreren");
             $v = new RegistratieView();
             $v->vragen = new VraagModelCollection();
             $v->vragen->getAll();
@@ -101,6 +102,9 @@ class LoginController implements Controller
                     $mail->addVar("voornaam", $user->voornaam);
                     $mail->addVar("token", $user->getToken());
                     $mail->addVar("gebruikersnaam", $user->getIdentifier());
+                    LoggingService::log("registreren", [
+                        "gebruikersnaam" => $user->getIdentifier()
+                    ]);
                     $mail->sendMail($user->email, "Verificatie account EenmaalAndermaal");
                     return (new View("registreren/success"))->render();
                 } else {

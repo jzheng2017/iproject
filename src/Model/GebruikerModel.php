@@ -81,6 +81,15 @@ class GebruikerModel extends Model
         return $r->getResult()['result'];
     }
 
+    private function containsSpecialChars($string)
+    {
+        if (preg_match('/[^a-z0-9 _]+/i', $string)) {
+            return true;
+        }
+
+        return false;
+    }
+
     private function emailExists()
     {
         $r = new ApiRequest("gebruikers/email/{$this->email}/exists", RequestMethod::GET());
@@ -108,14 +117,26 @@ class GebruikerModel extends Model
         if (empty($this->voornaam)) {
             $errors[] = "Geen voornaam ingevoerd";
         }
+        if ($this->containsSpecialChars($this->voornaam)) {
+            $errors[] = "Voornaam mag geen speciale tekens bevatten";
+        }
         if (empty($this->achternaam)) {
             $errors[] = "Geen achternaam ingevoerd";
+        }
+        if ($this->containsSpecialChars($this->achternaam)) {
+            $errors[] = "Achternaam mag geen speciale tekens bevatten";
         }
 
         if (empty($this->gebruikersnaam)) {
             $errors[] = "Geen gebruikersnaam gekozen";
         } else if ($this->gebruikerExists()) {
             $errors[] = "Gebruikersnaam bestaat al";
+        }
+        if ($this->containsSpecialChars($this->gebruikersnaam)) {
+            $errors[] = "Gebruikersnaam mag geen speciale tekens bevatten";
+        }
+        if (preg_match('/\s/', $this->gebruikersnaam)) {
+            $errors[] = "Gebruikersnaam mag geen spatie bevatten";
         }
 
         if (empty($this->land)) {
@@ -124,14 +145,34 @@ class GebruikerModel extends Model
 
         if (empty($this->plaatsnaam)) {
             $errors[] = "Geen plaatsnaam ingevoerd";
+        } else if ($this->containsSpecialChars($this->plaatsnaam)) {
+            $errors[] = "Plaatsnaam mag geen speciale karakters bevatten";
+        }
+
+        if (empty($this->postcode)) {
+            $errors[] = "Geen postcode ingevoerd";
+        } else if ($this->containsSpecialChars($this->postcode)) {
+            $errors[] = "Postcode mag geen speciale karakters bevatten";
         }
 
         if (empty(($this->adres))) {
             $errors[] = "Geen adres ingevoerd";
+        } else if ($this->containsSpecialChars($this->adres)) {
+            $errors[] = "Adres mag geen speciale karakters bevatten";
+        }
+
+        if ($this->containsSpecialChars($this->adresAanvulling)) {
+            $errors[] = "Adres aanvulling mag geen speciale karakters bevatten";
         }
 
         if (empty($this->telefoonnummer)) {
             $errors[] = "Geen telefoonnummer ingevoerd";
+        }
+        if ($this->containsSpecialChars($this->telefoonnummer)) {
+            $errors[] = "Telefoonummer mag geen speciale karakters bevatten";
+        }
+        if (preg_match('/\s/', $this->telefoonnummer)) {
+            $errors[] = "Telefoonnummer mag geen spatie bevatten";
         }
 
         if ($this->email !== $this->email2) {
@@ -140,6 +181,8 @@ class GebruikerModel extends Model
             $errors[] = "Email is incorrect ingevuld";
         } else if ($this->emailExists()) {
             $errors[] = "Emailadres is al bekend";
+        } else if (preg_match('/\s/',$this->email)){
+            $errors[] = "Email mag geen spatie bevatten";
         }
 
         if (empty($this->wachtwoord)) {
