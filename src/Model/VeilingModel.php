@@ -171,7 +171,7 @@ class VeilingModel extends Model
             $errors[] = "De korte beschrijving mag niet hoger zijn dan 255 karakters";
         }
 
-        if (empty($this->verzendKosten)) {
+        if (empty($this->verzendKosten) && $this->verzendKosten !== '0') {
             $errors[] = "Verzendkosten is niet ingevuld";
         } else if (!$this->validateNumericValues($this->verzendKosten)) {
             $errors[] = "Verzendkosten is incorrect ingevuld";
