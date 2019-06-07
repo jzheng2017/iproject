@@ -101,21 +101,45 @@ function saveValues() {
 
 function checkInput() {
     var format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+    var emailformat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (format.test(document.getElementById("uservalue1").innerHTML)) {
         alert("Voornaam mag geen speciale characters hebben");
+        return false;
+    }
+    else if(document.getElementById("uservalue1").innerHTML.length < 1) {
+        alert("Voornaam mag niet leeg zijn");
         return false;
     }
     else if (format.test(document.getElementById("uservalue2").innerHTML)) {
         alert("Achternaam mag geen speciale characters hebben");
         return false;
     }
+    else if(document.getElementById("uservalue2").innerHTML.length < 1) {
+        alert("Achternaam mag niet leeg zijn");
+        return false;
+    }
     else if(format.test(document.getElementById("uservalue3").innerHTML)){
         alert("Stad mag geen speciale characters hebben");
         return false;
     }
+    else if(document.getElementById("uservalue3").innerHTML.length < 1) {
+        alert("Stad mag niet leeg zijn");
+        return false;
+    }
+    else if(!emailformat.test(document.getElementById("uservalue5").innerHTML) || document.getElementById("uservalue5").innerHTML.length < 1){
+        alert("Geen geldige email");
+    }
+    else if(document.getElementById("uservalue5").innerHTML.length < 1) {
+        alert("Email mag niet leeg zijn");
+        return false;
+    }
     else if(format.test(document.getElementById("uservalue6").innerHTML)){
         alert("Telefoonnummer mag geen speciale characters hebben");
+        return false;
+    }
+    else if(document.getElementById("uservalue6").innerHTML.length < 1) {
+        alert("Telefoonnummer mag niet leeg zijn");
         return false;
     }
     else {
