@@ -45,7 +45,9 @@ class UserController implements Controller
                 "plaatsnaam" => $data['Stad'],
                 "land" => $data['Land'],
                 "email" => $data['Email'],
-                "telefoonnummer" => $data['Telefoon']
+                "telefoonnummer" => $data['Telefoon'],
+                "postcode" => $data['postcode'],
+                "adres" => $data['adres']
             ])) {
                 return new Response(200, "success", $data);
             };

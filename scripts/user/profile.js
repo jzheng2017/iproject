@@ -1,7 +1,7 @@
 $(document).ready(function () {
     hideDropdown();
 });
-let changableFields = 6;
+let changableFields = 8;
 var dataArray = [];
 
 //functie van de edit button(zorgt dat je de velden kan aanpassen)
@@ -65,6 +65,8 @@ function resetValues() {
     document.getElementById("uservalue4").innerHTML = dataArray[4];
     document.getElementById("uservalue5").innerHTML = dataArray[5];
     document.getElementById("uservalue6").innerHTML = dataArray[6];
+    document.getElementById("uservalue7").innerHTML = dataArray[7];
+    document.getElementById("uservalue8").innerHTML = dataArray[8];
 }
 
 function setValues() {
@@ -74,6 +76,9 @@ function setValues() {
     dataArray[4] = document.getElementById("uservalue4").innerHTML;
     dataArray[5] = document.getElementById("uservalue5").innerHTML;
     dataArray[6] = document.getElementById("uservalue6").innerHTML;
+    dataArray[7] = document.getElementById("uservalue7").innerHTML;
+    dataArray[8] = document.getElementById("uservalue8").innerHTML;
+
 }
 
 function saveValues() {
@@ -88,6 +93,7 @@ function saveValues() {
         Land: gekozenLand,
         Email: document.getElementById("uservalue5").innerHTML,
         Telefoon: document.getElementById("uservalue6").innerHTML,
+        postcode: document.getElementById("uservalue7").innerHTML,
     };
 
     $.ajax(base_url + "profiel", {
@@ -101,8 +107,9 @@ function saveValues() {
 
 function checkInput() {
     var format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-    var telformat = /[ !@#$%^&*()_\-=\[\]{};':"\\|,.<>\/?]/;
+    var telformat = /[ !@#$%^&*()_\-=\[\]{};':"\\|,.<>\/?^A-Za-z]/;
     var emailformat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var adresformat = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 
     if (format.test(document.getElementById("uservalue1").innerHTML)) {
         alert("Voornaam mag geen speciale characters hebben");
@@ -128,7 +135,7 @@ function checkInput() {
         alert("Stad mag niet leeg zijn");
         return false;
     }
-    else if(!emailformat.test(document.getElementById("uservalue5").innerHTML) || document.getElementById("uservalue5").innerHTML.length < 1){
+    else if(!emailformat.test(document.getElementById("uservalue5").innerHTML)){
         alert("Geen geldige email");
     }
     else if(document.getElementById("uservalue5").innerHTML.length < 1) {
@@ -141,6 +148,21 @@ function checkInput() {
     }
     else if(document.getElementById("uservalue6").innerHTML.length < 1) {
         alert("Telefoonnummer mag niet leeg zijn");
+        return false;
+    }
+    else if(document.getElementById("uservalue7").innerHTML.length < 1) {
+        alert("Postcode mag niet leeg zijn");
+    }
+    else if(adresformat.test(document.getElementById("uservalue8").innerHTML)){
+        alert("Geen geldig adres");
+        return false
+    }
+    else if(document.getElementById("uservalue8").innerHTML.length < 1) {
+        alert("Adres mag niet leeg zijn");
+        return false;
+    }
+    else if(document.getElementById("uservalue7").innerHTML.length < 1) {
+        alert("Postcode mag niet leeg zijn");
         return false;
     }
     else {
