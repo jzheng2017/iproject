@@ -11,6 +11,7 @@ use EenmaalAndermaal\Request\Request;
 use EenmaalAndermaal\Request\RequestMethod;
 use EenmaalAndermaal\Route\Route;
 use EenmaalAndermaal\Route\Router;
+use EenmaalAndermaal\Services\LoggingService;
 use EenmaalAndermaal\Services\MailService;
 use EenmaalAndermaal\Services\SessionService;
 use EenmaalAndermaal\Services\UserService;
@@ -24,11 +25,13 @@ class LoginController implements Controller
     public function registerRoutes(Router &$router)
     {
         $router->addRoute(new Route("login", RequestMethod::GET(), function (Request $request) {
+            LoggingService::log("GET /login");
             $view = new View("login/Login");
             return $view->render();
         }));
 
         $router->addRoute(new Route("uitloggen", RequestMethod::GET(), function () {
+            LoggingService::log("GET /logout");
             UserService::getInstance()->logout();
             header("Location: " . App::getApp()->getConfig()->get("website.url"));
         }));
@@ -46,13 +49,22 @@ class LoginController implements Controller
                         $result = $r->getResult();
                         if (isset($result['login']) && $result['login']) {
                             SessionService::getInstance()->set("userId", $gebruikersnaam);
+                            LoggingService::log("POST /login", [
+                                "login" => true,
+                                "user" => $gebruikersnaam
+                            ]);
                             header("Location: " . App::getApp()->getConfig()->get("website.url"));
+                            die();
                         } else {
                             $view->error = 'Wachtwoord en gebruikersnaam combinatie klopt niet';
                         }
                     } else {
                         $view->error = 'Wachtwoord en gebruikersnaam combinatie klopt niet';
                     }
+                    LoggingService::log("POST /login", [
+                        "login" => false,
+                        "user" => $gebruikersnaam
+                    ]);
                 } else {
                     $view->error = "Geen wachtwoord gevonden";
                 }
@@ -64,6 +76,7 @@ class LoginController implements Controller
         }));
 
         $router->addRoute(new Route("registreren", RequestMethod::GET(), function (Request $request) {
+            LoggingService::log("registreren");
             $v = new RegistratieView();
             $v->vragen = new VraagModelCollection();
             $v->vragen->getAll();
@@ -89,6 +102,9 @@ class LoginController implements Controller
                     $mail->addVar("voornaam", $user->voornaam);
                     $mail->addVar("token", $user->getToken());
                     $mail->addVar("gebruikersnaam", $user->getIdentifier());
+                    LoggingService::log("registreren", [
+                        "gebruikersnaam" => $user->getIdentifier()
+                    ]);
                     $mail->sendMail($user->email, "Verificatie account EenmaalAndermaal");
                     return (new View("registreren/success"))->render();
                 } else {

@@ -9,6 +9,7 @@ use EenmaalAndermaal\Request\RequestMethod;
 use EenmaalAndermaal\Route\Route;
 use EenmaalAndermaal\Route\Router;
 use EenmaalAndermaal\Services\GetService;
+use EenmaalAndermaal\Services\LoggingService;
 use EenmaalAndermaal\Services\ZipcodeService;
 use EenmaalAndermaal\View\Component\BreadcrumbComponent;
 use EenmaalAndermaal\View\View;
@@ -40,6 +41,7 @@ class RubriekenController implements Controller
             if ($get->getVar("postcode")) {
                 list($params['lat'], $params['long']) = ZipcodeService::getLatLong($get->getVar("postcode"));
             }
+            LoggingService::log("GET /rubrieken/" . $request->getVar("id"), $params);
             $view->collection->getByTopParent($request->getVar("id"), $params);
             $view->breadCrumbComponent = new BreadcrumbComponent([
                 [
@@ -74,6 +76,7 @@ class RubriekenController implements Controller
             if ($get->getVar("postcode")) {
                 list($params['lat'], $params['long']) = ZipcodeService::getLatLong($get->getVar("postcode"));
             }
+            LoggingService::log("GET /rubrieken/" . $request->getVar("id") . "/" . $request->getVar("naam") . "/" . $request->getVar("sub"), $params);
             $view->collection->getByParent($view->activeId, $params);
             $view->breadCrumbComponent = new BreadcrumbComponent([
                 [

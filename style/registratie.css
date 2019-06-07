@@ -3,6 +3,9 @@
     padding: 30px;
 }
 
+.modal-trigger{
+    font-size:1em !important;
+}
 span.title{
     font-size:2vw;
     margin-left:10px;

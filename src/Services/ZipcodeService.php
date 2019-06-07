@@ -34,11 +34,13 @@ class ZipcodeService
         $location = json_decode(@file_get_contents("http://api.zippopotam.us/{$land}/{$checkPostCode}"), true);
         $lat = 51.985;
         $long = 5.898;
+        $result = false;
         if (isset($location['places'][0]['longitude'])) {
             $lat = (float)self::checkBetween($location['places'][0]['latitude'], -90, 90, $lat);
             $long = (float)self::checkBetween($location['places'][0]['longitude'], -90, 90, $long);
+            $result = true;
         }
-        return [$lat, $long];
+        return [$lat, $long, $result];
     }
 
 

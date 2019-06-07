@@ -22,7 +22,7 @@ $(document).ready(function(){
 
     function getBiedingen() {
         let id = $("#veiling-detail").data('id');
-        $.ajax( 'http://iproject21.icasites.nl/api/veilingen/' + id +'/biedingen' , {
+        $.ajax( 'https://iproject21.icasites.nl/api/veilingen/' + id +'/biedingen' , {
             method: 'get',
             success: function(response) {
                 let result = response.body;

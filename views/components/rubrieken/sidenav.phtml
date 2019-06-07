@@ -33,7 +33,9 @@ $baseUrl = App::getApp()->getConfig()->get('website.url');
         </li>
         <?php if (UserService::getInstance()->userLoggedIn()) { ?>
             <li><a href="<?= $baseUrl ?>uitloggen" class="top-link"><i class="material-icons">backspace</i>Uitloggen</a></li>
-            <li><a href="<?= $baseUrl ?>profiel"><i class="Small material-icons left">account_circle</i>Mijn Profiel</a>
+            <li><a href="<?= $baseUrl ?>veiling-aanmaken" class="top-link"><i class="small material-icons">add</i>Veiling aanmaken</a></li>
+            <li><a href="<?= $baseUrl ?>profiel"><i class="Small material-icons left">account_circle</i>Mijn Profiel</a></li>
+
         <?php } else { ?>
             <li><a href="<?= $baseUrl ?>login"><i class="material-icons">person</i>Login</a></li>
             <li><a href="<?= $baseUrl ?>registreren"><i class="material-icons">person</i>Registreren</a></li>
