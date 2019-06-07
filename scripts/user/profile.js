@@ -29,16 +29,15 @@ $('#canceledit').click(function () {
 });
 
 $('#saveedit').click(function () {
-    for (i = 0; i <= changableFields; i++) {
-        var $div = $('#uservalue' + i), isEditable = $div.is('.editable');
-
-        $div.prop('contenteditable', !isEditable).toggleClass('editable')
-    }
     if(checkInput()) {
         saveValues();
         togglebuttuns();
+        for (i = 0; i <= changableFields; i++) {
+            var $div = $('#uservalue' + i), isEditable = $div.is('.editable');
+
+            $div.prop('contenteditable', !isEditable).toggleClass('editable')
     }
-});
+}});
 
 function hideDropdown() {
     var x = document.getElementById("dropdown");
@@ -103,24 +102,20 @@ function saveValues() {
 function checkInput() {
     var format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 
-    if (format.test($("#uservalue1"))) {
-        alert("Voornaam mag geen speciaale characters hebben");
+    if (format.test(document.getElementById("uservalue1").innerHTML)) {
+        alert("Voornaam mag geen speciale characters hebben");
         return false;
     }
-    else if (format.test($("#uservalue2"))) {
-        alert("Achternaam mag geen speciaale characters hebben");
+    else if (format.test(document.getElementById("uservalue2").innerHTML)) {
+        alert("Achternaam mag geen speciale characters hebben");
         return false;
     }
-    else if(format.test($("#uservalue3"))){
-        alert("Stad mag geen speciaale characters hebben");
+    else if(format.test(document.getElementById("uservalue3").innerHTML)){
+        alert("Stad mag geen speciale characters hebben");
         return false;
     }
-    else if(format.test($("#uservalue4"))){
-        alert("Land mag geen speciaale characters hebben");
-        return false;
-    }
-    else if(format.test($("#uservalue6"))){
-        alert("Telefoonnummer mag geen speciaale characters hebben");
+    else if(format.test(document.getElementById("uservalue6").innerHTML)){
+        alert("Telefoonnummer mag geen speciale characters hebben");
         return false;
     }
     else {
