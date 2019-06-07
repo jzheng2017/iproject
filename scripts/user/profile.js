@@ -31,3 +31,6 @@ function togglebuttuns() {
         $('#editbtn').toggle();
         $('#savecancel').toggle();
 }
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+});

@@ -1,6 +1,7 @@
 <?php
 
 use EenmaalAndermaal\App;
+use EenmaalAndermaal\Services\UserService;
 
 $baseUrl = App::getApp()->getConfig()->get("website.url");
 ?>
@@ -10,9 +11,9 @@ $baseUrl = App::getApp()->getConfig()->get("website.url");
             <h1>Profiel</h1>
             <div class="row">
                 <div class="col s12 m4 l4"><img class="responsive-img" src="<?= $baseUrl ?>style/img/bespaar.jpg">
-                        <button id="editbtn" class="waves-effect waves-light btn light-green" name="editbtn">
-                            <i class="large material-icons right">build</i>Edit
-                        </button>
+                    <button id="editbtn" class="waves-effect waves-light btn light-green" name="editbtn">
+                        <i class="large material-icons right">build</i>Edit
+                    </button>
                     <div id="savecancel" name="editbtns" style="display: none">
                         <button id="saveedit" class="waves-effect waves-light btn light-green" name="editbtn">
                             <i class="large material-icons right">save</i>save
@@ -94,45 +95,72 @@ $baseUrl = App::getApp()->getConfig()->get("website.url");
                         </div>
                     </div>
                 </div>
+                <?php if (UserService::getInstance()->getCurrentUser()->permissie > 0){?>
                 <div class="col s12 m4 l3">
                     <h4>Mijn veilingen</h4>
-                    <ul class="collection">
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 1</li>
-                        </a>
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 2</li>
-                        </a>
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 2</li>
-                        </a>
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 4<span class="new badge light-green"></span></li>
-                        </a>
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 5</li>
-                        </a>
+                    <ul class="collapsible">
+                        <?php for ($i = 1; $i <= 5; $i++) { ?>
+
+
+                                <li>
+                                    <div class="collapsible-header">Veiling <?= $i ?></div>
+
+                                    <div class="collapsible-body">
+                                        <table>
+                                            <tbody>
+                                            <tr>
+                                                <td>Status</td>
+                                                <td>Open</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Verkoopprijs</td>
+                                                <td>&euro; 13</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <br>
+                                        <a href="<?= $baseUrl?>veilingen/<?=$i?>" class="btn light-green">Ga naar veiling</a>
+                                    </div>
+
+                                </li>
+
+
+                        <?php } ?>
 
                     </ul>
                 </div>
+                <?php }?>
                 <div class="col s12 m4 l3">
                     <h4>Geboden veiling</h4>
-                    <ul class="collection">
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 1</li>
-                        </a>
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 2<span class="new badge light-green"></span></li>
-                        </a>
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 2</li>
-                        </a>
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 4<span class="new badge light-green"></span></li>
-                        </a>
-                        <a href="<?= $baseUrl ?>veiling/1" class="collection-item">
-                            <li>Veiling 5</li>
-                        </a>
+                    <ul class="collapsible">
+                        <?php for ($i = 1; $i <= 5; $i++) { ?>
+
+
+                            <li>
+                                <div class="collapsible-header">Veiling <?= $i ?><span class="new badge light-green"></span></div>
+
+                                <div class="collapsible-body">
+                                    <table>
+                                        <tbody>
+                                        <tr>
+                                            <td>Status</td>
+                                            <td>Open</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Verkoopprijs</td>
+                                            <td>&euro; 13</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <br>
+                                    <a href="<?= $baseUrl?>veilingen/<?=$i?>" class="btn light-green">Ga naar veiling</a>
+                                </div>
+
+                            </li>
+
+
+                        <?php } ?>
+
                     </ul>
                 </div>
                 <div class="col s12 m4 l3">
