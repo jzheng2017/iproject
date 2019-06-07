@@ -36,7 +36,11 @@ $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140726132-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'UA-140726132-1');
@@ -61,6 +65,9 @@ $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
                     <?php
                     if (UserService::getInstance()->userLoggedIn()) { ?>
                         <li><a href="<?= $baseUrl ?>uitloggen" class="top-link">uitloggen</a></li>
+                        <?php if(UserService::getInstance()->getCurrentUser()->permissie > 0){ ?>
+                        <li><a href="<?= $baseUrl ?>veiling-aanmaken" class="btn"><i class="small material-icons left">add</i>Veiling aanmaken</a></li>
+                    <?php }?>
                         <li><a class="btn" href="<?= $baseUrl ?>profiel"><i class="Small material-icons left">account_circle</i>Mijn Profiel</a>
                         </li>
                     <?php } else { ?>
@@ -111,7 +118,7 @@ $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
         <div class="row">
             <div class="col">
                 <h5 class="white-text">Footer Content</h5>
-                <a class = "top-link white-text popout" href="<?= $baseUrl ?>PrivacyVerklaring">Privacy Verklaring</a>
+                <a class="top-link white-text popout" href="<?= $baseUrl ?>PrivacyVerklaring">Privacy Verklaring</a>
                 <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
                     content.</p>
             </div>
