@@ -33,7 +33,7 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
                                     data-end="<?= strtotime($this->veiling->eindDag . " " . $this->veiling->eindTijd) ?>">
                                     Gesloten</h3>
                                 <div class="row">
-                                    <?php if (UserService::getInstance()->userLoggedIn() && UserService::getInstance()->getCurrentUser()->verificatie == '1') { ?>
+                                    <?php if (UserService::getInstance()->userLoggedIn() && UserService::getInstance()->getCurrentUser()->verificatie == '1' && $this->veiling->verkoper != UserService::getInstance()->getCurrentUsername()) { ?>
                                         <form class="col s12" method="post" action="">
                                             <div class="row">
                                                 <div class="input-field col s6">
@@ -54,6 +54,10 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
                                         <div class="col s12">
                                             <p class=" center flow-text light-green-text text-darken-4">Verifieer je <a
                                                         href="<?= $baseUrl ?>profiel">account</a> om mee te bieden</p>
+                                        </div>
+                                    <?php } else if (UserService::getInstance()->getCurrentUsername() == $this->veiling->verkoper) { ?>
+                                        <div class="col s12">
+                                            <p class=" center flow-text light-green-text text-darken-4">Je kan niet bieden op je eigen veiling</p>
                                         </div>
                                     <?php } else { ?>
                                         <div class="col s12">
@@ -115,14 +119,13 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
                                     <div class="col s6 m6 l6 bold"><?= $this->veiling->betalingsWijze ?></div>
 
                                     <div class="col s6 m6 l6">Betalen</div>
-                                    <div class="col s6 m6 l6 bold"><?= $this->veiling->betalingsInstructie ?></div>
+                                    <div class="col s6 m6 l6 bold"><?= $this->veiling->betalingsInstructie ? $this->veiling->betalingsInstructie : "Geen instructie" ?></div>
 
                                     <div class="col s6 m6 l6">Veiling start op</div>
                                     <div class="col s6 m6 l6 bold"><?= S::timeDutch($this->veiling->beginDag . ' ' . $this->veiling->beginTijd) ?></div>
 
                                     <div class="col s6 m6 l6">Veiling eindigt op</div>
                                     <div class="col s6 m6 l6 bold"><?= S::timeDutch($this->veiling->eindDag . ' ' . $this->veiling->eindTijd) ?></div>
-
                                 </div>
 
                                 <b>Verzending</b>
@@ -132,7 +135,7 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
                                     <div class="col s6 m6 l6 bold"><?= S::euro($this->veiling->verzendKosten) ?></div>
 
                                     <div class="col s6 m6 l6">Verzending</div>
-                                    <div class="col s6 m6 l6 bold"><?= $this->veiling->verzendInstructie ?></div>
+                                    <div class="col s6 m6 l6 bold"><?= $this->veiling->verzendInstructie ? $this->veiling->verzendInstructie : "Geen instructie" ?></div>
                                 </div>
 
                                 <b>Plaats</b>
@@ -179,32 +182,26 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
                                 <div class="divider"></div>
                                 <div class="row">
                                     <div class="col s6 m6 l6 bold">Voornaam</div>
-                                    <div class="col s6 m6 l6">John</div>
+                                    <div class="col s6 m6 l6"><?= $this->verkoper->voornaam ?></div>
 
                                     <div class="col s6 m6 l6 bold">Achternaam</div>
-                                    <div class="col s6 m6 l6">Doe</div>
-
-                                    <div class="col s6 m6 l6 bold">Gebruikersnaam</div>
-                                    <div class="col s6 m6 l6">verkoper1</div>
-
-                                    <div class="col s6 m6 l6 bold">Geslacht</div>
-                                    <div class="col s6 m6 l6">Man</div>
+                                    <div class="col s6 m6 l6"><?= $this->verkoper->achternaam ?></div>
 
                                     <div class="col s6 m6 l6 bold">Stad</div>
-                                    <div class="col s6 m6 l6">Arnhem</div>
+                                    <div class="col s6 m6 l6"><?= $this->verkoper->plaatsnaam ?></div>
 
                                     <div class="col s6 m6 l6 bold">Land</div>
-                                    <div class="col s6 m6 l6">Nederland</div>
+                                    <div class="col s6 m6 l6"><?= $this->verkoper->land ?></div>
                                 </div>
 
                                 <b>Contact informatie</b>
                                 <div class="divider"></div>
                                 <div class="row">
                                     <div class="col s6 m6 l6 bold">Email</div>
-                                    <div class="col s6 m6 l6">johndoe@hotmail.nl</div>
+                                    <div class="col s6 m6 l6"><?= $this->verkoper->email ?></div>
 
                                     <div class="col s6 m6 l6 bold">Telefoonnummer</div>
-                                    <div class="col s6 m6 l6">+31612345678</div>
+                                    <div class="col s6 m6 l6"><?= $this->verkoper->telefoonnummer ?></div>
                                 </div>
 
                                 <b>Reviews</b>
@@ -214,7 +211,7 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
                                     <div class="col s6 m6 l6"><?= $this->feedback['reviews'] ?></div>
 
                                     <div class="col s6 m6 l6 bold">Gemiddelde rating</div>
-                                    <div class="col s6 m6 l6"><?= $this->feedback['rating'] ?>/10</div>
+                                    <div class="col s6 m6 l6"><?= $this->feedback['rating'] ? $this->feedback['rating'] : "0" ?>/10</div>
                                 </div>
                                 <button class="btn light-green">Bekijk profiel</button>
                             </div>

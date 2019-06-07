@@ -36,6 +36,8 @@ class VeilingController implements Controller
             $view = new VeilingDetailView($v);
             $r = new ApiRequest("verkoper/{$v->verkoper}/feedback", RequestMethod::GET());
             $r->connect();
+            $view->verkoper = new GebruikerModel();
+            $view->verkoper->getOne($v->verkoper);
             $view->feedback = $r->getResult()[0];
             return ($view)->render();
         }));
