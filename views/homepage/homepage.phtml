@@ -13,7 +13,7 @@ $baseUrl = App::getApp()->getConfig()->get("website.url");
         </div>
         <div class="col s12">
             <h3>Bij jou in de buurt</h3>
-            <?= $this->renderComponent(new VeilingCollectionComponent($this->collection)) ?>
+            <?= $this->renderComponent(new VeilingCollectionComponent($this->near)) ?>
         </div>
     </div>
     <div class="row">

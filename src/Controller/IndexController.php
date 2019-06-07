@@ -1,14 +1,13 @@
 <?php
 namespace EenmaalAndermaal\Controller;
 
-use EenmaalAndermaal\Model\VeilingModel;
+
 use EenmaalAndermaal\Model\VeilingModelCollection;
-use EenmaalAndermaal\Request\Request;
 use EenmaalAndermaal\Request\RequestMethod;
 use EenmaalAndermaal\Route\Route;
 use EenmaalAndermaal\Route\Router;
+use EenmaalAndermaal\Services\LocationService;
 use EenmaalAndermaal\Services\LoggingService;
-use EenmaalAndermaal\Services\MailService;
 use EenmaalAndermaal\View\View;
 
 class IndexController implements Controller {
@@ -22,6 +21,8 @@ class IndexController implements Controller {
             $collection = new VeilingModelCollection();
             $collection->getTopThree();
             $view->collection = $collection;
+            $view->near = new VeilingModelCollection();
+            $view->near->getNearby(...LocationService::getUserLocation());
             return $view->render();
         }));
     }
