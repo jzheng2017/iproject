@@ -103,14 +103,14 @@ if (UserService::getInstance()->getCurrentUser()->permissie > 0) {
                         </div>
                         <div class="input-field col s12 m6 l6">
                     <textarea id="beschrijving" name="beschrijving" class="validate materialize-textarea" rows="50"
-                              required><?= isset($this->fields['beschrijving']) ? $this->fields['beschrijving'] : "" ?></textarea>
+                              ><?= isset($this->fields['beschrijving']) ? $this->fields['beschrijving'] : "" ?></textarea>
                             <label for="beschrijving">Product beschrijving</label>
                         </div>
 
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m6 l6">
-                            <select id="betalingsWijze" name="betalingsWijze[]" multiple required>
+                            <select id="betalingsWijze" name="betalingsWijze" required>
                                 <option value="" disabled>Kies een betalingsmethode</option>
                                 <option value="bank">Bank/Giro</option>
                                 <option value="contant">Contant</option>
@@ -137,7 +137,7 @@ if (UserService::getInstance()->getCurrentUser()->permissie > 0) {
                             <input type="number" id="verzendKosten" name="verzendKosten"
                                    placeholder="Vul in verzendKosten"
                                    value="<?= isset($this->fields['verzendKosten']) ? $this->fields['verzendKosten'] : "" ?>"
-                                   min="1">
+                                   min="0">
                             <label for="verzendKosten">Verzendkosten</label>
                         </div>
                     </div>
