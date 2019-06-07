@@ -46,6 +46,7 @@ class FeedbackController implements Controller
             $r->connect();
             $veilingInfo = $r->getResult();
             if ($veilingInfo[0]['gesloten'] && $veilingInfo[0]['koper'] == UserService::getInstance()->getCurrentUser()->getIdentifier()) {
+                $view->access = true;
                 $f = new ApiRequest("veilingen/" . $request->getVar("id") . "/feedback", RequestMethod::GET());
                 $f->connect();
                 $result = $f->getResult();
