@@ -100,20 +100,26 @@ class VeilingController implements Controller
             $veiling = new VeilingModel();
             $veiling->bind($request->getPost());
             $view->fields = $request->getPost();
-            $veiling->thumbnail = $_FILES['thumbnail'];
-            $veiling->images = FileHandler::remapMultiFile($_FILES['images']);
+            $veiling->tmpThumbnail = $_FILES['thumbnail'];
+            $veiling->tmpImages = FileHandler::remapMultiFile($_FILES['images']);
             $view->errors = $veiling->verify();
             $view->rubrieken = new RubriekModelCollection();
             $view->rubrieken->getTop();
+
             foreach ($view->rubrieken as $top) {
                 $subRubrieken = new RubriekModelCollection();
                 $subRubrieken->getAllByParent($top);
                 $top->children = $subRubrieken;
             }
             if (count($view->errors) < 1) {
+                $success = $veiling->saveImages();
                 $veiling->setValues();
-                if ($veiling->save()) {
-                    $view->success = true;
+                if ($success) {
+                    if ($veiling->save()) {
+                        $view->success = true;
+                    }
+                } else {
+                    $view->errors[] = "Er is iets mis gegaan met het uploaden van de veiling. Excuses voor het ongemak. Probeer het opnieuw.";
                 }
             }
 

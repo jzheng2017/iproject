@@ -1,7 +1,7 @@
 <?php use EenmaalAndermaal\Services\UserService;
 
 /** @var $this \EenmaalAndermaal\View\CreateVeilingView */
-if (UserService::getInstance()->getCurrentUser()->permissie > 1) {
+if (UserService::getInstance()->getCurrentUser()->permissie > 0) {
     ?>
     <?php if ($this->success) { ?>
         <div class="container">
@@ -85,7 +85,7 @@ if (UserService::getInstance()->getCurrentUser()->permissie > 1) {
                         <div class="file-field input-field col s12 m6 l6">
                             <div class="btn light-green">
                                 <span>File</span>
-                                <input type="file" name="images[]" multiple required>
+                                <input type="file" name="images[]" multiple>
                             </div>
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text"
@@ -185,70 +185,61 @@ if (UserService::getInstance()->getCurrentUser()->permissie > 1) {
                             </ul>
                             <!--                        <label for="rubriek">Rubriek</label>-->
                         </div>
-                        <div class="input-field col s12 m6 l6">
-                            <select id="looptijd" name="looptijd" required>
-                                <option value="" selected disabled>Kies een looptijd</option>
-                                <option value="1">1 dag</option>
-                                <option value="3">3 dagen</option>
-                                <option value="5">5 dagen</option>
-                                <option value="7">7 dagen</option>
-                                <option value="10">10 dagen</option>
-                            </select>
-                            <label for="looptijd">Looptijd</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12 m2 l2">
-                            <input type="number" id="startPrijs" class="validate" name="startPrijs" min="1"
-                                   placeholder="Vul een startPrijs"
-                                   value="<?= isset($this->fields['startPrijs']) ? $this->fields['startPrijs'] : "" ?>"
-                                   required>
-                            <label for="startPrijs">Startprijs</label>
-                        </div>
-
-                        <div class="input-field col s12 m2 l2">
-                            <input type="number" id="verkoopPrijs" class="validate"
-                                   value="<?= isset($this->fields['verkoopPrijs']) ? $this->fields['verkoopPrijs'] : "" ?>"
-                                   name="verkoopPrijs" min="1"
-                                   placeholder="Vul een verkoopPrijs" required>
-                            <label for="verkoopPrijs">Verkoopprijs</label>
-                        </div>
-                    </div>
-                    <div class="row">
-
-                        <div class="input-field col s12 m4 l4">
-                            <input type="text" id="plaatsNaam" class="validate" name="plaatsNaam"
-                                   value="<?= isset($this->fields['plaatsNaam']) ? $this->fields['plaatsNaam'] : "" ?>"
-                                   placeholder="Vul een stad in" required>
-                            <label for="plaatsNaam">Stad</label>
-                        </div>
-                        <div class="input-field col s12 m4 l4">
-                            <input type="text" id="postcode" class="validate" name="postcode"
-                                   value="<?= isset($this->fields['postcode']) ? $this->fields['postcode'] : "" ?>"
-                                   placeholder="Vul een postcode in" required>
-                            <label for="postcode">Postcode</label>
-                        </div>
-                        <div class="input-field col s12 m4 l4">
-                            <select name="land"
-                                    id="land"
-                                    tabindex="8" class="validate" required>
-                                <option value=""
-                                    <?= count($this->fields) ? "" : "selected" ?> disabled>Selecteer een land
-                                </option>
-                                <?php foreach ($this->landen as $land) {
-                                    /** @var \EenmaalAndermaal\Model\LandModel $land */
-                                    ?>
-                                    <option value="<?= $land->landcode ?>"
-                                        <?= isset($this->fields['land']) && $land->landcode == $this->fields['land'] ? 'selected' : '' ?>
-                                    ><?= $land->naam ?></option>
-                                <?php } ?>
-                            </select>
-                            <label for="land">Land</label>
+                        <div class="col s12 m6 l6">
+                            <div class="row">
+                                <div class="col s12 input-field">
+                                    <select id="looptijd" name="looptijd" required>
+                                        <option value="" selected disabled>Kies een looptijd</option>
+                                        <option value="1">1 dag</option>
+                                        <option value="3">3 dagen</option>
+                                        <option value="5">5 dagen</option>
+                                        <option value="7">7 dagen</option>
+                                        <option value="10">10 dagen</option>
+                                    </select>
+                                    <label for="looptijd">Looptijd</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input type="text" id="plaatsNaam" class="validate" name="plaatsNaam"
+                                           value="<?= isset($this->fields['plaatsNaam']) ? $this->fields['plaatsNaam'] : "" ?>"
+                                           placeholder="Vul een stad in" required>
+                                    <label for="plaatsNaam">Stad</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input type="text" id="postcode" class="validate" name="postcode"
+                                           value="<?= isset($this->fields['postcode']) ? $this->fields['postcode'] : "" ?>"
+                                           placeholder="Vul een postcode in" required>
+                                    <label for="postcode">Postcode</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <select name="land"
+                                            id="land"
+                                            tabindex="8" class="validate" required>
+                                        <option value=""
+                                            <?= count($this->fields) ? "" : "selected" ?> disabled>Selecteer een land
+                                        </option>
+                                        <?php foreach ($this->landen as $land) {
+                                            /** @var \EenmaalAndermaal\Model\LandModel $land */
+                                            ?>
+                                            <option value="<?= $land->landcode ?>"
+                                                <?= isset($this->fields['land']) && $land->landcode == $this->fields['land'] ? 'selected' : '' ?>
+                                            ><?= $land->naam ?></option>
+                                        <?php } ?>
+                                    </select>
+                                    <label for="land">Land</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input type="number" id="startPrijs" class="validate" name="startPrijs" min="1" step=".01"
+                                           placeholder="Vul een startPrijs"
+                                           value="<?= isset($this->fields['startPrijs']) ? $this->fields['startPrijs'] : "" ?>"
+                                           required>
+                                    <label for="startPrijs">Startprijs</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12">
-                            <input type="submit" value="Submit" class="btn light-green">
+                            <button type="submit" class="btn light-green"><i class="left material-icons">check</i>Voeg toe</button>
                         </div>
                     </div>
                 </form>

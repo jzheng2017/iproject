@@ -1,11 +1,14 @@
 <?php
+
 namespace EenmaalAndermaal\Model;
 
 use \EenmaalAndermaal\Request\RequestMethod;
 use EenmaalAndermaal\Request\ApiRequest;
+use EenmaalAndermaal\Services\UserService;
 use EenmaalAndermaal\Services\ZipcodeService;
 
-class VeilingModel extends Model {
+class VeilingModel extends Model
+{
     public $nummer;
     public $titel;
     public $beschrijvingKort;
@@ -30,7 +33,9 @@ class VeilingModel extends Model {
     public $parent = [];
     public $weergaves;
     public $thumbnail;
+    public $tmpThumbnail;
     public $images = [];
+    public $tmpImages = [];
     public $lat;
     public $long;
 
@@ -66,16 +71,15 @@ class VeilingModel extends Model {
         );
     }
 
-    public function setValues(){
+    public function setValues()
+    {
         $this->setDates();
         $this->calculateLatLong();
-        $this->gesloten = false;
+        $this->gesloten = '0';
         $this->koper = NULL;
-    }
-    public function saveVeiling()
-    {
-        $r = new ApiRequest("veilingen", RequestMethod::POST());
-        return $r->connect($this->getValues());
+        $this->verkoper = UserService::getInstance()->getCurrentUser()->getIdentifier();
+        $this->startPrijs = floor($this->startPrijs * 100);
+        $this->verkoopPrijs = $this->startPrijs;
     }
 
     private function containsSpecialChars($string)
@@ -95,20 +99,22 @@ class VeilingModel extends Model {
         }
     }
 
-    private function calculateLatLong(){
-       $result = ZipcodeService::getLatLong($this->postcode);
-       $this->lat = $result[0];
-       $this->long = $result[1];
+    private function calculateLatLong()
+    {
+        $result = ZipcodeService::getLatLong($this->postcode);
+        $this->lat = $result[0];
+        $this->long = $result[1];
     }
+
     private function setStartDate()
     {
-        $this->beginDag = date("d-m-Y");
+        $this->beginDag = date("Y-m-d");
         $this->beginTijd = date("H:i:s");
     }
 
     private function setEndDate()
     {
-        $this->eindDag = Date("d-m-Y", strtotime("+" . $this->looptijd . " days"));
+        $this->eindDag = Date("Y-m-d", strtotime("+" . $this->looptijd . " days"));
         $this->eindTijd = date("H:i:s");
     }
 
@@ -192,6 +198,8 @@ class VeilingModel extends Model {
         }
         if (!count($this->parent)) {
             $errors[] = "Er is geen rubriek gekozen";
+        } else if (count($this->parent) > 5) {
+            $errors[] = "Er mag niet meer dan 5 rubrieken gekozen worden";
         }
         if (empty($this->looptijd)) {
             $errors[] = "Er is geen looptijd gekozen";
@@ -203,30 +211,44 @@ class VeilingModel extends Model {
         if (empty($this->plaatsNaam)) {
             $errors[] = "Stad is niet ingevuld";
         }
-        if ($this->containsSpecialChars($this->titel)) {
-            $errors[] = "Titel mag geen speciale tekens bevatten";
-        }
         if ($this->containsSpecialChars($this->plaatsNaam)) {
             $errors[] = "Stad mag geen speciale tekens bevatten";
         }
         if ($this->containsSpecialChars($this->postcode)) {
             $errors[] = "Postcode mag geen speciale tekens bevatten";
         }
-        if ($this->thumbnail['size'] <= 0) {
+        if ($this->tmpThumbnail['size'] <= 0) {
             $errors[] = "Er is geen thumbnail gekozen";
-        } else if (!$this->validateImage($this->thumbnail)) {
+        } else if (!$this->validateImage($this->tmpThumbnail)) {
             $errors[] = "Gekozen thumbnail is niet een afbeelding of is groter dan 5 MB";
         }
-        if (count($this->images) > 4) {
+        if (count($this->tmpImages) > 4) {
             $errors[] = "Er zijn meer dan 4 afbeeldingen geupload";
         }
-        if ($this->images[0]["size"] <= 0) {
-            $errors[] = "Er zijn geen afbeeldingen gekozen";
-        } else if (!$this->validateMultipleImages($this->images)) {
+        if (!$this->validateMultipleImages($this->tmpImages)) {
             $errors[] = "De geuploade afbeelding is niet een afbeelding of is groter dan 5MB";
         }
 
         return $errors;
+    }
+
+    public function saveImages()
+    {
+        $success = true;
+        $file = new FileModel();
+        if ($file->setFile($this->tmpThumbnail, "")) {
+            $this->thumbnail = "uploads/" . $file->fileName;
+        } else {
+            $success = false;
+        }
+        foreach ($this->tmpImages as $image) {
+            if ($file->setFile($image, "")) {
+                $this->images[] = "uploads/" . $file->fileName;
+            } else {
+                $success = false;
+            }
+        }
+        return $success;
     }
 
     /**
