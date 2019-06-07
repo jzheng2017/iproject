@@ -3,7 +3,7 @@
 namespace EenmaalAndermaal\Controller;
 
 use EenmaalAndermaal\App;
-use EenmaalAndermaal\Model\CreateVeilingModel;
+use EenmaalAndermaal\Model\FeedbackModel;
 use EenmaalAndermaal\Model\FileModel;
 use EenmaalAndermaal\Model\GebruikerModel;
 use EenmaalAndermaal\Model\LandModelCollection;
