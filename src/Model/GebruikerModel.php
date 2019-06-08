@@ -36,7 +36,7 @@ class GebruikerModel extends Model
         }
     }
 
-    private function validatePassword($pwd): array
+    public function validatePassword($pwd): array
     {
         $errors = [];
 
@@ -205,6 +205,36 @@ class GebruikerModel extends Model
     public function getIdentifier()
     {
         return $this->gebruikersnaam;
+    }
+
+    public function getByEmail(string $email): bool
+    {
+        $request = new ApiRequest($this->getPath() . "/email/{$email}/get", RequestMethod::GET());
+        if ($request->connect()) {
+            if (count($request->getResult()) > 0) {
+                $this->map($request->getResult()[0]);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function getByToken(string $token)
+    {
+        $request = new ApiRequest($this->getPath() . "/token/{$token}/get", RequestMethod::GET());
+        if ($request->connect()) {
+            if (count($request->getResult()) > 0) {
+                $this->map($request->getResult()[0]);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function resetPassword($password)
+    {
+        $r = new ApiRequest($this->getPath() . "/{$this->gebruikersnaam}/wachtwoord/reset", RequestMethod::POST());
+        return $r->connect(["password" => $password]);
     }
 
     /**
