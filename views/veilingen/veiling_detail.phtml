@@ -38,7 +38,7 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
                                             <div class="row">
                                                 <div class="input-field col s6">
                                                     <i class="material-icons prefix">euro_symbol</i>
-                                                    <input id="icon_prefix" type="number" value="<?= $this->veiling->getMinBod() / 100 ?>" min="<?= $this->veiling->getMinBod() / 100 ?>" name="bedrag" class="validate">
+                                                    <input id="icon_prefix" type="number" step="0.01" value="<?= $this->veiling->getMinBod() / 100 ?>" min="<?= $this->veiling->getMinBod() / 100 ?>" name="bedrag" class="validate">
                                                     <label for="icon_prefix">Bod</label>
                                                 </div>
                                                 <div class="valign-wrapper">
