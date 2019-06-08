@@ -6,7 +6,10 @@
  * Time: 16:20
  */
 
-use EenmaalAndermaal\App; ?>
+use EenmaalAndermaal\App;
+
+$url = App::getApp()->getConfig()->get("website.url");
+?>
 
 <div class="row"></div>
 <div class="row"></div>
@@ -34,7 +37,7 @@ use EenmaalAndermaal\App; ?>
                         <label for='password'>Wachtwoord</label>
                     </div>
                     <label style='float: right;'>
-                        <a class='pink-text' href='#!'><b>Wachtwoord vergeten?</b></a>
+                        <a class='pink-text' href='<?= $url ?>wachtwoord-vergeten'><b>Wachtwoord vergeten?</b></a>
                     </label>
                 </div>
                 <br/>
@@ -46,7 +49,7 @@ use EenmaalAndermaal\App; ?>
             </form>
         </div>
     </div>
-    <a href="<?= App::getApp()->getConfig()->get("website.url") ?>registreren">Registreren</a>
+    <a href="<?= $url ?>registreren">Registreren</a>
     <div class="section"></div>
     <div class="section"></div>
 </div>
