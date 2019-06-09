@@ -174,7 +174,10 @@ class GebruikerModel extends Model
         if (preg_match('/\s/', $this->telefoonnummer)) {
             $errors[] = "Telefoonnummer mag geen spatie bevatten";
         }
-
+        if (!$this->validateNumericValues($this->telefoonnummer)){
+            $errors[] = "Telefoonnummer mag alleen uit nummers bestaan";
+        }
+    
         if ($this->email !== $this->email2) {
             $errors[] = "Emails komen niet overeen";
         } else if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
@@ -197,6 +200,18 @@ class GebruikerModel extends Model
     public function validate(): array
     {
         return $this->verify();
+    }
+
+    private function validateNumericValues($value)
+    {
+        $valid = true;
+        if (!is_numeric($value)) {
+            $valid = false;
+        }
+        if ($value < 0) {
+            $valid = false;
+        }
+        return $valid;
     }
 
     /**
