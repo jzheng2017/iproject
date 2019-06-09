@@ -6,6 +6,7 @@ use \EenmaalAndermaal\Request\RequestMethod;
 use EenmaalAndermaal\Request\ApiRequest;
 use EenmaalAndermaal\Services\UserService;
 use EenmaalAndermaal\Services\ZipcodeService;
+use http\Client\Curl\User;
 
 class VeilingModel extends Model
 {
@@ -230,6 +231,22 @@ class VeilingModel extends Model
         }
 
         return $errors;
+    }
+
+    public static function getHoogsteBieder($id)
+    {
+        $r = new ApiRequest("veilingen/" . $id . "/biedingen", RequestMethod::GET());
+        if ($r->connect()) {
+            $result = $r->getResult();
+            if (count($result) > 0) {
+                return $result[0]['naam'];
+            }
+        }
+        return [];
+    }
+
+    public static function getKoperInfo(){
+        //$r = new ApiRequest("veilingen/". $)
     }
 
     public function saveImages()

@@ -1,8 +1,10 @@
 <?php
 
 use EenmaalAndermaal\App;
+use EenmaalAndermaal\Model\VeilingModel;
 use EenmaalAndermaal\Services\UserService;
 
+/** @var \EenmaalAndermaal\View\ProfileView $this */
 $baseUrl = App::getApp()->getConfig()->get("website.url");
 ?>
 <div class="container">
@@ -66,6 +68,8 @@ $baseUrl = App::getApp()->getConfig()->get("website.url");
                     </div>
                 </div>
             </div>
+
+            <?php if (UserService::getInstance()->getCurrentUser()->permissie > 0) { ?>
             <div class="row">
                 <div class="col s12 m4 l3">
                     <h4>Reviews</h4>
@@ -95,65 +99,28 @@ $baseUrl = App::getApp()->getConfig()->get("website.url");
                         </div>
                     </div>
                 </div>
-                <?php if (UserService::getInstance()->getCurrentUser()->permissie > 0){?>
                 <div class="col s12 m4 l3">
                     <h4>Mijn veilingen</h4>
                     <ul class="collapsible">
-                        <?php for ($i = 1; $i <= 5; $i++) { ?>
-
-
-                                <li>
-                                    <div class="collapsible-header">Veiling <?= $i ?></div>
-
-                                    <div class="collapsible-body">
-                                        <table>
-                                            <tbody>
-                                            <tr>
-                                                <td>Status</td>
-                                                <td>Open</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Verkoopprijs</td>
-                                                <td>&euro; 13</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                        <br>
-                                        <a href="<?= $baseUrl?>veilingen/<?=$i?>" class="btn light-green">Ga naar veiling</a>
-                                    </div>
-
-                                </li>
-
-
-                        <?php } ?>
-
-                    </ul>
-                </div>
-                <?php }?>
-                <div class="col s12 m4 l3">
-                    <h4>Geboden veiling</h4>
-                    <ul class="collapsible">
-                        <?php for ($i = 1; $i <= 5; $i++) { ?>
-
-
+                        <?php foreach ($this->veilingen as $veiling) { ?>
                             <li>
-                                <div class="collapsible-header">Veiling <?= $i ?><span class="new badge light-green"></span></div>
-
+                                <div class="collapsible-header"><?= $veiling['titel'] ?></div>
                                 <div class="collapsible-body">
                                     <table>
                                         <tbody>
                                         <tr>
                                             <td>Status</td>
-                                            <td>Open</td>
+                                            <td><?= $veiling['gesloten'] ? "Gesloten" : "Open" ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Verkoopprijs</td>
-                                            <td>&euro; 13</td>
+                                            <td>Huidige bod</td>
+                                            <td>&euro; <?= $veiling['verkoopPrijs'] / 100 ?></td>
                                         </tr>
                                         </tbody>
                                     </table>
                                     <br>
-                                    <a href="<?= $baseUrl?>veilingen/<?=$i?>" class="btn light-green">Ga naar veiling</a>
+                                    <a href="<?= $baseUrl ?>veiling/<?= $veiling['nummer'] ?>" class="btn light-green">Ga
+                                        naar veiling</a>
                                 </div>
 
                             </li>
@@ -163,23 +130,68 @@ $baseUrl = App::getApp()->getConfig()->get("website.url");
 
                     </ul>
                 </div>
-                <div class="col s12 m4 l3">
-                    <h4>Acties</h4>
-                    <ul class="profile-buttons">
-                        <li>
-                            <button class="btn light-green">Neem contact op</button>
-                        </li>
-                        <li>
-                            <button class="btn light-green">Rapporteer gebruiker</button>
-                        </li>
-                        <li>
-                            <button class="btn light-green">Wachtwoord vergeten</button>
-                        </li>
-                        <li>
-                            <button class="btn light-green">Gegevens aanpassen</button>
-                        </li>
-                    </ul>
 
+
+                <?php } ?>
+
+                <div class="row">
+
+                    <div class="col s12 m4 l3">
+                        <h4>Geboden veiling</h4>
+                        <ul class="collapsible">
+                            <?php foreach ($this->geboden as $veiling) {
+                                $hoogsteBieder = VeilingModel::getHoogsteBieder($veiling['nummer']);
+                                ?>
+                                <li>
+                                    <div class="collapsible-header"><?= $veiling['titel'] ?><?php if ($hoogsteBieder != UserService::getInstance()->getCurrentUser()->gebruikersnaam) {
+                                            echo "<span class='new badge light-green'></span>";
+                                        } ?></div>
+                                    <div class="collapsible-body">
+                                        <table>
+                                            <tbody>
+                                            <tr>
+                                                <td>Status</td>
+                                                <td><?= $veiling['gesloten'] ? "Gesloten" : "Open" ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Huidige bod</td>
+                                                <td>&euro; <?= $veiling['verkoopPrijs'] / 100 ?></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <br>
+                                        <a href="<?= $baseUrl ?>veiling/<?= $veiling['nummer'] ?>"
+                                           class="btn light-green">Ga
+                                            naar veiling</a>
+                                    </div>
+
+                                </li>
+
+
+                            <?php } ?>
+
+
+                        </ul>
+                    </div>
+
+                    <div class="col s12 m4 l3">
+                        <h4>Acties</h4>
+                        <ul class="profile-buttons">
+                            <li>
+                                <button class="btn light-green">Neem contact op</button>
+                            </li>
+                            <li>
+                                <button class="btn light-green">Rapporteer gebruiker</button>
+                            </li>
+                            <li>
+                                <button class="btn light-green">Wachtwoord vergeten</button>
+                            </li>
+                            <li>
+                                <button class="btn light-green">Gegevens aanpassen</button>
+                            </li>
+                        </ul>
+
+                    </div>
                 </div>
             </div>
         </div>
