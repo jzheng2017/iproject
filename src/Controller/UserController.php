@@ -69,7 +69,7 @@ class UserController implements Controller
             if (!$r->connect([
                 "permissie" => 1
             ])) {
-                return new Response(200, "success", $data);
+                header("Location: " . App::getApp()->getConfig()->get("website.url"));
             };
         }));
 
