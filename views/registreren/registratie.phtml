@@ -207,7 +207,13 @@ use EenmaalAndermaal\Services\UserService; ?>
 <div id="terms" class="modal">
     <div class="modal-content">
         <h4>Voorwaarden van de overeenkomst</h4>
-        <p id="TOStext"></p>
+        <p id="TOStext">
+            <?php
+            $myfile = fopen("views/registreren/TOS.txt", "r") or die("Unable to open file!");
+            echo fread($myfile, filesize("views/registreren/TOS.txt"));
+            fclose($myfile);
+            ?>
+        </p>
     </div>
     <div class="modal-footer">
         <a href="#!" id="agree" class="modal-close waves-effect waves-green btn-flat">Agree</a>

@@ -1,0 +1,80 @@
+<?php
+
+use EenmaalAndermaal\App;
+
+$baseUrl = App::getApp()->getConfig()->get("website.url");
+
+?>
+<div class="container">
+    <div class="row">
+        <form method="post" class="col s12">
+            <div class="row">
+                <h3 class="light-green-text">Registreer als verkoper</h3>
+                <div class="input-field col s12 m6 l2 ">
+                    <select required>
+                        <option value="" disabled selected>Kies u bank</option>
+                        <option value="ABNANL2A">ABN AMRO</option>
+                        <option value="ASNBNL21">ASN Bank</option>
+                        <option value="HANDNL2A">Handelsbanken</option>
+                        <option value="INGBNL2A">ING</option>
+                        <option value="KNABNL2H">Knab</option>
+                        <option value="MOYONL21">Moneyou</option>
+                        <option value="RABONL2U">Rabobank</option>
+                        <option value="RBRBNL21">RegioBank</option>
+                        <option value="SNSBNL2A">SNS</option>
+                        <option value="TRIONL2U">Triodos Bank</option>
+                        <option value="FVLBNL22">Van Lanschot</option>
+                        <option value="BUNQNL2A">bunq</option>
+                    </select>
+                </div>
+                <div class="input-field col s12 m6 l8 ">
+                    <input type="text" placeholder="Hier u bankrekening" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 l2">
+                    <label>
+                        <input type="checkbox" id="creditCardEnabled"/>
+                        <span>Ook creditcard</span>
+                    </label>
+                </div>
+                <div class="col s12 m6 l8">
+                    <input type="text" placeholder="Hier uw credicard nummer" id="creditcardNummer">
+                </div>
+            </div>
+            <div class="divider">
+            </div>
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <label>
+                        <input type="checkbox" required id="creditCheck"/>
+                        <span>ik ga akkoord met de <a class="top-link modal-trigger" data-target="terms"
+                                                      href="#terms">verkopers voorwaarden</a></span></span>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <button class="btn waves-effect waves-light light-green" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="terms" class="modal">
+    <div class="modal-content">
+        <h4>Voorwaarden van de overeenkomst</h4>
+        <p id="TOVtext">
+            <?php
+            $myfile = fopen("views/user/TOVText.txt", "r") or die("Unable to open file!");
+            echo fread($myfile, filesize("views/user/TOVText.txt"));
+            fclose($myfile);
+            ?>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" id="agree" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>

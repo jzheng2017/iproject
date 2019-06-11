@@ -17,6 +17,7 @@ use EenmaalAndermaal\Services\LoggingService;
 use EenmaalAndermaal\Services\MailService;
 use EenmaalAndermaal\Services\UserService;
 use EenmaalAndermaal\View\ProfileView;
+use EenmaalAndermaal\View\VerkoperRegistratieView;
 use EenmaalAndermaal\View\View;
 
 
@@ -54,6 +55,24 @@ class UserController implements Controller
                 return new Response(200, "success", $data);
             };
             return new Response(200, "succes", $request->getPost());
+        }));
+
+        $router->addRoute(new Route("verkoperWorden", RequestMethod::GET(), function (Request $request) {
+            $view = new VerkoperRegistratieView();
+            return $view->render();
+        }));
+
+        $router->addRoute(new Route("verkoperWorden", RequestMethod::POST(), function (Request $request) {
+            $gebruikersnaam = UserService::getInstance()->getCurrentUser()->gebruikersnaam;
+            $r = new ApiRequest("gebruikers/{$gebruikersnaam}", RequestMethod::POST());
+
+            $data = $request->getPost();
+
+            if (!$r->connect([
+                "permissie" => 1
+            ])) {
+                header("Location: " . App::getApp()->getConfig()->get("website.url"));
+            };
         }));
 
         $router->addRoute(new Route("wachtwoord-vergeten", RequestMethod::GET(), function (Request $request) {
