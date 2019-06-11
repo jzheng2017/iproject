@@ -34,7 +34,7 @@ class FeedbackController implements Controller
                     $view->dag = $result[0]['dag'];
                     $view->tijd = $result[0]['tijdstip'];
                 }
-            }else{
+            } else {
                 $view->access = false;
             }
             return $view->render();
@@ -52,12 +52,21 @@ class FeedbackController implements Controller
                 $result = $f->getResult();
                 if (!$result) {
                     $r = new ApiRequest("veilingen/" . $request->getVar("id") . "/feedback", RequestMethod::POST());
-                    $r->connect([
+                    if ($r->connect([
                         "voorwerp" => $request->getPost("id"),
                         "feedback" => $_POST['feedback'],
-                        "commentaar" => $_POST['commentaar']
-
-                    ]);
+                        "commentaar" => $_POST['commentaar']])) {
+                        $r2 = new ApiRequest("veilingen/" . $request->getVar("id") . "/feedback", RequestMethod::GET());
+                        $r2->connect();
+                        $result2 = $r2->getResult();
+                        if ($result2) {
+                            $view->feedback = $result2[0]['feedback'];
+                            $view->commentaar = $result2[0]['commentaar'];
+                            $view->voorwerp = $result2[0]['voorwerp'];
+                            $view->dag = $result2[0]['dag'];
+                            $view->tijd = $result2[0]['tijdstip'];
+                        }
+                    }
                 } else {
                     $view->feedback = $result[0]['feedback'];
                     $view->commentaar = $result[0]['commentaar'];
@@ -66,7 +75,7 @@ class FeedbackController implements Controller
                     $view->tijd = $result[0]['tijdstip'];
 
                 }
-            }else {
+            } else {
                 $view->access = false;
             }
             return $view->render();
