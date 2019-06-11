@@ -3,12 +3,12 @@
 
 namespace EenmaalAndermaal\Controller;
 
-
 use EenmaalAndermaal\Request\Request;
 use EenmaalAndermaal\Request\RequestMethod;
 use EenmaalAndermaal\Route\Route;
 use EenmaalAndermaal\Route\Router;
 use EenmaalAndermaal\View\FaqView;
+use EenmaalAndermaal\View\VerkoperView;
 use EenmaalAndermaal\View\VoorwaardenView;
 
 class HeaderContentController implements Controller
@@ -22,6 +22,11 @@ class HeaderContentController implements Controller
 
         $router->addRoute(new Route("voorwaarden", RequestMethod::GET(), function (Request $request) {
             $view = new VoorwaardenView();
+            return $view->render();
+        }));
+
+        $router->addRoute(new Route("verkoper", RequestMethod::GET(), function (Request $request) {
+            $view = new VerkoperView();
             return $view->render();
         }));
     }
