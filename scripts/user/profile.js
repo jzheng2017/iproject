@@ -173,4 +173,3 @@ function checkInput() {
         return true;
     }
 }
->>>>>>> scripts/user/profile.js
