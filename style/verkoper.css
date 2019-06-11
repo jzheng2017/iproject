@@ -1,0 +1,22 @@
+.verkoper-cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.verkoper-cards .col {
+    flex: 1;
+}
+
+.verkoper-cards .col .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.verkoper-cards .card-image {
+    padding: 10px;
+}
+
+.verkoper-cards .card-image i {
+    display: block;
+}
