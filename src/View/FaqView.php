@@ -7,8 +7,8 @@ class FaqView extends View
 {
     public function __construct()
     {
-        parent::__construct("faq/faq");
+        parent::__construct("header/faq");
         $this->addStyle("style/faq");
-        $this->addScript("scripts/faq/faq");
+        $this->addScript("scripts/header/faq");
     }
 }

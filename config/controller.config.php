@@ -1,6 +1,6 @@
 <?php
 
-use EenmaalAndermaal\Controller\FaqController;
+use EenmaalAndermaal\Controller\HeaderContentController;
 use EenmaalAndermaal\Controller\FeedbackController;
 use EenmaalAndermaal\Controller\GebruikersController;
 use EenmaalAndermaal\Controller\IndexController;
@@ -24,7 +24,7 @@ return [
             LoginController::class,
             LegalController::class,
             FeedbackController::class,
-            FaqController::class
+            HeaderContentController::class
         ],
     ],
     "production" => [
