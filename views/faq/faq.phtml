@@ -1,0 +1,121 @@
+<?php
+
+use EenmaalAndermaal\App;
+
+$baseUrl = App::getApp()->getConfig()->get("website.url");
+?>
+<div id="main">
+    <div class="row">
+        <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+        <div class="col s12">
+            <div class="container">
+                <div class="section" id="faq-detail">
+                    <div class="row">
+                        <div class="col s12">
+                            <div id="faq-search" class="card z-depth-0 faq-search-image center-align p-35">
+                                <div class="card-content">
+                                    <h5>Frequently Asked Questions</h5>
+                                    <p class="mb-3">Zoek op onze FAQ voor snelle antwoorden op uw veelgestelde
+                                        vragen.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <ul class="collapsible categories-collapsible">
+                                <li>
+                                    <div class="collapsible-header">Q: Hoera, ik heb een productveiling gewonnen! Wat
+                                        nu? <i
+                                                class="material-icons"> keyboard_arrow_right </i></div>
+                                    <div class="collapsible-body">
+                                        <p>A: Leuk dat je een product bij EenmaalAndermaal hebt gewonnen!
+                                            Voordat wij het product naar je versturen, vragen we je de veiling eerst te
+                                            betalen.
+                                            Nadat wij jouw betaling hebben ontvangen gaan wij over tot verzending van je
+                                            product.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-header">Q: Hoeveel kan ik bieden? <i
+                                                class="material-icons"> keyboard_arrow_right </i></div>
+                                    <div class="collapsible-body">
+                                        <p>A: Om op een product te bieden moet u eerst op de pagina van de veiling zelf
+                                            zijn, hier ziet u informatie over de veiling en kunt u de hoogste biedingen
+                                            bekijken. Als u nog niet bent ingelogd kunt u nog niet meebieden, als de
+                                            veiling waar u naar kijkt van uzelf is kunt u ook niet meebieden. Als u wel
+                                            kunt meebieden typet u een bedrag in en drukt u op bieden, uw bedrag moet
+                                            met een bepaalde grootte groter zijn dan het huidige hoogste bedrag. Een
+                                            schema hiervoor is hieronder te zien:<br>
+                                            Tussen €1.00 en €49.99: uw bedrag moet €0.50 hoger zijn.<br>
+                                            Tussen €49.99 en €499.99: uw bedrag moet €1.00 hoger zijn.<br>
+                                            Tussen €499.99 en €999.99: uw bedrag moet €5.00 hoger zijn.<br>
+                                            Tussen €999.99 en €4999.99: uw bedrag moet €10.00 hoger zijn.<br>
+                                            Tussen €4999.99 of hoger: uw bedrag moet €50.00 hoger zijn.<br>
+                                            <br><br>
+
+                                            Let op: jezelf overbieden is niet nodig. Zolang jij de hoogste bieder bent,
+                                            is de veiling van jou.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-header">Q: Is er een minimumleeftijd om mee te kunnen
+                                        bieden?<i
+                                                class="material-icons"> keyboard_arrow_right </i></div>
+                                    <div class="collapsible-body">
+                                        <p>Om mee te mogen bieden bij EenmaalAndermaal moet je minimaal 16 jaar oud
+                                            zijn. Mensen onder de 16 hebben geen toestemming om een profiel aan te
+                                            maken. Heeft een minderjarig persoon een profiel aangemaakt en op een
+                                            veiling geboden?<br> Neem dan contact op met onze klantenservice.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-header">Q: Hoe gaat EenmaalAndermaal om met mijn privacy?<i
+                                                class="material-icons"> keyboard_arrow_right </i></div>
+                                    <div class="collapsible-body">
+                                        <p>EenmaalAndermaal respecteert de privacy van al haar gebruikers en aanbieders
+                                            op de website. We dragen er zorg voor dat alle persoonlijke en zakelijke
+                                            informatie die je ons geeft, vertrouwelijk wordt behandeld.<br><br>
+
+                                            Meer weten over jouw privacy?<br><br>
+                                            <a href="<?= $baseUrl ?>privacyverklaring">Hier</a> vind je de
+                                            privacy-verklaring.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-header">Q: Mijn account is geblokkeerd, wat nu?<i
+                                                class="material-icons"> keyboard_arrow_right </i></div>
+                                    <div class="collapsible-body">
+                                        <p>Wanneer je niet meer kunt inloggen of meebieden omdat je account geblokkeerd
+                                            is, kan dit verschillende redenen hebben. We adviseren je om contact op te
+                                            nemen met de klantenservice. Zij kunnen de reden van de blokkade achterhalen
+                                            en je verder helpen.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-header">Q: Hoe wijzig ik mijn e-mailadres of wachtwoord?<i
+                                                class="material-icons"> keyboard_arrow_right </i></div>
+                                    <div class="collapsible-body">
+                                        <p>Je kunt je gegevens zelf makkelijk aanpassen door in te loggen in jouw
+                                            account.<br><br>
+
+                                            Voor het wijzigen van je profielgegevens ga je naar jouw account door te
+                                            klikken op 'Mijn profiel'. Op deze pagina wijzig je gemakkelijk je
+                                            persoonlijke gegevens, rekeningnummer, wachtwoord en overige instellingen
+                                            door op 'Edit' te klikken.<br><br>
+
+                                            Let op:<br>
+                                            Wijzig je je e-mailadres, dan dien je deze te verifiëren aan de hand van de
+                                            e-mail die je ontvangt.<br>
+                                            Wijzig je je wachtwoord, kies dan een wachtwoord met minimaal 8 tekens.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

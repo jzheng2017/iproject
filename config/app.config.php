@@ -3,7 +3,7 @@ return [
     "dev" => [
         /* Database configuration */
         "API" => [
-            "url" => "http://localhost/IProject/API"
+            "url" => "http://iproject21.icasites.nl/API"
         ],
         /* Website configuration */
         "website" => [
