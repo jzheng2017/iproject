@@ -98,7 +98,13 @@ class VeilingController implements Controller
                 $subRubrieken->getAllByParent($top);
                 $top->children = $subRubrieken;
             }
-
+            $r = new ApiRequest("gebruikers/". UserService::getInstance()->getCurrentUsername(), RequestMethod::GET());
+            if ($r->connect()){
+                $result = $r->getResult();
+                $view->fields['postcode'] = $result[0]['postcode'];
+                $view->fields['plaatsNaam'] = $result[0]['plaatsnaam'];
+                $view->fields['land'] = $result[0]['land'];
+            }
             return $view->render();
         }));
         $router->addRoute(new Route("veiling-aanmaken", RequestMethod::POST(), function (Request $request) {

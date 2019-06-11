@@ -62,3 +62,10 @@
 .bold{
     font-weight: bold;
 }
+
+.rating{
+    margin-top:0px;
+}
+.rating li{
+    display:inline;
+}

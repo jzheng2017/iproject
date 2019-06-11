@@ -168,9 +168,14 @@ $editable = false;
                                     ?>
                                     <li>
                                         <div class="collapsible-header"><?= $veiling['titel'] ?><?php if ($hoogsteBieder != UserService::getInstance()->getCurrentUser()->gebruikersnaam) {
-                                                echo "<span class='new badge light-green'></span>";
+                                                echo "<span class='new badge red'></span>";
                                             } ?></div>
                                         <div class="collapsible-body">
+                                            <?php if ($hoogsteBieder != UserService::getInstance()->getCurrentUser()->gebruikersnaam){?>
+                                            <div class="card red white-text center-align">
+                                                U bent overboden!
+                                            </div>
+                                            <?php }?>
                                             <table>
                                                 <tbody>
                                                 <tr>
@@ -209,10 +214,12 @@ $editable = false;
                                     </li>
                                 <?php } ?>
                                 <li>
-                                    <a href="<?= $baseUrl ?>wachtwoord-vergeten" class="btn btn-block light-green">Wachtwoord vergeten</a>
+                                    <a href="<?= $baseUrl ?>wachtwoord-vergeten" class="btn btn-block light-green">Wachtwoord
+                                        vergeten</a>
                                 </li>
                                 <li>
-                                    <a href="<?= $baseUrl ?>verwijder" class="btn btn-block light-green">Verwijder gegevens</a>
+                                    <a href="<?= $baseUrl ?>verwijder" class="btn btn-block light-green">Verwijder
+                                        gegevens</a>
                                 </li>
                             </ul>
 
