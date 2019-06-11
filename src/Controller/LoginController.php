@@ -59,7 +59,12 @@ class LoginController implements Controller
                             $view->error = 'Wachtwoord en gebruikersnaam combinatie klopt niet';
                         }
                     } else {
-                        $view->error = 'Wachtwoord en gebruikersnaam combinatie klopt niet';
+                        $error = $r->getError();
+                        if (isset($error['code']) && $error['code'] == 403) {
+                            $view->error = 'Je account is geblokkeerd, neem contact op met onze klantenservice als je denkt dat dit niet klopt.';
+                        } else {
+                            $view->error = 'Wachtwoord en gebruikersnaam combinatie klopt niet';
+                        }
                     }
                     LoggingService::log("POST /login", [
                         "login" => false,

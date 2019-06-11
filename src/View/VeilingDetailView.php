@@ -2,6 +2,7 @@
 
 namespace EenmaalAndermaal\View;
 
+use EenmaalAndermaal\Model\GebruikerModel;
 use EenmaalAndermaal\Model\VeilingModel;
 use EenmaalAndermaal\Model\VeilingModelCollection;
 
@@ -9,8 +10,12 @@ class VeilingDetailView extends View
 {
 
     public $veiling;
+    /** @var $verkoper GebruikerModel */
+    public $verkoper;
     public $collection;
     public $feedback;
+    public $userFeedback;
+
     public function __construct(VeilingModel $veiling)
     {
         parent::__construct("veilingen/veiling_detail");

@@ -14,7 +14,7 @@ $('select').formSelect();
 $('.modal').modal();
 $('#TOS').on('click', function() {
 });
-$('#TOStext').load("http://localhost/IProject/website/views/registreren/TOS.txt");
+$('#TOStext').load(base_url + "/website/views/registreren/TOS.txt");
 
 
 

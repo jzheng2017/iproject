@@ -74,4 +74,19 @@ class VeilingModelCollection extends ModelCollection
             die();
         }
     }
+
+    public function getNearby($lat, $long)
+    {
+        $r = new ApiRequest($this->model->getPath() . "/near", RequestMethod::GET(), [
+            "lat" => $lat,
+            "long" => $long
+        ]);
+        if ($r->connect()) {
+            $this->fromResultSet($r->getResult());
+            return true;
+        } else {
+            Debug::dump($r->getError());
+            die();
+        }
+    }
 }

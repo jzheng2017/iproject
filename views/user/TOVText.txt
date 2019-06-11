@@ -1,0 +1,435 @@
+<div class="introduction proza bt-xs-1 pt-xs-3 pb-xs-3 mb-xs-0">
+    <p style="font-size: 15px">
+        Welkom bij EenmaalAndermaal. We zijn zo blij dat je er bent. Maak het jezelf gemakkelijk en heb een goede tijd,
+        maar volg alsjeblieft onze huisregels. <br></div>
+    <article class="proza proza-artikel pb-xs-2 pb-md-4 pt-xs-4 bt-xs-1" style="font-size: 12px">
+        <ol>
+            <li><a href="#terms"> Acceptatie van deze voorwaarden </a></
+            li>
+            <li><a href="#documents"> Die andere documenten die we hebben genoemd </a></
+            li>
+            <li><a href="#privacy"> Uw privacy </a></
+            li>
+            <li><a href="#account"> Je account bij EenmaalAndermaal </a></
+            li>
+            <li><a href="#yourcontent"> Uw inhoud </a></
+            li>
+            <li><a href="#services"> Uw gebruik van onze services </a></
+            li>
+            <li><a href="#termination"> Beëindiging </a></
+            li>
+            <li><a href="#warranties"> Garanties en beperking van aansprakelijkheid (of de dingen waar u ons niet mee
+                    lastig kunt vallen) </a></
+            li>
+            <li><a href="#indemnification"> Vrijwaring (of wat er gebeurt als u ons op de hoogte houdt) </a></
+            li>
+            <li><a href="#disputes"> Geschillen met andere gebruikers </a></
+            li>
+            <li><a href="#EenmaalAndermaaldisputes"> Geschillen met EenmaalAndermaal </a></
+            li>
+            <li><a href="#changes"> Wijzigingen in de voorwaarden </a></
+            li>
+            <li><a href="#legal"> Sommige Finer Legal Points </a></
+            li>
+            <li><a href="#contact"> Contactinformatie </a></
+            li>
+        </ol>
+        1. Deze voorwaarden accepteren </h2>
+        <strong> Dit document en de andere documenten waarnaar we hieronder verwijzen, vormen onze huisregels of wat we
+            officieel onze Gebruiksvoorwaarden noemen (kortweg de 'Voorwaarden'). </strong> <br>
+        De voorwaarden zijn een juridisch bindend contract tussen u en EenmaalAndermaal. Als u in Noord-Amerika of
+        Zuid-Amerika woont, is het contract tussen u en EenmaalAndermaal, Inc .; als u ergens anders woont, is het
+        contract tussen u en EenmaalAndermaal Ireland UC, een dochteronderneming van EenmaalAndermaal, Inc. We verwijzen
+        EenmaalAndermaal, Inc. en al haar dochterondernemingen samen naar "EenmaalAndermaal". <br>
+        <strong> Houd er rekening mee dat <a href="#EenmaalAndermaaldisputes"> sectie 11. Geschillen met
+                EenmaalAndermaal </a> een arbitrageclausule en vrijstelling van class action bevat. Door akkoord te gaan
+            met de Voorwaarden, gaat u ermee akkoord om alle geschillen op te lossen door middel van bindende
+            individuele arbitrage, wat betekent dat u afstand doet van het recht om deze geschillen te laten beslissen
+            door een rechter of jury, en dat u afstand doet van uw recht om deel te nemen aan class actions,
+            klassenarbitraties, of representatieve acties. </strong> <br>
+        Dit contract beschrijft uw rechten en verantwoordelijkheden wanneer u EenmaalAndermaal.com, Pattern by
+        EenmaalAndermaal, onze mobiele apps en de andere services van EenmaalAndermaal gebruikt (we zullen dit allemaal
+        gezamenlijk noemen als onze "Services"), dus lees het aandachtig door. Door een van onze Services te gebruiken
+        (zelfs als u alleen op een van onze websites surft), gaat u akkoord met de Voorwaarden. Als u niet akkoord gaat
+        met de Voorwaarden, mag u onze Diensten niet gebruiken. Jij met ons? Geweldig, lees verder! <br>
+        <h2 id="documenten"> 2. Die andere documenten die we hebben genoemd </h2>
+        EenmaalAndermaal's Services verbindt mensen over de hele wereld, zowel online als offline, om unieke goederen te
+        maken, verkopen en kopen. Hier is een handige gids om u te helpen de specifieke regels te begrijpen die voor u
+        relevant zijn, afhankelijk van hoe u de Services gebruikt: <br>
+        Ons huisreglement voor iedereen. Als u een van onze Services gebruikt, gaat u akkoord met deze Voorwaarden, ons
+        <a href="https://www.EenmaalAndermaal.com/legal/privacy"> Privacybeleid </a> en onze <a
+                href="https : //www.EenmaalAndermaal.com/legal/policy/anti-discrimination-policy/123551108902 ">
+            Antidiscriminatiebeleid </a>. <br>
+        <strong> <a href="https://www.EenmaalAndermaal.com/legal/section/sellers"> Onze huisregels voor verkopers </a>
+        </strong>. Als u items opgeeft die te koop zijn via onze Services, zijn deze beleidsregels op u van toepassing.
+        Je kunt ze <a href="https://www.EenmaalAndermaal.com/legal/section/sellers"> hier </a> lezen. <br>
+        <strong> <a href="https://www.EenmaalAndermaal.com/legal/section/buyers"> Onze huisregels voor kopers </a> </
+        strong>. Als u onze Services gebruikt om te bladeren of te winkelen, zijn deze beleidsregels op u van
+        toepassing. Je kunt ze <a href="https://www.EenmaalAndermaal.com/legal/section/buyers"> hier </a> lezen. <br>
+        <strong> <a href="https://www.EenmaalAndermaal.com/legal/section/third-party"> Onze huisregels voor derden </a>
+        </strong>. Dit beleid is van toepassing op <a href="https://www.EenmaalAndermaal.com/legal/ip"> eigenaars van
+            intellectuele eigendommen </a>, <a href="https://www.EenmaalAndermaal.com/legal/api "> EenmaalAndermaal
+            API-gebruikers </a>, <a href="https://www.EenmaalAndermaal.com/legal/affiliates"> gelieerde
+            ondernemingen </a> en <a href=" https: //www.EenmaalAndermaal. nl / legal / requests-for-information ">
+            iedereen die informatie van EenmaalAndermaal vraagt </a>. <br>
+        Al deze beleidsregels zijn onderdeel van onze Voorwaarden. Lees daarom de voorwaarden die voor u relevant zijn.
+        Natuurlijk wilt u de rest van dit document nog steeds lezen omdat het van toepassing is op iedereen! <br>
+
+        <h2 id="privacy"> 3. Uw privacy </h2>
+        We weten dat uw persoonlijke gegevens belangrijk voor u zijn, dus het is belangrijk voor ons. Ons <a
+                href="https://www.EenmaalAndermaal.com/legal/privacy"> Privacybeleid </a> geeft aan hoe uw gegevens
+        worden gebruikt wanneer u onze Services gebruikt. Door onze Services te gebruiken, gaat u er ook mee akkoord dat
+        we uw informatie kunnen verwerken op de manieren die zijn uiteengezet in het Privacybeleid, dus lees het <a
+                href="https://www.EenmaalAndermaal.com/legal/privacy"> hier </a>. <br>
+        Zowel EenmaalAndermaal als verkopers verwerken de persoonlijke gegevens van leden (bijvoorbeeld de naam van de
+        koper, het e-mailadres en het bezorgadres) en worden daarom beschouwd als onafhankelijke en onafhankelijke
+        gegevenscontrollers van de persoonlijke gegevens van kopers volgens de EU-wetgeving. Dat betekent dat elke
+        partij verantwoordelijk is voor de persoonlijke informatie die het verwerkt bij het leveren van de Services. Als
+        een verkoper bijvoorbeeld per ongeluk de naam en het e-mailadres van een koper bekendmaakt bij het uitvoeren van
+        de bestelling van een andere koper, is de verkoper, en niet EenmaalAndermaal, verantwoordelijk voor die
+        ongeautoriseerde openbaarmaking. & Nbsp; <br>
+        Als EenmaalAndermaal en verkopers echter gemeenschappelijke gegevenscontroleurs van de persoonlijke gegevens van
+        kopers blijken te zijn, en als EenmaalAndermaal wordt vervolgd, beboet of anderszins kosten moet betalen vanwege
+        iets dat u hebt gedaan als gezamenlijke gegevensbeheerder van persoonlijke gegevens van de koper , gaat u ermee
+        akkoord EenmaalAndermaal te vergoeden voor de kosten die het met zich meebrengt in verband met uw verwerking van
+        persoonlijke gegevens van de koper. Zie <a href="#indemnification"> Paragraaf 9. Vrijwaring (of wat er gebeurt
+            als u ons op de hoogte houdt) </a> hieronder voor meer informatie over uw vrijwaringsverplichtingen jegens
+        EenmaalAndermaal. <br>
+        <h2 id="account"> 4. Uw account bij EenmaalAndermaal </h2>
+        U moet een account maken bij EenmaalAndermaal om sommige van onze Services te gebruiken. Hier volgen enkele
+        regels voor accounts met EenmaalAndermaal: <br>
+        <strong> A. U moet 18 jaar of ouder zijn om onze Services te gebruiken. </Strong> Minderjarigen jonger dan 18
+        jaar en ouder dan 13 jaar mogen onze Services alleen gebruiken met een account van een ouder of wettelijke
+        voogd, met de juiste toestemming en onder hun direct toezicht. Kinderen jonger dan 13 jaar mogen
+        EenmaalAndermaal of de Services niet gebruiken. U bent verantwoordelijk voor alle accountactiviteit die wordt
+        uitgevoerd door een minderjarige op uw account. Raadpleeg voor meer informatie EenmaalAndermaal's <a
+                href="https://www.EenmaalAndermaal.com/legal/minors"> beleid ten aanzien van minderjarigen </a>. <br>
+        <strong> B. Wees eerlijk tegen ons. </Strong> verstrek nauwkeurige informatie over jezelf. Het is verboden
+        valse informatie te gebruiken of zich als een ander persoon of bedrijf te profileren via uw account. <br>
+        <strong> C. Kies een geschikte naam. </Strong> Als u besluit uw volledige naam niet te laten fungeren als de
+        naam die aan uw account is gekoppeld, mag u geen taal gebruiken die aanstootgevend, vulgair is, iemands
+        intellectuele eigendomsrechten schendt of anderszins de voorwaarden schendt. <br>
+        <strong> D. U bent verantwoordelijk voor uw account. </Strong> u bent als enige verantwoordelijk voor alle
+        activiteiten in uw account. Als u een account deelt met andere mensen, is de persoon wiens financiële gegevens
+        in het account staan, uiteindelijk verantwoordelijk voor alle activiteiten. Als u zich registreert als een
+        zakelijke entiteit, garandeert u persoonlijk dat u de bevoegdheid hebt om in naam van het bedrijf akkoord te
+        gaan met de voorwaarden. Uw accounts zijn ook niet overdraagbaar. <br>
+        <strong> E. Bescherm uw wachtwoord. </Strong> Zoals we hierboven vermeldden, bent u als enige verantwoordelijk
+        voor alle activiteiten in uw account, dus het is belangrijk om uw wachtwoord veilig te houden. <a
+                href="https://help.EenmaalAndermaal.com/hc/en-us/articles/115015569567"> Hier is een Help-artikel over
+            hoe u uw account veiliger kunt maken </a>. <br>
+        <strong> F. Laten we duidelijk zijn over onze relatie. </Strong> Deze voorwaarden creëren geen agentuur-,
+        partnerschap-, joint venture-, tewerkstelling- of franchisenemerrelatie tussen u en EenmaalAndermaal. <br>
+        <a href="https://help.EenmaalAndermaal.com/hc/en-us/articles/115015568007"> Dit gedetailleerde Help-artikel </a>
+        zou al je vragen over het registreren van een account bij EenmaalAndermaal moeten beantwoorden . <br>
+
+
+        <h2 id="yourcontent"> 5. Uw inhoud </h2>
+        Inhoud die u plaatst met behulp van onze Services is uw inhoud (dus laten we dit 'Uw inhoud' noemen). We doen er
+        geen aanspraak op, waaronder alles wat u publiceert met behulp van onze Services (zoals winkelnamen,
+        profielfoto's, lijst met foto's, beschrijvingen van lijsten, beoordelingen, opmerkingen, video's,
+        gebruikersnamen, enz.). <br>
+        <strong> A. Verantwoordelijkheid voor uw inhoud. </Strong> U begrijpt dat u alleen verantwoordelijk bent voor
+        uw inhoud. U verklaart dat u alle benodigde rechten op uw inhoud hebt en dat u de rechten van derden niet
+        schendt of schendt door deze te plaatsen. <br>
+        <strong> B. Toestemming om uw inhoud te gebruiken </strong>. Door uw inhoud via onze services te plaatsen,
+        verleent u EenmaalAndermaal een licentie om deze te gebruiken. We claimen geen eigendom van Uw inhoud, maar we
+        hebben uw toestemming om het te gebruiken om EenmaalAndermaal te helpen functioneren en te groeien. Op die
+        manier zullen we geen inbreuk maken op uw rechten op uw inhoud en kunnen we u helpen uw spullen te promoten.
+        Bijvoorbeeld, u erkent en gaat ermee akkoord dat EenmaalAndermaal u of EenmaalAndermaal-koperspromoties op de
+        Site van tijd tot tijd kan aanbieden, die betrekking kunnen hebben op uw aanbiedingen <br>
+        <strong> C. Rechten die u toekent aan EenmaalAndermaal. </Strong> (Hier is de juridische versie van de laatste
+        sectie). Door Uw Inhoud te plaatsen, verleent u EenmaalAndermaal een niet-exclusieve, wereldwijde, royaltyvrije,
+        onherroepelijke, sublicentieerbare, eeuwigdurende licentie voor het gebruiken, weergeven, bewerken,
+        reproduceren, distribueren, opslaan en voorbereiden van afgeleide werken van Uw Inhoud. Dit stelt ons in staat
+        om de Services te leveren en EenmaalAndermaal, uw EenmaalAndermaal-winkel of de Services in het algemeen te
+        promoten, in alle indelingen en via alle kanalen, inclusief alle EenmaalAndermaal-services, onze partners of een
+        website of advertentiemedium van derden. U stemt ermee in geen morele rechten of publiciteitsrechten tegen ons
+        te doen gelden voor het gebruik van uw inhoud. U erkent ook ons rechtmatig belang om het te gebruiken, in
+        overeenstemming met de reikwijdte van deze licentie, voor zover Uw Inhoud persoonlijke informatie bevat. <br>
+        Dat klinkt als veel, maar het is noodzakelijk dat we EenmaalAndermaal aan de gang houden. Overweeg deze
+        voorbeelden: als u een foto van een vermelding in uw EenmaalAndermaal-winkel uploadt, hebben we toestemming om
+        deze aan kopers weer te geven, en we kunnen de grootte ervan wijzigen zodat het er voor een koper goed uitziet
+        met onze mobiele app; als u een beschrijving in het Engels post, kunnen we deze in het Frans vertalen, zodat een
+        koper in Parijs het verhaal achter uw artikel kan achterhalen; en als u een mooie foto van uw nieuwste
+        handgemaakte ketting plaatst, kunnen we deze op onze startpagina, in een van onze blogs of zelfs op een
+        reclamebord plaatsen om uw bedrijf en EenmaalAndermaal's te promoten. <br>
+        <strong> D. Niet-geautoriseerde inhoud melden. </Strong> EenmaalAndermaal heeft groot respect voor
+        intellectuele eigendomsrechten en verplicht zich ertoe de juiste juridische procedures te volgen om
+        inbreukmakende inhoud van de Services te verwijderen. Als inhoud waarvan u de eigenaar bent of waarvoor u
+        rechten hebt, zonder uw toestemming in de Services is geplaatst en u deze wilt verwijderen, volgt u de stappen
+        in onze <a href="https://www.EenmaalAndermaal.com/legal/ip"> Intellectueel eigendomsbeleid </a>. Als wordt
+        vermoed dat uw inhoud inbreuk maakt op het intellectuele eigendom van iemand anders, zullen we gepaste
+        maatregelen nemen, zoals het uitschakelen ervan als we een behoorlijke kennisgeving ontvangen of uw account
+        beëindigen als u een herhaalde inbreukmaker blijkt te zijn. We zullen u op de hoogte stellen als er iets
+        gebeurt. <br>
+        <strong> E. Ongepaste, valse of misleidende inhoud. </Strong> Dit moet gezond verstand zijn, maar er zijn
+        bepaalde soorten inhoud die we niet op de services van EenmaalAndermaal willen plaatsen (om juridische redenen
+        of anderszins). U stemt ermee in dat u geen inhoud zult plaatsen die beledigend, bedreigend, lasterlijk,
+        obsceen, vulgair of anderszins aanstootgevend is of in strijd is met onze <a
+                href="https://www.EenmaalAndermaal.com/legal/prohibited"> Verboden Artikelenbeleid </a>, <a
+                href="https://www.EenmaalAndermaal.com/legal/community"> Gemeenschapsbeleid </a> of een deel van onze
+        voorwaarden. U gaat er ook mee akkoord geen inhoud te plaatsen die vals en misleidend is of de Services gebruikt
+        op een manier die frauduleus of misleidend is. <br>
+
+        <h2 id="services"> 6. Uw gebruik van onze services </h2>
+        <strong> Licentie voor het gebruik van onze services. </strong> We verlenen u een beperkte, niet-exclusieve,
+        niet-overdraagbare en herroepbare licentie om onze Services te gebruiken - met inachtneming van de voorwaarden
+        en de volgende beperkingen in het bijzonder: </p>
+        <strong> A. Gebruik onze services niet om de wet te overtreden. </Strong> U gaat ermee akkoord dat u geen
+        wetten overtreedt in verband met uw gebruik van de services. Dit omvat alle lokale, provinciale, federale en
+        internationale wetten die op u van toepassing zijn. Het is bijvoorbeeld uw verantwoordelijkheid om vergunningen
+        of licenties te verkrijgen die uw winkel vereist; u mag niet <a
+                href="https://www.EenmaalAndermaal.com/legal/prohibited"> iets verkopen dat in strijd is met de wet </a>;
+        u moet voldoen aan ons <a href="https://www.EenmaalAndermaal.com/legal/policy/sanctions-policy/122383404929">
+            sanctiebeleid </a> en u mag zich niet inlaten met fraude (inclusief valse claims of kennisgevingen van
+        inbreuk), diefstal, concurrentieverstorend gedrag, bedreigend gedrag of andere onwettige handelingen of misdaden
+        tegen EenmaalAndermaal, een andere EenmaalAndermaal-gebruiker of een derde partij. <br>
+        <strong> B. Betaal uw facturen. </Strong> U bent verantwoordelijk voor het betalen van alle kosten die u aan
+        EenmaalAndermaal verschuldigd bent. Behalve zoals hieronder uiteengezet, bent u ook zelf verantwoordelijk voor
+        het verzamelen en / of betalen van toepasselijke belastingen voor aankopen of verkopen die u via onze Services
+        doet. Voor digitale items verkocht aan kopers in Australië, Wit-Rusland, de EU, IJsland, India, Nieuw-Zeeland,
+        Noorwegen, Rusland, Servië, Zuid-Afrika, Zuid-Korea, Zwitserland, Taiwan, Turkije of de Verenigde Arabische
+        Emiraten, zal EenmaalAndermaal helpen bij het verzamelen en aflossen het juiste bedrag van belasting over de
+        toegevoegde waarde of btw. Sommige landen kunnen naar de btw verwijzen met behulp van andere termen, b.v. Goods
+        and Services Tax (GST), maar we verwijzen gewoon naar btw, GST en eventuele lokale omzetbelastingen gezamenlijk
+        als 'btw'. Bovendien zal EenmaalAndermaal indien van toepassing omzetbelasting berekenen, innen en afdragen. Zie
+        <a href="https://help.EenmaalAndermaal.com/hc/articles/360000343968"> deze FAQ </a> voor meer informatie. Uw
+        kosten, rekeningen, belastingen en hoe u ze kunt betalen, worden volledig uitgelegd in onze <a
+                href="https://www.EenmaalAndermaal.com/legal/fees"> Kosten & amp; Betalingsbeleid </a>. <br>
+        <strong> C. Steel onze spullen niet. </Strong> U stemt ermee in om geen pagina van de Services te crawlen,
+        schrapen of spinnen, of de technicus te reverse-engineeren of de broncode van de Services te verkrijgen. Als u
+        onze API wilt gebruiken, volgt u onze <a href="https://www.EenmaalAndermaal.com/legal/api">
+            API-gebruiksvoorwaarden </a>. <br>
+        <strong> D. Probeer onze systemen niet te schaden. </Strong> U gaat ermee akkoord om onze services niet te
+        verstoren of proberen te verstoren, bijvoorbeeld door een virus of andere schadelijke computercode te
+        verspreiden. <br>
+        <strong> E. Volg ons beleid inzake handelsmerken. </Strong> De naam "EenmaalAndermaal" en de andere
+        EenmaalAndermaal-merken, -zinnen, -logo's en -ontwerpen die we gebruiken in verband met onze Services, zijn
+        handelsmerken, dienstmerken of trade dress van EenmaalAndermaal in de VS en andere landen. Als u onze
+        handelsmerken wilt gebruiken, volgt u ons <a href="https://www.EenmaalAndermaal.com/legal/trademarks">
+            Merkenbeleid </a>. <br>
+        <strong> F. Deel uw ideeën. </Strong> We houden van uw suggesties en ideeën! Ze kunnen ons helpen uw ervaring
+        en onze Services te verbeteren. Alle ongevraagde ideeën of andere materialen die u indient bij EenmaalAndermaal
+        (met uitzondering van uw inhoud of items die u verkoopt via onze services) worden beschouwd als
+        niet-vertrouwelijk en zijn niet-eigendom van u. U verleent ons een niet-exclusieve, wereldwijde, royaltyvrije,
+        onherroepelijke, sublicentieerbare, eeuwigdurende licentie om die ideeën en materialen voor elk doel te
+        gebruiken en te publiceren, zonder compensatie voor u. <br>
+        <strong> G. Praat met ons online. </Strong> Van tijd tot tijd zal EenmaalAndermaal u bepaalde juridische
+        informatie schriftelijk verstrekken. Door onze Services te gebruiken, gaat u akkoord met ons <a
+                href="https://www.EenmaalAndermaal.com/legal/electronic-communications"> beleid inzake elektronische
+            communicatie </a>, waarin wordt beschreven hoe wij u die informatie verstrekken . Er staat dat we u
+        informatie elektronisch kunnen verzenden (zoals per e-mail) in plaats van u papieren kopieën te sturen (het is
+        beter voor het milieu) en dat uw elektronische overeenkomst overeenkomt met uw handtekening op papier. <br>
+
+        <h2 id="termination"> 7. Beëindiging </h2>
+        <strong> Beëindiging door u. </strong> We willen u graag laten gaan, maar u kunt uw account op elk gewenst
+        moment beëindigen via uw accountinstellingen. U vindt meer informatie in <a
+                href="https://help.EenmaalAndermaal.com/hc/en-us/articles/115015693707"> dit Help-artikel </a>. Het
+        beëindigen van uw account heeft geen invloed op de beschikbaarheid van sommige van uw inhoud die u voorafgaand
+        aan beëindiging via de Services hebt gepost. Oh, en je moet nog steeds openstaande rekeningen betalen. <br>
+        <strong> Beëindiging door EenmaalAndermaal. </strong> We kunnen uw account (en gerelateerde accounts) en uw
+        toegang tot de Services op elk gewenst moment, om welke reden dan ook en zonder voorafgaande kennisgeving
+        beëindigen of opschorten. Als we dit doen, is het belangrijk om te begrijpen dat u geen contractueel of
+        wettelijk recht hebt om onze Services te blijven gebruiken, bijvoorbeeld om te verkopen of kopen op onze
+        websites of mobiele apps. EenmaalAndermaal kan op elk gewenst moment, om welke reden dan ook, service aan
+        iedereen weigeren. <br>
+        Als u of EenmaalAndermaal uw account beëindigt, kunt u alle informatie kwijtraken die is gekoppeld aan uw
+        account, inclusief uw inhoud. <br>
+        <strong> We kunnen de Services stopzetten. </strong> EenmaalAndermaal behoudt zich het recht voor om de
+        Services te allen tijde en om welke reden dan ook te wijzigen, op te schorten of stop te zetten. We zijn niet
+        aansprakelijk jegens u voor het effect dat eventuele wijzigingen in de Services op u kunnen hebben, inclusief uw
+        inkomsten of uw vermogen om inkomsten te genereren via de Services. <br>
+        <strong> Overleven. </strong> De Voorwaarden blijven van kracht, zelfs nadat uw toegang tot de Service is
+        beëindigd of uw gebruik van de Service is beëindigd. <br>
+
+        <h2 id="garanties"> 8. Garanties en beperking van aansprakelijkheid (of de dingen waar u ons niet toe kunt
+            brengen) </h2>
+        <strong> Items die u aanschaft. </strong> U begrijpt dat EenmaalAndermaal geen van de items die via onze
+        Services worden verkocht vervaardigt, opslaat of inspecteert. Wij bieden de locatie; de items op onze markten
+        worden rechtstreeks door onafhankelijke verkopers geproduceerd, vermeld en verkocht, zodat EenmaalAndermaal geen
+        garanties kan en wil geven over hun kwaliteit, veiligheid of zelfs hun legaliteit. Elke rechtsvordering met
+        betrekking tot een artikel dat u koopt, moet rechtstreeks tegen de verkoper van het artikel worden gebracht. U
+        geeft EenmaalAndermaal vrij van alle claims met betrekking tot artikelen die via onze Services worden verkocht,
+        inclusief defecte artikelen, verkeerde voorstellingen door verkopers of items die lichamelijk letsel hebben
+        veroorzaakt (zoals productaansprakelijkheidsclaims). <br>
+        <strong> Inhoud die u opent. </strong> u kunt materiaal tegenkomen dat u beledigend of ongepast vindt tijdens
+        het gebruik van onze Services. We doen geen toezeggingen met betrekking tot inhoud die door gebruikers via de
+        Services wordt geplaatst. EenmaalAndermaal is niet verantwoordelijk voor de nauwkeurigheid, copyright-naleving,
+        legaliteit of fatsoen van inhoud die wordt geplaatst door gebruikers die u via de Services hebt bezocht. U
+        ontheft ons van alle aansprakelijkheid met betrekking tot die inhoud. <br>
+        <strong> Mensen waarmee u interactief bent. </strong> U kunt de Services gebruiken om met andere personen te
+        communiceren, online of persoonlijk. U begrijpt echter dat wij gebruikers van onze Services niet screenen en dat
+        u ons vrijwaart van alle aansprakelijkheid met betrekking tot uw interacties met andere gebruikers. Wees
+        voorzichtig en wees voorzichtig en goed inschat in alle interacties met anderen, vooral als u iemand persoonlijk
+        ontmoet. <a
+                href="https://www.EenmaalAndermaal.com/legal/policy/personal-safety-when-meeting-members-in/243317335177">
+            Dit Help-artikel </a> heeft goed advies over persoonlijke vergaderingen . <br>
+        <strong> Services van derden. </strong> Onze Services kunnen links bevatten naar websites of services van
+        derden waarvan we geen eigenaar of beheerder zijn (bijvoorbeeld links naar Facebook, Twitter en Pinterest).
+        Mogelijk moet u ook het product of de service van een derde partij gebruiken om sommige van onze Services te
+        gebruiken (zoals een compatibel mobiel apparaat om onze mobiele apps te gebruiken). Wanneer u deze services van
+        derden gebruikt, doet u dit op eigen risico. De derde partijen kunnen u vragen om hun eigen gebruiksvoorwaarden
+        te accepteren. EenmaalAndermaal is geen partij bij deze overeenkomsten; ze zijn uitsluitend tussen u en de derde
+        partij. <br>
+        <strong> Cadeaubonnen en promoties. </strong> U erkent dat EenmaalAndermaal geen garanties verstrekt met
+        betrekking tot uw Gift Card-saldo en is niet verantwoordelijk voor ongeautoriseerde toegang tot of wijziging van
+        diefstal of vernietiging van een Gift Card of Gift Card-code die het gevolg is van enige actie door u of een
+        derde partij. U erkent ook dat we het gebruik van uw Geschenkenkaart kunnen opschorten of verbieden als uw
+        Geschenkkaart of Geschenkkaart als verloren of gestolen wordt gemeld, of als wij denken dat uw
+        Geschenkkaart-saldo verdacht, frauduleus of op een anderszins niet-geautoriseerde manier wordt gebruikt . Als uw
+        Gift Card-code niet meer werkt, is uw enige remedie dat wij u een vervangende Gift Card-code geven. Door deel te
+        nemen aan een speciale aanbieding of promotie, gaat u ermee akkoord dat u niet later beweert dat de regels van
+        die speciale aanbieding of promotie dubbelzinnig waren. <br>
+
+        <table border="1">
+            <tbody>
+            <tr>
+                <td><strong> Garanties. </strong> EenmaalAndermaal streeft ernaar onze services zo goed mogelijk te
+                    maken, maar we zijn niet perfect en soms dingen kunnen fout gaan. U begrijpt dat onze Services
+                    worden geleverd "zoals ze zijn" en zonder enige vorm van garantie (expliciet of impliciet). We doen
+                    uitdrukkelijk afstand van alle garanties van titel, niet-inbreuk, verkoopbaarheid en geschiktheid
+                    voor een bepaald doel, evenals garanties die worden geïmpliceerd door een uitvoering, het
+                    verhandelen of gebruik van handel. <br>
+                    We kunnen niet garanderen dat: (i) de Services veilig of beschikbaar zijn op een bepaald tijdstip of
+                    locatie; (ii) eventuele gebreken of fouten zullen worden gecorrigeerd; (iii) de Services zullen vrij
+                    zijn van virussen of andere schadelijke materialen; of (iv) de resultaten van het gebruik van de
+                    Services zullen voldoen aan uw verwachtingen. U gebruikt de Services uitsluitend op eigen risico. In
+                    sommige rechtsgebieden zijn beperkingen ten aanzien van impliciete garanties niet toegestaan,
+                    waardoor de bovenstaande beperkingen mogelijk niet op u van toepassing zijn. <br>
+                    <strong> Aansprakelijkheidslimieten. </strong> Voor zover de wet dit toestaat, zijn noch
+                    EenmaalAndermaal, noch onze werknemers of directeuren aansprakelijk jegens u voor winstderving of
+                    inkomstenderving, of voor enige indirecte, incidentele of indirecte, gevolgschade. speciale of
+                    punitieve schade voortvloeiend uit of in verband met de Services of deze Voorwaarden. In geen geval
+                    zal EenmaalAndermaal's totale aansprakelijkheid voor enige schade groter zijn dan de grootste van
+                    honderd ($ 100) US Dollars (USD) of het bedrag dat u EenmaalAndermaal in de afgelopen twaalf maanden
+                    hebt betaald. Sommige rechtsgebieden staan geen beperkingen toe voor incidentele of gevolgschade,
+                    daarom zijn de bovenstaande beperkingen mogelijk niet op u van toepassing. <br></
+                td>
+            </
+            tr>
+            </
+            tbody>
+        </
+        table> <h2 id="schadeloosstelling"> 9. Vrijwaring (of wat er gebeurt als je ons hebt aangeklaagd) </h2>
+        We hopen dat dit nooit gebeurt, maar als EenmaalAndermaal wordt aangeklaagd vanwege iets dat je hebt gedaan, ga
+        je ermee akkoord ons te verdedigen en schadeloos te stellen. Dat betekent dat u EenmaalAndermaal (inclusief een
+        van onze werknemers) zult verdedigen en ons zult vrijwaren van elke juridische claim of eis (inclusief redelijke
+        advocatenkosten) die voortvloeit uit uw acties, uw gebruik (of misbruik) van onze Services, uw schending van de
+        Voorwaarden, of de schending door een account van de rechten van iemand anders. <br>
+        We behouden ons het recht voor om onze juridische verdediging te behandelen zoals wij dat nodig achten, zelfs
+        als u ons schadeloos stelt, in welk geval u ermee instemt om met ons samen te werken, zodat wij onze strategie
+        kunnen uitvoeren. <br>
+        <h2 id="disputes"> 10. Geschillen met andere gebruikers </h2>
+        Als u in een geschil verkeert met een andere gebruiker van EenmaalAndermaal's Services of een derde partij,
+        raden we u aan contact op te nemen met de andere partij en het geschil in der minne te schikken. <br>
+        <strong> Case System. </strong> Kopers en verkopers die een geschil gerelateerd aan een transactie op onze
+        websites of mobiele apps niet kunnen oplossen, kunnen deelnemen aan ons casusysteem. U kunt details over het
+        casusysteem vinden in <a href="https://help.EenmaalAndermaal.com/hc/articles/115013294548"> dit
+            Help-artikel </a>. EenmaalAndermaal zal proberen om u te helpen bij het oplossen van geschillen in goed
+        vertrouwen en uitsluitend op basis van onze interpretatie van ons beleid, naar eigen goeddunken; we zullen geen
+        oordeel vellen over juridische kwesties of claims. EenmaalAndermaal is niet verplicht om geschillen op te
+        lossen. <br>
+        <strong> Release van EenmaalAndermaal. </strong> U geeft EenmaalAndermaal vrij van alle claims, eisen en schade
+        die voortvloeien uit geschillen met andere gebruikers of partijen. <br>
+
+        <h2 id="EenmaalAndermaaldisputes"> 11. Geschillen met EenmaalAndermaal </h2>
+        Als u boos op ons bent, laat het ons weten en hopelijk kunnen we uw probleem oplossen. Maar als dat niet het
+        geval is, zullen deze regels van toepassing zijn op elk juridisch geschil met betrekking tot onze Services: <br>
+        <strong> A. De voorwaarden worden beheerst door het recht van de staat New York, ongeacht de conflictregels en
+            de wetten van de Verenigde Staten van Amerika. Deze wetten zijn van toepassing, waar ter wereld u ook woont,
+            maar als u buiten de Verenigde Staten woont, heeft u mogelijk recht op de bescherming van de verplichte
+            consumentenbeschermingsbepalingen van uw lokale wetgeving inzake consumentenbescherming. <br>
+            <strong> B. Arbitrage. </Strong> U en EenmaalAndermaal stemmen ermee in dat elk geschil of claim
+            voortvloeiend uit of verband houdend met de voorwaarden definitief wordt beslecht door definitieve en
+            bindende arbitrage, met gebruikmaking van de Engelse taal, beheerd door de American Arbitration Association
+            (de "AAA") onder zijn Arbitrageregels voor consumenten (de "AAA-regels") dan van kracht (deze regels worden
+            geacht te zijn opgenomen door verwijzing in deze sectie en vanaf de datum van deze Voorwaarden kunt u de
+            AAA-regels vinden <a
+                    href="https: / /www.adr.org/sites/default/files/document_repository/Consumer_Arbitration_Rules_Web.pdf">hier </a>),
+            tenzij anders vereist door de wet. <strong> Arbitrage wordt behandeld door een enkele bemiddelaar in
+                overeenstemming met die regels. Het oordeel over de arbitrale uitspraak kan worden ingeschreven in elk
+                gerecht dat jurisdictie heeft. Elke arbitrage onder de Voorwaarden zal op individuele basis plaatsvinden
+                - klassenarbitraties en class actions zijn niet toegestaan. U begrijpt dat door u akkoord te gaan met de
+                Voorwaarden, u en EenmaalAndermaal elk afstand doen van het recht op juryrechtspraak of deelnemen aan
+                een class action of class arbitration. </Strong> Niettegenstaande het voorgaande, heeft elke partij het
+            recht om een actie te ondernemen bij een rechtbank die bevoegd is voor een rechterlijke of andere
+            rechtvaardige of conservatoire vrijstelling, in afwachting van een definitieve beslissing door de arbiter. U
+            kunt in plaats daarvan uw claim indienen bij de rechtbank voor "kleine vorderingen", maar alleen als uw
+            claim in aanmerking komt, blijft uw vordering bij een dergelijke rechtbank en blijft uw vordering op
+            individuele, niet-representatieve en niet-class-basis berusten. <br>
+            <strong> C. Kosten van arbitrage. </Strong> betaling voor alle redelijke aanvragen voor een AAA-aanvraag,
+            administratief en arbitragerecht is in overeenstemming met de arbitrageregels voor consumenten. Als de
+            waarde van uw claim de $ 10.000 USD niet overschrijdt, zal EenmaalAndermaal de redelijke kosten voor
+            archivering, administratie en arbitrage betalen die aan de arbitrage zijn verbonden, tenzij de arbiter vindt
+            dat de inhoud van uw vordering of het gevraagde geding frivool was of werd gebracht voor een ongepast doel.
+            <br>
+            <strong> D. Forum. </Strong> We zijn gevestigd in Brooklyn, New York, dus elke juridische actie tegen
+            EenmaalAndermaal met betrekking tot onze Services moet worden ingediend en plaatsvinden in Brooklyn. Voor
+            alle acties onder de AAA-regels, kan de procedure worden ingediend waar uw woonplaats is, of in Brooklyn,
+            New York, en alle persoonlijke hoorzittingen worden uitgevoerd op een locatie die redelijk geschikt is voor
+            beide partijen, rekening houdend met hun vermogen om reizen en andere pertinente omstandigheden. Voor alle
+            acties die niet onderhevig zijn aan arbitrage, komen u en EenmaalAndermaal overeen om zich te onderwerpen
+            aan de persoonlijke jurisdictie van een rechtbank in Kings County, New York of de Amerikaanse District Court
+            voor het oostelijke district van New York als uw contract bij EenmaalAndermaal, Inc is .; Als uw contract
+            bij EenmaalAndermaal Ireland UC is, komen u en EenmaalAndermaal overeen om zich te onderwerpen aan de
+            persoonlijke jurisdictie van de rechtbanken van Ierland. <br>
+
+            <strong>E. Government Exception.</strong> If you are a government agent or entity in the United States using
+            the Services in your official capacity, and you are legally unable to agree to the clauses in this section,
+            then those clauses do not apply to you. In that case, the Terms and any action related to the Terms will be
+            governed by the laws of the United States (without reference to conflict of laws) and, in the absence of
+            federal law and to the extent permitted under federal law, the laws of the State of New York.<br>
+            <strong>F. Modifications.</strong> If we make any changes to this “Disputes with EenmaalAndermaal” section
+            after the date you last accepted the Terms, those changes will not apply to any claims filed in a legal
+            proceeding against EenmaalAndermaal prior to the date the changes became effective. EenmaalAndermaal will
+            notify you of substantive changes to the “Disputes with EenmaalAndermaal” section at least 30 days prior to
+            the date the change will become effective. If you do not agree to the modified terms, you may send
+            EenmaalAndermaal a written notification (including email) or close your account within those 30 days. By
+            rejecting a modified term or permanently closing your account, you agree to arbitrate any disputes between
+            you and EenmaalAndermaal in accordance with the provisions of this “Disputes with EenmaalAndermaal” section
+            as of the date you last accepted the Terms, including any changes made prior to your rejection. If you
+            reopen your closed account or create a new account, you agree to be bound by the current version of the
+            Terms.<br>
+
+            <strong> E. Uitzondering door de overheid. </Strong> Als u een overheidsagent of -entiteit in de Verenigde
+            Staten bent en de Services in uw officiële hoedanigheid gebruikt en u juridisch niet in staat bent om
+            akkoord te gaan met de clausules in deze sectie, dan zijn die clausules niet op u van toepassing. In dat
+            geval zullen de Voorwaarden en alle acties met betrekking tot de Voorwaarden worden beheerst door de wetten
+            van de Verenigde Staten (zonder verwijzing naar wetsconflicten) en, bij gebrek aan federale wetgeving en in
+            de mate toegestaan door de federale wetgeving, de wetten van de staat New York. <br>
+            <strong> F. Aanpassingen. </Strong> Als we deze "Geschillen met EenmaalAndermaal" -sectie wijzigen na de
+            datum waarop u de Voorwaarden voor het laatst hebt geaccepteerd, zijn die wijzigingen niet van toepassing op
+            claims die zijn ingediend in een juridische procedure tegen EenmaalAndermaal vóór de datum waarop de
+            wijzigingen werden doorgevoerd. effectief. EenmaalAndermaal zal u ten minste 30 dagen voorafgaand aan de
+            datum waarop de wijziging van kracht wordt, op de hoogte brengen van inhoudelijke wijzigingen in de sectie
+            'Geschillen met EenmaalAndermaal'. Als u niet akkoord gaat met de gewijzigde voorwaarden, kunt u
+            EenmaalAndermaal een schriftelijke kennisgeving (inclusief e-mail) sturen of uw account binnen die 30 dagen
+            sluiten. Door een gewijzigde termijn te weigeren of uw account permanent te sluiten, stemt u ermee in om
+            eventuele geschillen tussen u en EenmaalAndermaal te arbitreren in overeenstemming met de bepalingen van
+            deze sectie 'Geschillen met EenmaalAndermaal' vanaf de datum waarop u de Voorwaarden voor het laatst hebt
+            geaccepteerd, inclusief eventuele wijzigingen die voorafgaand aan jouw afwijzing. Als u uw gesloten account
+            opnieuw opent of een nieuw account maakt, gaat u ermee akkoord gebonden te zijn aan de huidige versie van de
+            Voorwaarden. <br>
+
+            <h2 id="changes"> 12. Wijzigingen in de voorwaarden </h2>
+            We kunnen deze voorwaarden van tijd tot tijd bijwerken. Als we van mening zijn dat de wijzigingen van
+            materieel belang zijn, zullen we u dit zeker laten weten door de wijzigingen via de Services te posten en /
+            of u een e-mail of bericht over de wijzigingen te sturen. Op die manier kunt u beslissen of u de Services
+            wilt blijven gebruiken. Wijzigingen worden van kracht na het plaatsen van de wijzigingen, tenzij anders
+            aangegeven. U bent verantwoordelijk voor het beoordelen en bekend worden met eventuele wijzigingen. Uw
+            gebruik van de Services na de wijzigingen houdt in dat u de bijgewerkte Voorwaarden accepteert. <br>
+            <h2 id="legal"> 13. Enkele betere juridische punten </h2>
+            De Voorwaarden, inclusief alle beleidsregels die deel uitmaken van de Voorwaarden, komen in de plaats van
+            alle andere overeenkomsten tussen u en EenmaalAndermaal met betrekking tot de Services. Als een deel van de
+            Voorwaarden niet-afdwingbaar wordt bevonden, zal dat deel worden beperkt tot het minimum dat noodzakelijk
+            is, zodat de Voorwaarden anders volledig van kracht en effectief blijven. Ons verzuim om een deel van de
+            Voorwaarden af te dwingen, is geen afstand doen van ons recht om dat of een ander deel van de Voorwaarden
+            later af te dwingen. We kunnen een van onze rechten en verplichtingen op grond van de Voorwaarden
+            overdragen. <br>
+            <h2 id="contact"> 14. Contactgegevens </h2>
+            Als u vragen heeft over de Voorwaarden, kunt u een e-mail sturen naar <a
+                    href="mailto:legal@EenmaalAndermaal.com"> legal@EenmaalAndermaal.com </a>. <br>
+            <p class="text-gray-lighter bt-xs-1 pt-xs-5 mb-xs-4"> Laatst bijgewerkt op 11 april 2019 <br>
+            </p>
+    </article>

@@ -1,0 +1,58 @@
+<?php /** @var $this \EenmaalAndermaal\View\FeedbackView */ ?>
+
+<?php if ($this->access) {
+    if (!empty($this->feedback)) { ?>
+        <div class="container">
+            <h1 class="center">Feedback</h1>
+            <div class="row">
+                <div class="card green lighten-5 col s12 m4 l4 offset-l4 offset-m4">
+                    <div class="card-content">
+                        <span class="card-title">Uw feedback</span>
+                        <p>Rating: <?= $this->feedback ?><br>
+                            Commentaar: <?= $this->commentaar ?><br>
+                            Datum: <?= $this->dag . " " . $this->tijd ?>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } else { ?>
+        <div class="container">
+            <h1 class="center">Feedback</h1>
+            <div class="row">
+                <form method="post" class="card green lighten-5 col s12 m6 l6 offset-l3 offset-m3">
+                    <div class="card-content">
+                        <span class="card-title">Feedback</span>
+                        <p>Deze veiling is gewonnen door jou! Gefeliciteerd!</p>
+
+                        <p>Geef een beoordeling over uw ervaring.</p>
+                        <div class="row">
+                            <div class="input-field col s12 m12 l12">
+                                <select id="feedback" name="feedback" required>
+                                    <option value="" disabled selected>Kies een cijfer</option>
+                                    <?php for ($i = 10; $i >= 1; $i--) { ?>
+                                        <option value="<?= $i ?>"><?= $i ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="input-field col s12 m12 l12">
+                                <textarea name="commentaar" id="commentaar" class="materialize-textarea"></textarea>
+                                <label for="commentaar">Opmerking</label>
+                            </div>
+                            <div class="col s12 m12 l12">
+                                <button class="btn light-green">Verzend</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    <?php }
+}else{?>
+    <div class="container">
+        <h1>Feedback</h1>
+        <p>Oeps.. u heeft geen toegang tot deze pagina.</p>
+    </div>
+<?php } ?>

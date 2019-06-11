@@ -171,19 +171,8 @@ class VeilingModel extends Model
         } else if (strlen($this->beschrijvingKort) > 255) {
             $errors[] = "De korte beschrijving mag niet hoger zijn dan 255 karakters";
         }
-        if (empty($this->beschrijving)) {
-            $errors[] = "Beschrijving is niet ingevuld";
-        }
 
-        if (empty($this->betalingsInstructie)) {
-            $errors[] = "Betalingsinstructie is niet ingevuld";
-        }
-
-        if (empty($this->verzendInstructie)) {
-            $errors[] = "Verzendinstructie is niet ingevuld";
-        }
-
-        if (empty($this->verzendKosten)) {
+        if (empty($this->verzendKosten) && $this->verzendKosten !== '0') {
             $errors[] = "Verzendkosten is niet ingevuld";
         } else if (!$this->validateNumericValues($this->verzendKosten)) {
             $errors[] = "Verzendkosten is incorrect ingevuld";
@@ -254,13 +243,13 @@ class VeilingModel extends Model
         $success = true;
         $file = new FileModel();
         if ($file->setFile($this->tmpThumbnail, "")) {
-            $this->thumbnail = "uploads/" . $file->fileName;
+            $this->thumbnail = "upload/" . $file->fileName;
         } else {
             $success = false;
         }
         foreach ($this->tmpImages as $image) {
             if ($file->setFile($image, "")) {
-                $this->images[] = "uploads/" . $file->fileName;
+                $this->images[] = "upload/" . $file->fileName;
             } else {
                 $success = false;
             }
