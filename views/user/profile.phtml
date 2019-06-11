@@ -203,16 +203,16 @@ $editable = false;
                             <ul class="profile-buttons">
                                 <?php if ($getUser->getCurrentUser()->permissie < 1) { ?>
                                     <li>
-                                        <a href="<?= $baseUrl ?>verkoperWorden">
-                                            <button class="btn btn-large light-green">Verkoper worden</button>
+                                        <a href="<?= $baseUrl ?>verkoperWorden" class="btn btn-block light-green">
+                                            Verkoper worden
                                         </a>
                                     </li>
                                 <?php } ?>
                                 <li>
-                                    <button class="btn light-green">Wachtwoord vergeten</button>
+                                    <a href="<?= $baseUrl ?>wachtwoord-vergeten" class="btn btn-block light-green">Wachtwoord vergeten</a>
                                 </li>
                                 <li>
-                                    <button class="btn light-green">Verwijder gegevens</button>
+                                    <a href="<?= $baseUrl ?>verwijder" class="btn btn-block light-green">Verwijder gegevens</a>
                                 </li>
                             </ul>
 

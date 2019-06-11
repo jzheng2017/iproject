@@ -1,0 +1,24 @@
+<?php
+
+use EenmaalAndermaal\App;
+use EenmaalAndermaal\Services\UserService;
+
+?>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h1>Verwijder je account</h1>
+            <p class="flow-text">
+                Hallo <?= UserService::getInstance()->getCurrentUser()->voornaam ?>, je staat
+                op het punt om je account
+                (<?= UserService::getInstance()->getCurrentUser()->getIdentifier() ?>) permanent te
+                verwijderen.<br>
+                Weet je zeker dat je jouw account wilt verwijderen. Je verliest de mogelijkheid om in te loggen en je veilingen te bekijken.</p>
+        </div>
+        <form method="post" class="col s12">
+            <input type="hidden" value="<?= UserService::getInstance()->getCurrentUser()->getIdentifier() ?>" name="username">
+            <a href="<?= App::getApp()->getConfig()->get("website.url"); ?>profiel" class="btn orange">Annuleren</a>
+            <button type="submit" class="btn white red-text">Verwijder je account</button>
+        </form>
+    </div>
+</div>
