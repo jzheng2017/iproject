@@ -76,7 +76,7 @@ class LoginController implements Controller
             } else {
                 $view->error = "Geen gebruikersnaam gevonden";
             }
-
+            $view->post = $post;
             return $view->render();
         }));
 

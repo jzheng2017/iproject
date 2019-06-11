@@ -14,7 +14,6 @@ $('select').formSelect();
 $('.modal').modal();
 $('#TOS').on('click', function() {
 });
-$('#TOStext').load(base_url + "/website/views/registreren/TOS.txt");
 
 
 

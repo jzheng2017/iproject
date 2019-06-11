@@ -152,19 +152,18 @@ class UserController implements Controller
             return $view->render();
         }));
 
-        $router->addRoute(new Route("verwijderAVG", RequestMethod::GET(), function () {
+        $router->addRoute(new Route("verwijder", RequestMethod::GET(), function () {
             LoggingService::log("GET /verwijderAVG");
             if (UserService::getInstance()->userLoggedIn()) {
-                return new View("GET user/avg_delete");
+                return (new View("user/avg_delete"))->render();
             }
             header("Location: " . App::getApp()->getConfig()->get("website.url"));
             die();
         }));
 
 
-        $router->addRoute(new Route("verwijderAVG", RequestMethod::POST(), function () {
+        $router->addRoute(new Route("verwijder", RequestMethod::POST(), function () {
             if (UserService::getInstance()->userLoggedIn()) {
-                UserService::getInstance()->logout();
                 $gebruikersnaam = UserService::getInstance()->getCurrentUser()->gebruikersnaam;
                 $r = new ApiRequest("gebruikers/{$gebruikersnaam}/delete", RequestMethod::POST());
                 if ($r->connect()) {
