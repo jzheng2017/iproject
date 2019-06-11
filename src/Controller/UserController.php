@@ -33,6 +33,17 @@ class UserController implements Controller
             $view->landen->getAll();
             $user->bind($request->getPost());
             $view->homepage = false;
+            if (UserService::getInstance()->getCurrentUser()->permissie > 0) {
+                $veilingen = new ApiRequest("verkoper/" . UserService::getInstance()->getCurrentUser()->getIdentifier() . "/veilingen", RequestMethod::GET());
+                if ($veilingen->connect()) {
+                    $view->veilingen = $veilingen->getResult();
+                }
+            }
+            $view->geboden = [];
+            $geboden = new ApiRequest("gebruikers/". UserService::getInstance()->getCurrentUsername()."/veilingen", RequestMethod::GET());
+            if ($geboden->connect()){
+                $view->geboden = $geboden->getResult();
+            }
             return $view->render();
         }));
 

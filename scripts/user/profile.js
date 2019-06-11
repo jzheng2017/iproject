@@ -52,6 +52,10 @@ function hideDropdown() {
     }
 }
 
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+});
+
 function togglebuttuns() {
     $('#editbtn').toggle();
     $('#savecancel').toggle();

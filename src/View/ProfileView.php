@@ -9,6 +9,8 @@ use EenmaalAndermaal\Model\LandModelCollection;
 class ProfileView extends View
 {
     public $profile;
+    public $veilingen;
+    public $geboden;
     /** @var LandModelCollection $landen */
     public $landen;
     public $fields = [];
