@@ -42,7 +42,15 @@ class UserController implements Controller
             $view->geboden = [];
             $geboden = new ApiRequest("gebruikers/". UserService::getInstance()->getCurrentUsername()."/veilingen", RequestMethod::GET());
             if ($geboden->connect()){
-                $view->geboden = $geboden->getResult();
+                $geboden = $geboden->getResult();
+                $unique = [];
+                $view->geboden = array_filter($geboden, function($veiling) use (&$unique) {
+                    if (!in_array($veiling['nummer'], $unique)) {
+                        $unique[] = $veiling['nummer'];
+                        return true;
+                    }
+                    return false;
+                });
             }
             return $view->render();
         }));

@@ -13,7 +13,7 @@ h4{
 }
 
 span.badge.new:after{
-    content: " update" !important;
+    content: "!" !important;
 }
 
 .bold {
