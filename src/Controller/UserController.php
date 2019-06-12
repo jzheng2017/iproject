@@ -87,10 +87,11 @@ class UserController implements Controller
 
             $data = $request->getPost();
 
-            if (!$r->connect([
+            if ($r->connect([
                 "permissie" => 1
             ])) {
                 header("Location: " . App::getApp()->getConfig()->get("website.url"));
+                die();
             };
         }));
 

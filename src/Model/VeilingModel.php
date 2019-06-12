@@ -128,11 +128,13 @@ class VeilingModel extends Model
     private function validateImage($file)
     {
         $valid = true;
-        if (!getimagesize($file['tmp_name'])) {
-            $valid = false;
-        }
-        if ($file['size'] > 5000000) {
-            $valid = false;
+        if (!empty($file['tmp_name'])) {
+            if (!getimagesize($file['tmp_name'])) {
+                $valid = false;
+            }
+            if ($file['size'] > 5000000) {
+                $valid = false;
+            }
         }
         return $valid;
     }
@@ -183,7 +185,7 @@ class VeilingModel extends Model
         } else if (!$this->validateNumericValues($this->verzendKosten)) {
             $errors[] = "Startprijs is incorrect ingevuld";
         }
-        if (!count($this->betalingsWijze)) {
+        if (empty($this->betalingsWijze)) {
             $errors[] = "Er is geen betalingsmethode gekozen";
         }
         if (!count($this->parent)) {
@@ -214,8 +216,7 @@ class VeilingModel extends Model
         }
         if (count($this->tmpImages) > 4) {
             $errors[] = "Er zijn meer dan 4 afbeeldingen geupload";
-        }
-        if (!$this->validateMultipleImages($this->tmpImages)) {
+        } else if (!$this->validateMultipleImages($this->tmpImages)) {
             $errors[] = "De geuploade afbeelding is niet een afbeelding of is groter dan 5MB";
         }
 
@@ -234,7 +235,8 @@ class VeilingModel extends Model
         return [];
     }
 
-    public static function getKoperInfo(){
+    public static function getKoperInfo()
+    {
         //$r = new ApiRequest("veilingen/". $)
     }
 
@@ -248,10 +250,12 @@ class VeilingModel extends Model
             $success = false;
         }
         foreach ($this->tmpImages as $image) {
-            if ($file->setFile($image, "")) {
-                $this->images[] = "upload/" . $file->fileName;
-            } else {
-                $success = false;
+            if ($image['size'] > 0) {
+                if ($file->setFile($image, "")) {
+                    $this->images[] = "upload/" . $file->fileName;
+                } else {
+                    $success = false;
+                }
             }
         }
         return $success;
