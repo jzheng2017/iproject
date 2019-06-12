@@ -1,4 +1,5 @@
 <?php use EenmaalAndermaal\Services\UserService;
+use EenmaalAndermaal\Util\StringUtil;
 
 /** @var $this \EenmaalAndermaal\View\CreateVeilingView */
 if (UserService::getInstance()->getCurrentUser()->permissie > 0) {
@@ -23,7 +24,7 @@ if (UserService::getInstance()->getCurrentUser()->permissie > 0) {
                 <?php foreach ($this->fields as $key => $value) { ?>
                     <tr>
                         <td><?= $key ?></td>
-                        <?php if ($key == "betalingsWijze" || $key == "parent") {
+                        <?php if ($key == "parent") {
                             $fullValue = "";
                             ?>
                             <?php foreach ($value as $v) {
@@ -32,6 +33,8 @@ if (UserService::getInstance()->getCurrentUser()->permissie > 0) {
 
                             <?php } ?>
                             <td><?= $fullValue ?></td>
+                        <?php } else if ($key == 'startPrijs') { ?>
+                            <td><?= StringUtil::euro($value * 100) ?></td>
                         <?php } else { ?>
                             <td><?= $value ?></td>
                         <?php } ?>
@@ -103,7 +106,7 @@ if (UserService::getInstance()->getCurrentUser()->permissie > 0) {
                         </div>
                         <div class="input-field col s12 m6 l6">
                     <textarea id="beschrijving" name="beschrijving" class="validate materialize-textarea" rows="50"
-                              ><?= isset($this->fields['beschrijving']) ? $this->fields['beschrijving'] : "" ?></textarea>
+                    ><?= isset($this->fields['beschrijving']) ? $this->fields['beschrijving'] : "" ?></textarea>
                             <label for="beschrijving">Product beschrijving</label>
                         </div>
 
@@ -112,9 +115,10 @@ if (UserService::getInstance()->getCurrentUser()->permissie > 0) {
                         <div class="input-field col s12 m6 l6">
                             <select id="betalingsWijze" name="betalingsWijze" required>
                                 <option value="" disabled>Kies een betalingsmethode</option>
-                                <option value="bank">Bank/Giro</option>
-                                <option value="contant">Contant</option>
-                                <option value="anders">Anders</option>
+                                <?php foreach($this->betaalmethode as $methode){?>
+                                <option value="<?= $methode?>" <?= isset($this->fields['betalingsWijze']) && $methode == $this->fields['betalingsWijze'] ? 'selected' : ''?>><?= $methode?></option>
+                                <?php }?>
+
 
                             </select>
                             <label for="betalingsWijze">Betalingsmethode</label>
@@ -167,7 +171,7 @@ if (UserService::getInstance()->getCurrentUser()->permissie > 0) {
                                                                     <li>
                                                                         <label class="input-field">
                                                                             <input type="checkbox"
-                                                                                   name="parent[]" <?= (count($this->fields) > 0) && in_array($subsub->getIdentifier(), $this->fields['parent']) ? 'checked' : '' ?>
+                                                                                   name="parent[]" <?= (isset($this->fields['parent'])) && in_array($subsub->getIdentifier(), $this->fields['parent']) ? 'checked' : '' ?>
                                                                                    value="<?= $subsub->getIdentifier() ?>">
                                                                             <span><?= $subsub->naam ?></span>
                                                                         </label>
@@ -190,11 +194,15 @@ if (UserService::getInstance()->getCurrentUser()->permissie > 0) {
                                 <div class="col s12 input-field">
                                     <select id="looptijd" name="looptijd" required>
                                         <option value="" selected disabled>Kies een looptijd</option>
-                                        <option value="1">1 dag</option>
-                                        <option value="3">3 dagen</option>
-                                        <option value="5">5 dagen</option>
-                                        <option value="7">7 dagen</option>
-                                        <option value="10">10 dagen</option>
+                                        <?php foreach ($this->looptijd as $tijd) {
+                                            if ($tijd == 1) {
+                                                ?>
+                                                <option value="<?= $tijd ?>" <?= isset($this->fields['looptijd']) && $tijd == $this->fields['looptijd'] ? 'selected' : ''?>><?= $tijd ?> dag</option>
+                                            <?php } else {
+                                                ?>
+                                                <option value="<?= $tijd ?>" <?= isset($this->fields['looptijd']) && $tijd == $this->fields['looptijd'] ? 'selected' : ''?>><?= $tijd ?> dagen</option>
+                                            <?php } ?>
+                                        <?php } ?>
                                     </select>
                                     <label for="looptijd">Looptijd</label>
                                 </div>
@@ -228,18 +236,21 @@ if (UserService::getInstance()->getCurrentUser()->permissie > 0) {
                                     <label for="land">Land</label>
                                 </div>
                                 <div class="input-field col s12">
-                                    <input type="number" id="startPrijs" class="validate" name="startPrijs" min="1" step=".01"
+                                    <input type="number" id="startPrijs" class="validate" name="startPrijs" min="1"
+                                           step=".01"
                                            placeholder="Vul een startPrijs"
                                            value="<?= isset($this->fields['startPrijs']) ? $this->fields['startPrijs'] : "" ?>"
                                            required>
-                                    <label for="startPrijs">Startprijs</label>
+                                    <label for="startPrijs">Startprijs &euro;</label>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12">
-                            <button type="submit" class="btn light-green"><i class="left material-icons">check</i>Voeg toe</button>
+                            <button type="submit" class="btn light-green"><i class="left material-icons">check</i>Voeg
+                                toe
+                            </button>
                         </div>
                     </div>
                 </form>

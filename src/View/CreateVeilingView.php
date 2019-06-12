@@ -10,6 +10,8 @@ class CreateVeilingView extends View
     public $landen = [];
     public $fields = [];
     public $rubrieken = [];
+    public $betaalmethode = ["Bank/Giro", "Contant", "Anders"];
+    public $looptijd = [1, 3, 5, 7, 10];
     public $success = false;
 
     public function __construct()
