@@ -3,6 +3,7 @@
 use EenmaalAndermaal\App;
 use EenmaalAndermaal\Model\VeilingModel;
 use EenmaalAndermaal\Services\UserService;
+use EenmaalAndermaal\Util\StringUtil;
 
 /** @var \EenmaalAndermaal\View\ProfileView $this */
 $baseUrl = App::getApp()->getConfig()->get("website.url");
@@ -115,7 +116,7 @@ $editable = false;
                                                     <p class="bold">Rating: 4/5</p>
                                                 </div>
                                             </div>
-                                            <button class="btn light-green">Bekijk alle reviews</button>
+                                            <button class="btn light-green" disabled>Bekijk alle reviews</button>
                                         </div>
                                     </div>
                                 </div>
@@ -184,7 +185,7 @@ $editable = false;
                                                 </tr>
                                                 <tr>
                                                     <td>Huidige bod</td>
-                                                    <td>&euro; <?= $veiling['verkoopPrijs'] / 100 ?></td>
+                                                    <td><?= StringUtil::euro($veiling['verkoopPrijs']) ?></td>
                                                 </tr>
                                                 </tbody>
                                             </table>

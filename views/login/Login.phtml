@@ -23,10 +23,12 @@ $url = App::getApp()->getConfig()->get("website.url");
             <div class="row ">
                 <form class="col s12 m8 offset-m2 l4 offset-l4 card light-green lighten-5" method="post">
                     <div class='row light-green lighten-5 card-content'>
-                        <div class='col s12'>
-                            <?php if (isset($this->error) && !empty($this->error)) { ?>
-                                <p class="left-align red-text light-green lighten-3 z-depth-1"><?= $this->error ?></p>
-                            <?php } ?>
+                        <div class='col s12 card red lighten-2'>
+                            <div class="card-content">
+                                <?php if (isset($this->error) && !empty($this->error)) { ?>
+                                    <p><?= $this->error ?></p>
+                                <?php } ?>
+                            </div>
                         </div>
                         <div class='input-field col s12'>
                             <input class='validate' type="text" name='gebruikersnaam' id='gebruikersnaam'
@@ -57,7 +59,7 @@ $url = App::getApp()->getConfig()->get("website.url");
     </div>
 <?php } else { ?>
     <div class="container">
-    <h1>Er ging iets fout..</h1>
+        <h1>Er ging iets fout..</h1>
         <p>U bent al ingelogd.</p>
     </div>
 <?php } ?>
