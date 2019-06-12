@@ -1,5 +1,4 @@
-<?php
-$baseURL = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url");
+<?php$baseURL = \EenmaalAndermaal\App::getApp()->getConfig()->get("website.url");
 if (!$this->bestaat) {
     ?>
     <div class="container center-align">
@@ -31,7 +30,7 @@ if (!$this->bestaat) {
                         Uw account <?= $this->naam ?> is geverifieerd. Het account heeft nu geverifieerde
                         gebruikersrechten.
                     </p>
-                    <a class="waves-effect waves-light btn-small light-green right" href="#">Bekijk je profiel</a>
+                    <a class="waves-effect waves-light btn-small light-green right" href="<?= $baseURL ?>profile">Bekijk je profiel</a>
                 </div>
             </div>
         </div>
