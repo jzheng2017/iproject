@@ -11,6 +11,7 @@ use EenmaalAndermaal\Request\Request;
 use EenmaalAndermaal\Request\RequestMethod;
 use EenmaalAndermaal\Route\Route;
 use EenmaalAndermaal\Route\Router;
+use EenmaalAndermaal\Services\GetService;
 use EenmaalAndermaal\Services\LoggingService;
 use EenmaalAndermaal\Services\MailService;
 use EenmaalAndermaal\Services\SessionService;
@@ -53,7 +54,11 @@ class LoginController implements Controller
                                 "login" => true,
                                 "user" => $gebruikersnaam
                             ]);
-                            header("Location: " . App::getApp()->getConfig()->get("website.url"));
+                            if (GetService::getInstance()->getVar("refVeiling")) {
+                                header("Location: " . App::getApp()->getConfig()->get("website.url") . "veiling/" . GetService::getInstance()->getVar("refVeiling"));
+                            } else {
+                                header("Location: " . App::getApp()->getConfig()->get("website.url"));
+                            }
                             die();
                         } else {
                             $view->error = 'Wachtwoord en gebruikersnaam combinatie klopt niet';
