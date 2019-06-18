@@ -42,7 +42,15 @@ class UserController implements Controller
             $view->geboden = [];
             $geboden = new ApiRequest("gebruikers/". UserService::getInstance()->getCurrentUsername()."/veilingen", RequestMethod::GET());
             if ($geboden->connect()){
-                $view->geboden = $geboden->getResult();
+                $geboden = $geboden->getResult();
+                $unique = [];
+                $view->geboden = array_filter($geboden, function($veiling) use (&$unique) {
+                    if (!in_array($veiling['nummer'], $unique)) {
+                        $unique[] = $veiling['nummer'];
+                        return true;
+                    }
+                    return false;
+                });
             }
             return $view->render();
         }));
@@ -79,10 +87,11 @@ class UserController implements Controller
 
             $data = $request->getPost();
 
-            if (!$r->connect([
+            if ($r->connect([
                 "permissie" => 1
             ])) {
                 header("Location: " . App::getApp()->getConfig()->get("website.url"));
+                die();
             };
         }));
 

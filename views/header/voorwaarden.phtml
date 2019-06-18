@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h4>Voorwaarden van de overeenkomst</h4>
+            <p id="TOStext">
+                <?php
+                $myfile = fopen("views/registreren/TOS.txt", "r") or die("Unable to open file!");
+                echo fread($myfile, filesize("views/registreren/TOS.txt"));
+                fclose($myfile);
+                ?>
+            </p>
+        </div>
+    </div>
+</div>

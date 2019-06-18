@@ -59,9 +59,9 @@ $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
                                                                   class="responsive-img" alt="Logo"><span
                             class="site-name">EenmaalAndermaal</span></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="" class="top-link">Verkopen</a></li>
-                    <li><a href="" class="top-link">Voorwaarden</a></li>
-                    <li><a href="" class="top-link">Help & Info</a></li>
+                    <li><a href="<?= $baseUrl ?>verkoper" class="top-link">Verkopen</a></li>
+                    <li><a href="<?= $baseUrl ?>voorwaarden" class="top-link">Voorwaarden</a></li>
+                    <li><a href="<?= $baseUrl ?>faq" class="top-link">Help & Info</a></li>
                     <?php
                     if (UserService::getInstance()->userLoggedIn()) { ?>
                         <li><a href="<?= $baseUrl ?>uitloggen" class="top-link">uitloggen</a></li>
@@ -117,13 +117,14 @@ $sideNav = $this->renderComponent(new SidenavComponent($view->isHomepage()));
     <div class="container">
         <div class="row">
             <div class="col">
-                <h5 class="white-text">Footer Content</h5>
-                <a class="top-link white-text popout" href="<?= $baseUrl ?>PrivacyVerklaring">Privacy Verklaring</a>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
-                    content.</p>
+                <h5 class="white-text">Wettelijk</h5>
+                <a class="top-link white-text popout" href="<?= $baseUrl ?>privacyverklaring">Privacy Verklaring</a><br>
+                <a class="top-link white-text popout" href="<?= $baseUrl ?>faq">FAQ</a>
             </div>
             <div class="col">
                 <h5 class="white-text">Links</h5>
+                <a class="top-link white-text popout" href="<?= $baseUrl ?>#">Populair</a><br>
+                <a class="top-link white-text popout" href="<?= $baseUrl ?>#">In de buurt</a>
             </div>
         </div>
     </div>
