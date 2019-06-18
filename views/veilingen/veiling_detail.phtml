@@ -52,6 +52,20 @@ use \EenmaalAndermaal\View\Component\VeilingCollectionComponent;
                                                     <i class="material-icons right"></i>
                                                 </button>
                                             </div>
+                                        </form>
+                                    <?php } else if (UserService::getInstance()->getCurrentUser()->verificatie == '0') { ?>
+                                        <div class="col s12">
+                                            <p class=" center flow-text light-green-text text-darken-4">Verifieer je <a
+                                                        href="<?= $baseUrl ?>profiel">account</a> om mee te bieden</p>
+                                        </div>
+                                    <?php } else if (UserService::getInstance()->getCurrentUsername() == $this->veiling->verkoper) { ?>
+                                        <div class="col s12">
+                                            <p class=" center flow-text light-green-text text-darken-4">Je kan niet bieden op je eigen veiling</p>
+                                        </div>
+                                    <?php } else { ?>
+                                        <div class="col s12">
+                                            <p class=" center flow-text light-green-text text-darken-4"><a
+                                                        href="<?= $baseUrl ?>login?refVeiling=<?= $this->veiling->getIdentifier() ?>">Log in</a> om mee te bieden</p>
                                         </div>
                                     </form>
                                 <?php } else if (UserService::getInstance()->getCurrentUser()->verificatie == '0') { ?>
