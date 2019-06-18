@@ -1,6 +1,7 @@
 <?php
 
 use EenmaalAndermaal\View\Component\AfstandFilterComponent;
+use EenmaalAndermaal\View\Component\FilterComponent;
 use EenmaalAndermaal\View\Component\PrijsFilterComponent;
 use EenmaalAndermaal\View\Component\VeilingCollectionComponent;
 use EenmaalAndermaal\View\ZoekResultaatView;
@@ -10,24 +11,15 @@ use EenmaalAndermaal\View\ZoekResultaatView;
 ?>
 
 <div class="row">
-    <div class="col l2 m4 s12">
+    <div class="col l3 m12 s12">
+        <?= $this->renderComponent(new FilterComponent()) ?>
+    </div>
+    <div class="col l9 m12 s12">
         <div class="row">
             <div class="col s12">
-                <p class="flow-text center-align">Filteren</p>
-                <div class="row">
-                    <div class="col offset-s1 s11 light-green lighten-4 z-depth-1">
-                        <?= $this->renderComponent(new PrijsFilterComponent()) ?>
-                        <?= $this->renderComponent(new AfstandFilterComponent()) ?>
-                    </div>
-                </div>
+                <p class="flow-text center-align"><b>Zoekresultaten</b></p>
             </div>
-        </div>
-    </div>
-
-    <div class="col l10 m6 s12">
-        <div class="container">
-            <p class="flow-text center-align">Zoekresultaten</p>
-            <div class="row">
+            <div class="col s12">
                 <?= $this->renderComponent(new VeilingCollectionComponent($this->zoekresultaat)) ?>
             </div>
         </div>
